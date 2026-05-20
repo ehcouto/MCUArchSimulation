@@ -1,0 +1,74 @@
+%% File    : sfun_directlook.tlc
+%% Abstract: 
+%%      Level-2 S-function sfun_directlook block target file.
+%%      It is using direct lookup algorithm without interpolation
+%%
+%% Copyright 1990-2010 The MathWorks, Inc.
+%% $Revision: 1.1.6.1 $ 
+
+
+
+%implements mci_stop "C"
+
+%% Function: BlockTypeSetup ====================================================
+%% Abstract:
+%%     Place include and function prototype in the model's header file.
+%%
+%function BlockTypeSetup(block, system) void
+
+%endfunction
+
+%% Function: BlockInstanceSetup ===========================================
+%%
+%function BlockInstanceSetup(block, system) void
+  %%
+
+  %<LibBlockSetIsExpressionCompliant(block)>
+  %assign header_file = "Mci.h"
+  
+  %<LibAddToCommonIncludes("%<header_file>")>
+%endfunction
+
+%% Function: Outputs ======================================================
+%%
+%function Outputs(block, system) Output
+  %%
+  %if IsModelReferenceSimTarget() || CodeFormat=="S-Function"
+    
+  %else 
+    %if !LibBlockOutputSignalIsExpr(0)
+      
+      %assign u0_val = LibBlockInputSignal(0, "", "", 0)
+      %assign y1_val = LibBlockOutputSignal(0, "", "", 0)
+
+      %<y1_val> = Mci__Stop(MOTOR0, %<u0_val>);
+      
+    %endif 
+  %endif 
+  %%
+%endfunction
+
+%% Function: BlockOutputSignal ============================================
+%%
+%function BlockOutputSignal(block,system,portIdx,ucv,lcv,idx,retType) void
+  %%
+  %assign u0_val = LibBlockInputSignal(0, "", "", 0)
+  %%
+  %switch retType
+    %case "Signal"
+      %if portIdx == 0
+        
+        %return "Mci__Stop(MOTOR0, %<u0_val>);"
+        
+      %else
+        %assign errTxt = "Block output port index not supported: %<portIdx>"
+        %<LibBlockReportError(block,errTxt)>
+      %endif
+    %default
+      %assign errTxt = "Unsupported return type: %<retType>"
+      %<LibBlockReportError(block,errTxt)>
+  %endswitch
+  %%
+%endfunction
+
+%% EOF: sfun_directlook.tlc

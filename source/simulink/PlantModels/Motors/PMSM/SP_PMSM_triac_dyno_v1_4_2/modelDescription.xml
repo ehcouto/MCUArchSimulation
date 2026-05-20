@@ -1,0 +1,2490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="2.0"
+  modelName="SP_PMSM_triac_dyno_v1_4_2"
+  guid="{dc49fadd-14af-4a16-b67e-61ed19348b16}"
+  description="SPPMSM + triac + load torque input (v1.4.2)"
+  generationTool="Dymola Version 2020 (64-bit), 2019-04-10 (using Cvode with tolerance 1e-09)"
+  generationDateAndTime="2021-01-08T12:04:53Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="8">
+  <CoSimulation
+    modelIdentifier="SP_PMSM_triac_dyno_v1_4_2"
+    canHandleVariableCommunicationStepSize="true"
+    canInterpolateInputs="true"
+    maxOutputDerivativeOrder="1"
+    canBeInstantiatedOnlyOncePerProcess="true"
+    canNotUseMemoryManagementFunctions="true"
+    providesDirectionalDerivative="true"/>
+  <UnitDefinitions>
+    <Unit
+      name="1"/>
+    <Unit
+      name="A">
+      <BaseUnit A="1"/>
+    </Unit>
+    <Unit
+      name="H">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="K">
+      <BaseUnit K="1"/>
+      <DisplayUnit
+        name="degC"
+        offset="-273.15"/>
+    </Unit>
+    <Unit
+      name="N.m">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"/>
+    </Unit>
+    <Unit
+      name="N.m.s/rad">
+      <BaseUnit kg="1"
+        m="2"
+        s="-1"
+        rad="-1"/>
+    </Unit>
+    <Unit
+      name="Ohm">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="S">
+      <BaseUnit kg="-1"
+        m="-2"
+        s="3"
+        A="2"/>
+    </Unit>
+    <Unit
+      name="V">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        A="-1"/>
+    </Unit>
+    <Unit
+      name="W">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"/>
+    </Unit>
+    <Unit
+      name="Wb">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"
+        A="-1"/>
+    </Unit>
+    <Unit
+      name="kg.m2">
+      <BaseUnit kg="1"
+        m="2"/>
+    </Unit>
+    <Unit
+      name="rad">
+      <BaseUnit rad="1"/>
+      <DisplayUnit
+        name="deg"
+        factor="57.29577951308232"/>
+      <DisplayUnit
+        name="rad"/>
+    </Unit>
+    <Unit
+      name="rad/s">
+      <BaseUnit s="-1"
+        rad="1"/>
+      <DisplayUnit
+        name="rad/s"/>
+    </Unit>
+    <Unit
+      name="rad/s2">
+      <BaseUnit s="-2"
+        rad="1"/>
+    </Unit>
+    <Unit
+      name="s">
+      <BaseUnit s="1"/>
+    </Unit>
+    <Unit
+      name="s-1">
+      <BaseUnit s="-1"/>
+    </Unit>
+  </UnitDefinitions>
+  <TypeDefinitions>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.BooleanInput">
+      <Boolean/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.BooleanOutput">
+      <Boolean/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealInput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealOutput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Angle">
+      <Real
+        quantity="Angle"
+        unit="rad"
+        displayUnit="deg"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.AngularAcceleration">
+      <Real
+        quantity="AngularAcceleration"
+        unit="rad/s2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.AngularVelocity">
+      <Real
+        quantity="AngularVelocity"
+        unit="rad/s"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Conductance">
+      <Real
+        quantity="Conductance"
+        unit="S"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Current">
+      <Real
+        quantity="ElectricCurrent"
+        unit="A"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.ElectricPotential">
+      <Real
+        quantity="ElectricPotential"
+        unit="V"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Inductance">
+      <Real
+        quantity="Inductance"
+        unit="H"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Inertia">
+      <Real
+        quantity="MomentOfInertia"
+        unit="kg.m2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.MagneticFlux">
+      <Real
+        quantity="MagneticFlux"
+        unit="Wb"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.MomentOfInertia">
+      <Real
+        quantity="MomentOfInertia"
+        unit="kg.m2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Power">
+      <Real
+        quantity="Power"
+        unit="W"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Resistance">
+      <Real
+        quantity="Resistance"
+        unit="Ohm"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.RotationalDampingConstant">
+      <Real
+        quantity="RotationalDampingConstant"
+        unit="N.m.s/rad"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Temperature">
+      <Real
+        quantity="ThermodynamicTemperature"
+        unit="K"
+        displayUnit="degC"
+        min="0.0"
+        nominal="300.0"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Time">
+      <Real
+        quantity="Time"
+        unit="s"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Torque">
+      <Real
+        quantity="Torque"
+        unit="N.m"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Voltage">
+      <Real
+        quantity="ElectricPotential"
+        unit="V"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Types.Init">
+      <Enumeration>
+        <Item name="NoInit"
+          value="1"
+          description="No initialization (start values are used as guess values with fixed=false)"/>
+        <Item name="SteadyState"
+          value="2"
+          description="Steady state initialization (derivatives of states are zero)"/>
+        <Item name="InitialState"
+          value="3"
+          description="Initialization with initial states"/>
+        <Item name="InitialOutput"
+          value="4"
+          description="Initialization with initial outputs (and steady state of the states if possible)"/>
+      </Enumeration>
+    </SimpleType>
+  </TypeDefinitions>
+  <DefaultExperiment startTime="0.0"
+    stopTime="1.0"
+    tolerance="1E-09"/>
+  <ModelVariables>
+    <!-- Index for next variable = 1 -->
+    <ScalarVariable
+      name="Rs0"
+      valueReference="16777216"
+      description="Stator Winding Resistance at Temperature TsRef"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 2 -->
+    <ScalarVariable
+      name="Ls0"
+      valueReference="16777217"
+      description="Stator Winding Inductance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 3 -->
+    <ScalarVariable
+      name="Trp"
+      valueReference="16777218"
+      description="Peak Reluctance Torque"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 4 -->
+    <ScalarVariable
+      name="NPP"
+      valueReference="16777219"
+      description="Number of Pole Pairs"
+      causality="parameter"
+      variability="fixed">
+      <Integer start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 5 -->
+    <ScalarVariable
+      name="J"
+      valueReference="16777220"
+      description="Moment of Inertia of the Rotor"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MomentOfInertia"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 6 -->
+    <ScalarVariable
+      name="Jadd"
+      valueReference="16777221"
+      description="Additional Moment of Inertia (Load)"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MomentOfInertia"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 7 -->
+    <ScalarVariable
+      name="D"
+      valueReference="16777222"
+      description="Damping Coefficient of the Rotor"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.RotationalDampingConstant"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 8 -->
+    <ScalarVariable
+      name="Flux_f1m"
+      valueReference="16777223"
+      description="Amplitude of fundamental magnet flux component"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 9 -->
+    <ScalarVariable
+      name="alpha_s"
+      valueReference="16777224"
+      description="Temperature Coefficient of the Stator Winding [1/C]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.00386982"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 10 -->
+    <ScalarVariable
+      name="d_magnet"
+      valueReference="16777225"
+      description="Temperature Coefficient of the Magnet [1/C]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0.00386982"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 11 -->
+    <ScalarVariable
+      name="TsRef"
+      valueReference="16777226"
+      description="Reference Temperature of the Stator Winding [C]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="22"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 12 -->
+    <ScalarVariable
+      name="TrRef"
+      valueReference="16777227"
+      description="Reference Temperature of the Rotor Winding [C]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="22"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 13 -->
+    <ScalarVariable
+      name="theta_m_0"
+      valueReference="16777228"
+      description="Rest Position of the Rotor"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        start="22"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 14 -->
+    <ScalarVariable
+      name="omega_m_start"
+      valueReference="16777229"
+      description="Initial Value for Shaft Rotational Speed"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 15 -->
+    <ScalarVariable
+      name="pi"
+      valueReference="100663296"
+      variability="constant">
+      <Real start="3.141592653589793"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 16 -->
+    <ScalarVariable
+      name="Lsmin"
+      valueReference="16777230"
+      description="Minumum value of Stator Inductance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 17 -->
+    <ScalarVariable
+      name="LsModel"
+      valueReference="16777231"
+      description="Saturation model selection"
+      causality="parameter"
+      variability="fixed">
+      <Integer start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 18 -->
+    <ScalarVariable
+      name="Imax"
+      valueReference="16777232"
+      description="Maximum Current - Used in Inductance Sat. Model 1"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 19 -->
+    <ScalarVariable
+      name="Flux_sa_max"
+      valueReference="16777233"
+      description="Maximum Stator Flux - Used in Inductance Sat. Model 2"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 20 -->
+    <ScalarVariable
+      name="torque.flange.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 21 -->
+    <ScalarVariable
+      name="torque.flange.tau"
+      valueReference="335544327"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 22 -->
+    <ScalarVariable
+      name="torque.phi_support"
+      valueReference="100663298"
+      description="Absolute angle of support flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 23 -->
+    <ScalarVariable
+      name="torque.tau"
+      valueReference="369098755"
+      description="Accelerating torque acting at flange (= -flange.tau)">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 24 -->
+    <ScalarVariable
+      name="ivnet"
+      valueReference="352321536"
+      description="Net voltage [V]"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 25 -->
+    <ScalarVariable
+      name="iTL"
+      valueReference="352321537"
+      description="Load Torque [Nm]"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 26 -->
+    <ScalarVariable
+      name="gain.k"
+      valueReference="16777234"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="-1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 27 -->
+    <ScalarVariable
+      name="gain.u"
+      valueReference="436207617"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 28 -->
+    <ScalarVariable
+      name="gain.y"
+      valueReference="369098755"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 29 -->
+    <ScalarVariable
+      name="ois"
+      valueReference="335544320"
+      description="Stator Current [A]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 30 -->
+    <ScalarVariable
+      name="ovs"
+      valueReference="335544321"
+      description="Stator Voltage [V]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 31 -->
+    <ScalarVariable
+      name="ope"
+      valueReference="335544322"
+      description="Motor Instantaneous Power [VA]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 32 -->
+    <ScalarVariable
+      name="oTe"
+      valueReference="335544323"
+      description="Electromagnetic Torque [Nm]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 33 -->
+    <ScalarVariable
+      name="oomega_m"
+      valueReference="335544324"
+      description="Shaft Rotational Speed [rad/s]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 34 -->
+    <ScalarVariable
+      name="otheta_m"
+      valueReference="335544325"
+      description="Shaft Position [rad]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 35 -->
+    <ScalarVariable
+      name="opshaft"
+      valueReference="335544326"
+      description="Shaft Power [W]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 36 -->
+    <ScalarVariable
+      name="oTshaft"
+      valueReference="335544327"
+      description="Shaft Torque [Nm]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 37 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Rs0"
+      valueReference="100663300"
+      description="Stator Winding Resistance at Temperature TsRef"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 38 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Ls0"
+      valueReference="100663301"
+      description="Stator Winding Inductance"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 39 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Trp"
+      valueReference="100663302"
+      description="Peak Reluctance Torque"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 40 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.NPP"
+      valueReference="100663303"
+      description="Number of Pole Pairs"
+      variability="fixed">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 41 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.J"
+      valueReference="100663304"
+      description="Moment of Inertia of the Rotor"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MomentOfInertia"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 42 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Jadd"
+      valueReference="100663305"
+      description="Additional Moment of Inertia (Load)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MomentOfInertia"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 43 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.D"
+      valueReference="100663306"
+      description="Damping Coefficient of the Rotor"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.RotationalDampingConstant"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 44 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Flux_f1m"
+      valueReference="100663307"
+      description="Amplitude of fundamental magnet flux component"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 45 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.TsRef"
+      valueReference="100663308"
+      description="Reference Temperature of the Stator Winding [C]"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 46 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.TrRef"
+      valueReference="100663309"
+      description="Reference Temperature of the Rotor Winding [C]"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 47 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.alpha_s"
+      valueReference="100663310"
+      description="Temperature Coefficient of the Stator Winding [1/C]"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 48 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.d_magnet"
+      valueReference="100663311"
+      description="Temperature Coefficient of the Magnet [1/C]"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 49 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.theta_m_0"
+      valueReference="100663312"
+      description="Rest Position of the Rotor"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 50 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.omega_m_start"
+      valueReference="100663313"
+      description="Initial Value for Shaft Rotational Speed"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 51 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.pi"
+      valueReference="100663314"
+      variability="constant">
+      <Real start="3.141592653589793"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 52 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Lsmin"
+      valueReference="100663315"
+      description="Minimum Value of Stator Inductance"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 53 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.LsModel"
+      valueReference="100663316"
+      description="Saturation model selection"
+      variability="fixed">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 54 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Imax"
+      valueReference="100663317"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 55 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Flux_sa_max"
+      valueReference="100663318"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 56 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.ground.p.v"
+      valueReference="100663319"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 57 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.ground.p.i"
+      valueReference="905969688"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 58 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.omega_m.flange.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 59 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.omega_m.flange.phi)"
+      valueReference="587202560"
+      description="der(Absolute rotation angle of flange)">
+      <Real
+        unit="rad/s"
+        derivative="58"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 60 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.omega_m.flange.tau"
+      valueReference="100663321"
+      description="Cut torque in the flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 61 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.omega_m.w"
+      valueReference="587202560"
+      description="Absolute angular velocity of flange as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 62 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.signalVoltage.p.v"
+      valueReference="436207616"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 63 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.signalVoltage.p.i"
+      valueReference="369098779"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 64 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.signalVoltage.n.v"
+      valueReference="100663322"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 65 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.signalVoltage.n.i"
+      valueReference="335544320"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 66 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.signalVoltage.v"
+      valueReference="436207616"
+      description="Voltage between pin p and n (= p.v - n.v) as input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 67 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.signalVoltage.i"
+      valueReference="369098779"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 68 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Vnet"
+      valueReference="436207616">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 69 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.currentSensor.p.v"
+      valueReference="436207616"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 70 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.currentSensor.p.i"
+      valueReference="335544320"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 71 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.currentSensor.n.v"
+      valueReference="436207616"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 72 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.currentSensor.n.i"
+      valueReference="369098779"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 73 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.currentSensor.i"
+      valueReference="335544320"
+      description="Current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 74 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.torqueSensor.flange_a.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 75 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.torqueSensor.flange_a.tau"
+      valueReference="335544327"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 76 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.torqueSensor.flange_b.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 77 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.torqueSensor.flange_b.tau"
+      valueReference="369098755"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 78 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.torqueSensor.tau"
+      valueReference="335544327"
+      description="Torque in flange flange_a and flange_b (tau = flange_a.tau = -flange_b.tau) as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 79 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.powerSensor.flange_a.phi"
+      valueReference="335544325"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 80 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.powerSensor.flange_a.phi)"
+      valueReference="335544324"
+      description="der(Absolute rotation angle of flange)">
+      <Real
+        unit="rad/s"
+        derivative="79"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 81 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.powerSensor.flange_a.tau"
+      valueReference="335544327"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 82 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.powerSensor.flange_b.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 83 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.powerSensor.flange_b.tau"
+      valueReference="369098755"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 84 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.powerSensor.power"
+      valueReference="335544326"
+      description="Power in flange flange_a as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 85 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.voltageSensor.p.v"
+      valueReference="436207616"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 86 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.voltageSensor.p.i"
+      valueReference="100663324"
+      description="Current flowing into the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 87 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.voltageSensor.n.v"
+      valueReference="369098781"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 88 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.voltageSensor.n.i"
+      valueReference="100663326"
+      description="Current flowing into the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 89 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.voltageSensor.v"
+      valueReference="335544321"
+      description="Voltage between pin p and n (= p.v - n.v) as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 90 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.ov"
+      valueReference="335544321">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 91 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.oi"
+      valueReference="335544320">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 92 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.oomega_m"
+      valueReference="587202560">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 93 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.oTshaft"
+      valueReference="335544327">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 94 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.oPshaft"
+      valueReference="335544326">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 95 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.oTe"
+      valueReference="335544323">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 96 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.oPin"
+      valueReference="335544322">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 97 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.Ron"
+      valueReference="16777235"
+      description="Closed triac resistance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        min="0.0"
+        start="1E-05"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 98 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.Goff"
+      valueReference="16777236"
+      description="Opened triac conductance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Conductance"
+        min="0.0"
+        start="1E-05"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 99 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.Vknee"
+      valueReference="16777237"
+      description="Threshold voltage for positive and negative phase"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        min="0.0"
+        start="0.8"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 100 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.v"
+      valueReference="369098781"
+      description="Voltage drop of the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 101 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.i"
+      valueReference="369098783"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 102 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.p.v"
+      valueReference="369098781"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 103 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.p.i"
+      valueReference="369098783"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 104 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.n.v"
+      valueReference="100663328"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 105 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.n.i"
+      valueReference="369098785"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 106 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.Ron"
+      valueReference="100663330"
+      description="Forward state-on differential resistance (closed resistance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 107 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.Goff"
+      valueReference="100663331"
+      description="Backward state-off conductance (opened conductance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Conductance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 108 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.Vknee"
+      valueReference="100663332"
+      description="Forward threshold voltage"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 109 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.T"
+      valueReference="16777238"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="293.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 110 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.LossPower"
+      valueReference="905969702"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 111 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.T_heatPort"
+      valueReference="234881046"
+      description="Temperature of heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 112 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.off"
+      valueReference="369098791"
+      description="Switching state"
+      variability="discrete"
+      initial="exact">
+      <Boolean start="true"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 113 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.s"
+      valueReference="369098792"
+      description="Auxiliary variable for actual position on the ideal diode characteristic">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 114 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor.fire"
+      valueReference="369098849"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 115 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.v"
+      valueReference="369098795"
+      description="Voltage drop of the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 116 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.i"
+      valueReference="369098796"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 117 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.p.v"
+      valueReference="100663341"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 118 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.p.i"
+      valueReference="369098796"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 119 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.n.v"
+      valueReference="369098781"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 120 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.n.i"
+      valueReference="369098798"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 121 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.Ron"
+      valueReference="100663343"
+      description="Forward state-on differential resistance (closed resistance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 122 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.Goff"
+      valueReference="100663344"
+      description="Backward state-off conductance (opened conductance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Conductance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 123 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.Vknee"
+      valueReference="100663345"
+      description="Forward threshold voltage"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 124 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.T"
+      valueReference="16777239"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="293.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 125 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.LossPower"
+      valueReference="905969715"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 126 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.T_heatPort"
+      valueReference="234881047"
+      description="Temperature of heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 127 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.off"
+      valueReference="369098804"
+      description="Switching state"
+      variability="discrete"
+      initial="exact">
+      <Boolean start="true"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 128 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.s"
+      valueReference="369098805"
+      description="Auxiliary variable for actual position on the ideal diode characteristic">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 129 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.idealThyristor1.fire"
+      valueReference="369098849"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 130 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.fire1"
+      valueReference="369098849"
+      description="Gate"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 131 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.n.v"
+      valueReference="369098781"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 132 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.n.i"
+      valueReference="335544320"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 133 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.p.v"
+      valueReference="100663352"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 134 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.idealTriac_Snubberless.p.i"
+      valueReference="905969721"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 135 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.angleSensor.flange.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 136 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.angleSensor.flange.tau"
+      valueReference="100663354"
+      description="Cut torque in the flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 137 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.angleSensor.phi"
+      valueReference="33554432"
+      description="Absolute angle of flange as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"
+        displayUnit="deg"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 138 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.otheta_m"
+      valueReference="33554432">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 139 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.flange_b.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 140 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.flange_b.tau"
+      valueReference="369098755"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 141 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.v"
+      valueReference="369098811"
+      description="Voltage drop of the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 142 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.i"
+      valueReference="335544320"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 143 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.p.v"
+      valueReference="436207616"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 144 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.p.i"
+      valueReference="335544320"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 145 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.n.v"
+      valueReference="369098781"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 146 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.n.i"
+      valueReference="369098779"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 147 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Rs0"
+      valueReference="100663356"
+      description="Stator Winding Resistance at Temperature TsRef"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 148 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Ls0"
+      valueReference="100663357"
+      description="Stator Winding Inductance"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 149 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Trp"
+      valueReference="100663358"
+      description="Peak Reluctance Torque"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 150 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.NPP"
+      valueReference="100663359"
+      description="Number of Pole Pairs"
+      variability="fixed">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 151 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.J"
+      valueReference="100663360"
+      description="Moment of Inertia of the Rotor + Load"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MomentOfInertia"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 152 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.D"
+      valueReference="100663361"
+      description="Damping Coefficient of the Rotor"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.RotationalDampingConstant"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 153 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Amp_flux"
+      valueReference="100663362"
+      description="Amplitude of fundamental magnet flux component"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 154 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Flux_f1m"
+      valueReference="100663363"
+      description="Amplitude of fundamental magnet flux component"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 155 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.TsRef"
+      valueReference="100663364"
+      description="Reference Temperature of the Stator Winding [C]"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 156 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.TrRef"
+      valueReference="100663365"
+      description="Reference Temperature of the Rotor Winding [C]"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 157 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.alpha_s"
+      valueReference="100663366"
+      description="Temperature Coefficient of the Stator Winding [1/C]"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 158 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.d_magnet"
+      valueReference="100663367"
+      description="Temperature Coefficient of the Magnet [1/C]"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 159 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.theta_m_0"
+      valueReference="100663368"
+      description="Rest Position of the Rotor"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 160 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.omega_m_start"
+      valueReference="100663369"
+      description="Initial Value for Shaft Rotational Speed"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 161 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.pi"
+      valueReference="100663370"
+      variability="constant">
+      <Real start="3.141592653589793"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 162 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.deg_90"
+      valueReference="100663371"
+      description="90 deg"
+      variability="constant">
+      <Real
+        unit="rad"
+        start="1.5707963267948966"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 163 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Rs"
+      valueReference="637534284"
+      description="Resistance of the Stator Winding at temperature TsRef">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 164 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Ls"
+      valueReference="369098829"
+      description="Stator Inductance Used in Flux Equation">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 165 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Lsmin"
+      valueReference="100663374"
+      description="Minimum Value of Stator Inductance"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 166 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.LsModel"
+      valueReference="100663375"
+      description="Saturation model selection"
+      variability="fixed">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 167 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.LsSat1"
+      valueReference="100663376"
+      description="Stator Inductance Model 1"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 168 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Imax"
+      valueReference="100663377"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 169 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.LsSat2"
+      valueReference="100663378"
+      description="Stator Inductance Model 2"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 170 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Flux_sa_max"
+      valueReference="100663379"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 171 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.correctionTerm"
+      valueReference="369098836">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 172 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Flux_f1"
+      valueReference="369098837"
+      description="Flux Constant at temperature TrRef">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 173 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Flux_f1)"
+      valueReference="369098838"
+      description="der(Flux Constant at temperature TrRef)">
+      <Real
+        unit="V"
+        derivative="172"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 174 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Flux_a"
+      valueReference="369098839"
+      description="Magnet Flux generated in Phase A">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 175 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Flux_a)"
+      valueReference="335544329"
+      description="der(Magnet Flux generated in Phase A)">
+      <Real
+        unit="V"
+        derivative="174"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 176 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Flux_sa"
+      valueReference="33554433"
+      description="Net Flux (Magnets + Stator Inductance)">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 177 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Flux_sa)"
+      valueReference="587202561"
+      description="der(Net Flux (Magnets + Stator Inductance))">
+      <Real
+        unit="V"
+        derivative="176"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 178 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.d_Flux_a"
+      valueReference="369098840"
+      description="Flux variation with respect to position">
+      <Real
+        declaredType="Modelica.SIunits.MagneticFlux"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 179 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.ktR"
+      valueReference="637534297"
+      description="Resistance variation due to temperature">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 180 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.ktF"
+      valueReference="369098842"
+      description="Flux variation due to temperature">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 181 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.ktF)"
+      valueReference="369098843"
+      description="der(Flux variation due to temperature)">
+      <Real
+        unit="s-1"
+        derivative="180"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 182 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.omega_m"
+      valueReference="33554434"
+      description="Shaft Rotational Speed">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"
+        displayUnit="rad/s"
+        derivative="58"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 183 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.omega_m)"
+      valueReference="587202562"
+      description="der(Shaft Rotational Speed)">
+      <Real
+        unit="rad/s2"
+        derivative="182"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 184 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.theta_m"
+      valueReference="33554432"
+      description="Shaft Position">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        displayUnit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 185 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Te"
+      valueReference="335544323"
+      description="Electromagnetic Torque">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 186 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Tei"
+      valueReference="369098844"
+      description="Aligment Torque">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 187 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Trel"
+      valueReference="369098845"
+      description="Reluctance Torque">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 188 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.To_i"
+      valueReference="637534302"
+      description="Inertia Load Torque">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 189 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.To_l"
+      valueReference="637534303"
+      description="Load Torque from Dyno">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 190 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.i_sa"
+      valueReference="335544320"
+      description="Stator Current">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 191 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.v_sa"
+      valueReference="369098811"
+      description="Stator Voltage">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 192 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.b_emf"
+      valueReference="335544329"
+      description="Back EMF">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 193 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Pin"
+      valueReference="335544322"
+      description="Elecrtical Input Power [v*i]">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 194 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.Pmech"
+      valueReference="335544328"
+      description="Mechanical Power [Te*wm]">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 195 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.flange_a.phi"
+      valueReference="335544325"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 196 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.flange_a.phi)"
+      valueReference="335544324"
+      description="der(Absolute rotation angle of flange)">
+      <Real
+        unit="rad/s"
+        derivative="195"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 197 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.flange_a.tau"
+      valueReference="637534304"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 198 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.iTr"
+      valueReference="33554435">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 199 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.iTs"
+      valueReference="33554436">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 200 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.oTe"
+      valueReference="335544323">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 201 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.oPin"
+      valueReference="335544322">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 202 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.oPmech"
+      valueReference="335544328">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 203 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.sPPMSM_UFSC_MBD_IO_v1_4_2.oBemf"
+      valueReference="335544329">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 204 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Ts"
+      valueReference="436207618">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 205 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.Tr"
+      valueReference="436207619">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 206 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.oPmech"
+      valueReference="335544328">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 207 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.iTriac"
+      valueReference="369098849"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 208 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.oBemf"
+      valueReference="335544329">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 209 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder.k"
+      valueReference="16777240"
+      description="Gain"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 210 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder.T"
+      valueReference="16777241"
+      description="Time Constant"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Time"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 211 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder.initType"
+      valueReference="100663394"
+      description="Type of initialization (1: no init, 2: steady state, 3/4: initial output)"
+      variability="constant">
+      <Enumeration
+        declaredType="Modelica.Blocks.Types.Init"
+        start="4"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 212 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder.y_start"
+      valueReference="100663395"
+      description="Initial or guess value of output (= state)"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 213 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder.u"
+      valueReference="436207619"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 214 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder.y"
+      valueReference="33554435"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 215 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder.y)"
+      valueReference="318767107"
+      description="der(Connector of Real output signal)">
+      <Real derivative="214"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 216 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder1.k"
+      valueReference="16777242"
+      description="Gain"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 217 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder1.T"
+      valueReference="16777243"
+      description="Time Constant"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Time"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 218 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder1.initType"
+      valueReference="100663396"
+      description="Type of initialization (1: no init, 2: steady state, 3/4: initial output)"
+      variability="constant">
+      <Enumeration
+        declaredType="Modelica.Blocks.Types.Init"
+        start="4"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 219 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder1.y_start"
+      valueReference="100663397"
+      description="Initial or guess value of output (= state)"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 220 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder1.u"
+      valueReference="436207618"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 221 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder1.y"
+      valueReference="33554436"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 222 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.firstOrder1.y)"
+      valueReference="587202564"
+      description="der(Connector of Real output signal)">
+      <Real derivative="221"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 223 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.inertia.flange_a.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 224 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.inertia.flange_a.tau"
+      valueReference="637534303"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 225 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.inertia.flange_b.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 226 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.inertia.flange_b.tau"
+      valueReference="369098755"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 227 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.inertia.J"
+      valueReference="100663398"
+      description="Moment of inertia"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inertia"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 228 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.inertia.phi"
+      valueReference="335544325"
+      description="Absolute rotation angle of component">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 229 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.inertia.phi)"
+      valueReference="335544324"
+      description="der(Absolute rotation angle of component)">
+      <Real
+        unit="rad/s"
+        derivative="228"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 230 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.inertia.w"
+      valueReference="335544324"
+      description="Absolute angular velocity of component (= der(phi))">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 231 -->
+    <ScalarVariable
+      name="der(sPPMSM_UFSC_MBD_triac_v1_4_2.inertia.w)"
+      valueReference="587202562"
+      description="der(Absolute angular velocity of component (= der(phi)))">
+      <Real
+        unit="rad/s2"
+        derivative="230"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 232 -->
+    <ScalarVariable
+      name="sPPMSM_UFSC_MBD_triac_v1_4_2.inertia.a"
+      valueReference="587202562"
+      description="Absolute angular acceleration of component (= der(w))">
+      <Real
+        declaredType="Modelica.SIunits.AngularAcceleration"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 233 -->
+    <ScalarVariable
+      name="opmech"
+      valueReference="335544328"
+      description="Mechanical Power [W]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 234 -->
+    <ScalarVariable
+      name="oemf"
+      valueReference="335544329"
+      description="Back electromotive force [V]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 235 -->
+    <ScalarVariable
+      name="iTs"
+      valueReference="352321538"
+      description="Stator Winding Temperature [C]"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 236 -->
+    <ScalarVariable
+      name="iTr"
+      valueReference="352321539"
+      description="Rotor Temperature [C]"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 237 -->
+    <ScalarVariable
+      name="realToBoolean.u"
+      valueReference="436207620"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 238 -->
+    <ScalarVariable
+      name="realToBoolean.y"
+      valueReference="369098849"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 239 -->
+    <ScalarVariable
+      name="realToBoolean.threshold"
+      valueReference="16777244"
+      description="Output signal y is true, if input u &gt;= threshold"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 240 -->
+    <ScalarVariable
+      name="iTriac"
+      valueReference="352321540"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="29"
+        dependencies="58 176 214"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="30"
+        dependencies="24 58 176 214 240"
+        dependenciesKind="fixed dependent dependent fixed dependent"/>
+      <Unknown index="31"
+        dependencies="24 58 176 214 240"
+        dependenciesKind="fixed dependent dependent fixed dependent"/>
+      <Unknown index="32"
+        dependencies="58 176 214"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="33"
+        dependencies="182"
+        dependenciesKind="fixed"/>
+      <Unknown index="34"
+        dependencies="58"
+        dependenciesKind="fixed"/>
+      <Unknown index="35"
+        dependencies="25 182"
+        dependenciesKind="fixed dependent"/>
+      <Unknown index="36"
+        dependencies="25"
+        dependenciesKind="fixed"/>
+      <Unknown index="233"
+        dependencies="58 176 182 214"
+        dependenciesKind="dependent dependent dependent fixed"/>
+      <Unknown index="234"
+        dependencies="58 182 214 236"
+        dependenciesKind="dependent dependent fixed fixed"/>
+    </Outputs>
+    <Derivatives>
+      <Unknown index="59"
+        dependencies="182"
+        dependenciesKind="fixed"/>
+      <Unknown index="177"
+        dependencies="24 58 176 214 221 240"
+        dependenciesKind="fixed dependent dependent fixed fixed dependent"/>
+      <Unknown index="183"
+        dependencies="25 58 176 182 214"
+        dependenciesKind="fixed dependent dependent fixed fixed"/>
+      <Unknown index="215"
+        dependencies="214 236"
+        dependenciesKind="fixed fixed"/>
+      <Unknown index="222"
+        dependencies="221 235"
+        dependenciesKind="fixed fixed"/>
+    </Derivatives>
+    <InitialUnknowns>
+      <Unknown index="29"
+        dependencies="2 4 8 10 11 12 13 16 19"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="30"
+        dependencies="2 4 8 10 11 12 13 16 19 24 97 98 99 239 240"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="31"
+        dependencies="2 4 8 10 11 12 13 16 19 24 97 98 99 239 240"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="32"
+        dependencies="2 3 4 8 10 11 12 13 16 19"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="33"
+        dependencies="14"
+        dependenciesKind="dependent"/>
+      <Unknown index="34"
+        dependencies="13"
+        dependenciesKind="dependent"/>
+      <Unknown index="35"
+        dependencies="14 25 26"
+        dependenciesKind="dependent dependent dependent"/>
+      <Unknown index="36"
+        dependencies="25 26"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="58"
+        dependencies="13"
+        dependenciesKind="dependent"/>
+      <Unknown index="59"
+        dependencies="14"
+        dependenciesKind="dependent"/>
+      <Unknown index="176"
+        dependencies="4 8 10 11 12 13"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="177"
+        dependencies="1 2 4 8 9 10 11 12 13 16 19 24 97 98 99 239 240"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="182"
+        dependencies="14"
+        dependenciesKind="dependent"/>
+      <Unknown index="183"
+        dependencies="2 3 4 5 6 7 8 10 11 12 13 14 16 19 25 26"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="214"
+        dependencies="11"
+        dependenciesKind="dependent"/>
+      <Unknown index="215"
+        dependencies="11 209 210 236"
+        dependenciesKind="dependent dependent dependent dependent"/>
+      <Unknown index="221"
+        dependencies="12"
+        dependenciesKind="dependent"/>
+      <Unknown index="222"
+        dependencies="12 216 217 235"
+        dependenciesKind="dependent dependent dependent dependent"/>
+      <Unknown index="233"
+        dependencies="2 3 4 8 10 11 12 13 14 16 19"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="234"
+        dependencies="4 8 10 11 12 13 14 209 210 236"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>

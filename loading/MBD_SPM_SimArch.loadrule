@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--Built from the sandbox "C:\Data\Projects" and the workspace "MBD SPM SimArch Original Workspace"--><!--Generated: 2023-11-15 17.01.24--><scm:sourceControlLoadRule eclipseProjectOptions="import" version="1" xmlns:scm="http://com.ibm.team.scm">
+    <itemLoadRule alternateName="c_code">
+        <component itemId="_fSN4UCaCEeeOz5rKiOqiDQ"/>
+        <!-- <component name="SIM_ARCH_COMMON_CORE_BASIC" /> -->
+        <item itemId="_xP3r8CKcEeuUIJUxYf-xGw" itemType="folder"/>
+        <!-- <item repositoryPath="/SPM" /> -->
+        <sandboxRelativePath pathPrefix="/MBD_SPM_SimArch/source"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="ParametersFiles">
+        <component itemId="_sfblcEJDEeiuhJNfxK2kkw"/>
+        <!-- <component name="PLANT_MODELS_PARAMETERS" /> -->
+        <item itemId="_sfbldEJDEeiuhJNfxK2kkw" itemType="folder"/>
+        <!-- <item repositoryPath="/" /> -->
+        <sandboxRelativePath pathPrefix="/MBD_SPM_SimArch/settings"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="MBD_SPM_SimArch">
+        <component itemId="_qUUMYGmNEei_07QsEZx7jg"/>
+        <!-- <component name="_SIM_ARCH_PROJECT_TEMPLATE" /> -->
+        <item itemId="_PRaxUGmOEei_07QsEZx7jg" itemType="folder"/>
+        <!-- <item repositoryPath="/ProjectTemplate" /> -->
+    </itemLoadRule>
+    <itemLoadRule>
+        <component itemId="_qUUMYGmNEei_07QsEZx7jg"/>
+        <!-- <component name="_SIM_ARCH_PROJECT_TEMPLATE" /> -->
+        <item itemId="_UiWmoAF2EeuGZrSLTuKCEw" itemType="file"/>
+        <!-- <item repositoryPath="/.jazzignore" /> -->
+        <sandboxRelativePath pathPrefix="/MBD_SPM_SimArch"/>
+    </itemLoadRule>
+    <parentLoadRule>
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <parentFolder itemId="_xIQoECKcEeuUIJUxYf-xGw" itemType="folder"/>
+        <!-- <parentFolder repositoryPath="/SPM" /> -->
+        <sandboxRelativePath pathPrefix="/MBD_SPM_SimArch/source/simulink"/>
+    </parentLoadRule>
+    <itemLoadRule alternateName="tools">
+        <component itemId="_LJV0wWmmEei_07QsEZx7jg"/>
+        <!-- <component name="SIM_ARCH_TOOLS" /> -->
+        <item itemId="_8NlH8CKiEeumhYlm5Iipsg" itemType="folder"/>
+        <!-- <item repositoryPath="/tools_specific/SPM" /> -->
+        <sandboxRelativePath pathPrefix="/MBD_SPM_SimArch"/>
+    </itemLoadRule>
+</scm:sourceControlLoadRule>

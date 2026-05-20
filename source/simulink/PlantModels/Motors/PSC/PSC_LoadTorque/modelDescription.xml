@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="2.0"
+  modelName="PSC_LoadTorque"
+  guid="{a74faae1-8057-4b4d-9580-e036d8e672eb}"
+  description="Input/output block of a direct inertia model"
+  generationTool="Dymola Version 2020 (64-bit), 2019-04-10 (requires license to execute)"
+  generationDateAndTime="2020-09-14T16:08:54Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="0">
+  <CoSimulation
+    modelIdentifier="PSC_LoadTorque"
+    canHandleVariableCommunicationStepSize="true"
+    canInterpolateInputs="true"
+    maxOutputDerivativeOrder="1"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true"
+    providesDirectionalDerivative="true"/>
+  <UnitDefinitions>
+    <Unit
+      name="1"/>
+    <Unit
+      name="N.m">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"/>
+    </Unit>
+    <Unit
+      name="kg.m2">
+      <BaseUnit kg="1"
+        m="2"/>
+    </Unit>
+    <Unit
+      name="rad">
+      <BaseUnit rad="1"/>
+      <DisplayUnit
+        name="deg"
+        factor="57.29577951308232"/>
+    </Unit>
+    <Unit
+      name="rad/s">
+      <BaseUnit s="-1"
+        rad="1"/>
+    </Unit>
+    <Unit
+      name="rad/s2">
+      <BaseUnit s="-2"
+        rad="1"/>
+    </Unit>
+  </UnitDefinitions>
+  <TypeDefinitions>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealInput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealOutput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Angle">
+      <Real
+        quantity="Angle"
+        unit="rad"
+        displayUnit="deg"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.AngularAcceleration">
+      <Real
+        quantity="AngularAcceleration"
+        unit="rad/s2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.AngularVelocity">
+      <Real
+        quantity="AngularVelocity"
+        unit="rad/s"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Inertia">
+      <Real
+        quantity="MomentOfInertia"
+        unit="kg.m2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Torque">
+      <Real
+        quantity="Torque"
+        unit="N.m"/>
+    </SimpleType>
+  </TypeDefinitions>
+  <DefaultExperiment startTime="0.0"
+    stopTime="10.0"
+    tolerance="1E-05"/>
+  <ModelVariables>
+    <!-- Index for next variable = 1 -->
+    <ScalarVariable
+      name="J"
+      valueReference="16777216"
+      description="Inertia"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Inertia"
+        min="0.0"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 2 -->
+    <ScalarVariable
+      name="inertia.flange_a.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 3 -->
+    <ScalarVariable
+      name="inertia.flange_a.tau"
+      valueReference="369098752"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 4 -->
+    <ScalarVariable
+      name="inertia.flange_b.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 5 -->
+    <ScalarVariable
+      name="inertia.flange_b.tau"
+      valueReference="905969665"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 6 -->
+    <ScalarVariable
+      name="inertia.J"
+      valueReference="16777217"
+      description="Moment of inertia"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inertia"
+        min="0.0"
+        start="0.1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 7 -->
+    <ScalarVariable
+      name="inertia.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of component"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 8 -->
+    <ScalarVariable
+      name="der(inertia.phi)"
+      valueReference="587202560"
+      description="der(Absolute rotation angle of component)">
+      <Real
+        unit="rad/s"
+        derivative="7"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 9 -->
+    <ScalarVariable
+      name="inertia.w"
+      valueReference="33554433"
+      description="Absolute angular velocity of component (= der(phi))"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"
+        start="0"
+        derivative="7"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 10 -->
+    <ScalarVariable
+      name="der(inertia.w)"
+      valueReference="587202561"
+      description="der(Absolute angular velocity of component (= der(phi)))">
+      <Real
+        unit="rad/s2"
+        derivative="9"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 11 -->
+    <ScalarVariable
+      name="inertia.a"
+      valueReference="587202561"
+      description="Absolute angular acceleration of component (= der(w))">
+      <Real
+        declaredType="Modelica.SIunits.AngularAcceleration"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 12 -->
+    <ScalarVariable
+      name="torqueSource.flange.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 13 -->
+    <ScalarVariable
+      name="torqueSource.flange.tau"
+      valueReference="369098756"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 14 -->
+    <ScalarVariable
+      name="torqueSource.phi_support"
+      valueReference="100663301"
+      description="Absolute angle of support flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 15 -->
+    <ScalarVariable
+      name="torqueSource.tau"
+      valueReference="369098752"
+      description="Accelerating torque acting at flange (= -flange.tau)">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 16 -->
+    <ScalarVariable
+      name="tauDrive"
+      valueReference="352321536"
+      description="Accelerating torque acting at flange (= -flange.tau)"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 17 -->
+    <ScalarVariable
+      name="torqueToAngle.flange.phi"
+      valueReference="33554432"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 18 -->
+    <ScalarVariable
+      name="torqueToAngle.flange.tau"
+      valueReference="436207617"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 19 -->
+    <ScalarVariable
+      name="torqueToAngle.phi"
+      valueReference="335544320"
+      description="Flange moves with angle phi due to torque tau">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 20 -->
+    <ScalarVariable
+      name="der(torqueToAngle.phi)"
+      valueReference="335544321"
+      description="der(Flange moves with angle phi due to torque tau)">
+      <Real
+        unit="rad/s"
+        derivative="19"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 21 -->
+    <ScalarVariable
+      name="torqueToAngle.w"
+      valueReference="335544321"
+      description="Flange moves with speed w due to torque tau">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 22 -->
+    <ScalarVariable
+      name="torqueToAngle.a"
+      valueReference="335544322"
+      description="Flange moves with angular acceleration a due to torque tau">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 23 -->
+    <ScalarVariable
+      name="torqueToAngle.tau"
+      valueReference="436207617"
+      description="Torque to drive the flange">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 24 -->
+    <ScalarVariable
+      name="torqueToAngle.w_internal"
+      valueReference="335544321"
+      description="Needed to connect to conditional connector w">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 25 -->
+    <ScalarVariable
+      name="der(torqueToAngle.w_internal)"
+      valueReference="335544322"
+      description="der(Needed to connect to conditional connector w)">
+      <Real
+        unit="rad/s2"
+        derivative="24"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 26 -->
+    <ScalarVariable
+      name="torqueToAngle.a_internal"
+      valueReference="335544322"
+      description="Needed to connect to conditional connector a">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 27 -->
+    <ScalarVariable
+      name="phi"
+      valueReference="335544320"
+      description="Inertia moves with angle phi due to torque tau"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 28 -->
+    <ScalarVariable
+      name="w"
+      valueReference="335544321"
+      description="Inertia moves with speed w due to torque tau"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 29 -->
+    <ScalarVariable
+      name="a"
+      valueReference="335544322"
+      description="Inertia moves with acceleration a due to torque tau"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 30 -->
+    <ScalarVariable
+      name="tau"
+      valueReference="352321537"
+      description="Torque to drive the inertia"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 31 -->
+    <ScalarVariable
+      name="gain.k"
+      valueReference="16777218"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 32 -->
+    <ScalarVariable
+      name="gain.u"
+      valueReference="436207616"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 33 -->
+    <ScalarVariable
+      name="gain.y"
+      valueReference="369098752"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="27"
+        dependencies="7"
+        dependenciesKind="fixed"/>
+      <Unknown index="28"
+        dependencies="9"
+        dependenciesKind="fixed"/>
+      <Unknown index="29"
+        dependencies="16 30"
+        dependenciesKind="fixed fixed"/>
+    </Outputs>
+    <Derivatives>
+      <Unknown index="8"
+        dependencies="9"
+        dependenciesKind="fixed"/>
+      <Unknown index="10"
+        dependencies="16 30"
+        dependenciesKind="fixed fixed"/>
+    </Derivatives>
+    <InitialUnknowns>
+      <Unknown index="8"
+        dependencies="9"
+        dependenciesKind="dependent"/>
+      <Unknown index="10"
+        dependencies="6 16 30 31"
+        dependenciesKind="dependent dependent dependent dependent"/>
+      <Unknown index="27"
+        dependencies="7"
+        dependenciesKind="dependent"/>
+      <Unknown index="28"
+        dependencies="9"
+        dependenciesKind="dependent"/>
+      <Unknown index="29"
+        dependencies="6 16 30 31"
+        dependenciesKind="dependent dependent dependent dependent"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>

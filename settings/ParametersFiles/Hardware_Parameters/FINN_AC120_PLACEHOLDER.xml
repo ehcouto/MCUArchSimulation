@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Board_Parameters>
+<BoardVariant>FINN</BoardVariant>  
+<Vmains>120</Vmains>
+<freq>60</freq>
+<Current_Gain>0.003690682</Current_Gain>
+<Current_Offset>1.69504</Current_Offset>
+<Voltage_Gain>0.001148651358</Voltage_Gain>
+<Voltage_Offset>1.69504</Voltage_Offset>
+<Hall_Gain>0</Hall_Gain>
+<Hall_Offset>0</Hall_Offset>
+<Vcc>3.3</Vcc>
+<ADCBit>12</ADCBit>     
+</Board_Parameters>

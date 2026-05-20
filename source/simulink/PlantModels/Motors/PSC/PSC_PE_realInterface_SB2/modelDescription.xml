@@ -1,0 +1,3938 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="2.0"
+  modelName="PSC_PE_realInterface_SB2"
+  guid="{2d515af7-7de7-431a-83f1-81658fc032f5}"
+  description="Relays"
+  generationTool="Dymola Version 2020 (64-bit), 2019-04-10 (using Dopri45 with tolerance 0.0001)"
+  generationDateAndTime="2020-09-17T10:34:21Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="12">
+  <CoSimulation
+    modelIdentifier="PSC_PE_realInterface_SB2"
+    canHandleVariableCommunicationStepSize="true"
+    canInterpolateInputs="true"
+    maxOutputDerivativeOrder="1"
+    canBeInstantiatedOnlyOncePerProcess="true"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true"
+    providesDirectionalDerivative="true"/>
+  <UnitDefinitions>
+    <Unit
+      name="1"/>
+    <Unit
+      name="1/K">
+      <BaseUnit K="-1"/>
+    </Unit>
+    <Unit
+      name="A">
+      <BaseUnit A="1"/>
+    </Unit>
+    <Unit
+      name="A/s">
+      <BaseUnit s="-1"
+        A="1"/>
+    </Unit>
+    <Unit
+      name="F">
+      <BaseUnit kg="-1"
+        m="-2"
+        s="4"
+        A="2"/>
+    </Unit>
+    <Unit
+      name="H">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="J.rad">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"
+        rad="1"/>
+    </Unit>
+    <Unit
+      name="K">
+      <BaseUnit K="1"/>
+      <DisplayUnit
+        name="degC"
+        offset="-273.15"/>
+    </Unit>
+    <Unit
+      name="N.m">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"/>
+      <DisplayUnit
+        name="N.m"/>
+    </Unit>
+    <Unit
+      name="Ohm">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="Ohm/s">
+      <BaseUnit kg="1"
+        m="2"
+        s="-4"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="S">
+      <BaseUnit kg="-1"
+        m="-2"
+        s="3"
+        A="2"/>
+    </Unit>
+    <Unit
+      name="V">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        A="-1"/>
+    </Unit>
+    <Unit
+      name="V/s">
+      <BaseUnit kg="1"
+        m="2"
+        s="-4"
+        A="-1"/>
+    </Unit>
+    <Unit
+      name="W">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"/>
+    </Unit>
+    <Unit
+      name="kg.m2">
+      <BaseUnit kg="1"
+        m="2"/>
+    </Unit>
+    <Unit
+      name="rad">
+      <BaseUnit rad="1"/>
+      <DisplayUnit
+        name="deg"
+        factor="57.29577951308232"/>
+    </Unit>
+    <Unit
+      name="rad/s">
+      <BaseUnit s="-1"
+        rad="1"/>
+      <DisplayUnit
+        name="rad/s"/>
+    </Unit>
+    <Unit
+      name="rad/s2">
+      <BaseUnit s="-2"
+        rad="1"/>
+    </Unit>
+    <Unit
+      name="rev/(min.s)">
+      <BaseUnit s="-2"
+        rad="1"
+        factor="0.10471975511965977"/>
+    </Unit>
+    <Unit
+      name="rev/min">
+      <BaseUnit s="-1"
+        rad="1"
+        factor="0.10471975511965977"/>
+    </Unit>
+  </UnitDefinitions>
+  <TypeDefinitions>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.BooleanInput">
+      <Boolean/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.BooleanOutput">
+      <Boolean/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealInput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealOutput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Angle">
+      <Real
+        quantity="Angle"
+        unit="rad"
+        displayUnit="deg"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.AngularVelocity">
+      <Real
+        quantity="AngularVelocity"
+        unit="rad/s"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Capacitance">
+      <Real
+        quantity="Capacitance"
+        unit="F"
+        min="0.0"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.CoefficientOfFriction">
+      <Real
+        quantity="CoefficientOfFriction"
+        unit="1"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Conductance">
+      <Real
+        quantity="Conductance"
+        unit="S"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Current">
+      <Real
+        quantity="ElectricCurrent"
+        unit="A"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.ElectricPotential">
+      <Real
+        quantity="ElectricPotential"
+        unit="V"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Impedance">
+      <Real
+        quantity="Resistance"
+        unit="Ohm"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Inductance">
+      <Real
+        quantity="Inductance"
+        unit="H"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.LinearTemperatureCoefficient">
+      <Real
+        quantity="LinearTemperatureCoefficient"
+        unit="1/K"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.MomentOfInertia">
+      <Real
+        quantity="MomentOfInertia"
+        unit="kg.m2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Power">
+      <Real
+        quantity="Power"
+        unit="W"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Reactance">
+      <Real
+        quantity="Resistance"
+        unit="Ohm"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Resistance">
+      <Real
+        quantity="Resistance"
+        unit="Ohm"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Temperature">
+      <Real
+        quantity="ThermodynamicTemperature"
+        unit="K"
+        displayUnit="degC"
+        min="0.0"
+        nominal="300.0"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Torque">
+      <Real
+        quantity="Torque"
+        unit="N.m"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Voltage">
+      <Real
+        quantity="ElectricPotential"
+        unit="V"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Types.Extrapolation">
+      <Enumeration>
+        <Item name="HoldLastPoint"
+          value="1"
+          description="Hold the first/last table point outside of the table scope"/>
+        <Item name="LastTwoPoints"
+          value="2"
+          description="Extrapolate by using the derivative at the first/last table points outside of the table scope"/>
+        <Item name="Periodic"
+          value="3"
+          description="Repeat the table scope periodically"/>
+        <Item name="NoExtrapolation"
+          value="4"
+          description="Extrapolation triggers an error"/>
+      </Enumeration>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Types.Smoothness">
+      <Enumeration>
+        <Item name="LinearSegments"
+          value="1"
+          description="Table points are linearly interpolated"/>
+        <Item name="ContinuousDerivative"
+          value="2"
+          description="Table points are interpolated (by Akima splines) such that the first derivative is continuous"/>
+        <Item name="ConstantSegments"
+          value="3"
+          description="Table points are not interpolated, but the value from the previous abscissa point is returned"/>
+        <Item name="MonotoneContinuousDerivative1"
+          value="4"
+          description="Table points are interpolated (by Fritsch-Butland splines) such that the monotonicity is preserved and the first derivative is continuous"/>
+        <Item name="MonotoneContinuousDerivative2"
+          value="5"
+          description="Table points are interpolated (by Steffen splines) such that the monotonicity is preserved and the first derivative is continuous"/>
+      </Enumeration>
+    </SimpleType>
+  </TypeDefinitions>
+  <DefaultExperiment startTime="0.0"
+    stopTime="10.0"
+    tolerance="0.0001"/>
+  <ModelVariables>
+    <!-- Index for next variable = 1 -->
+    <ScalarVariable
+      name="voltage"
+      valueReference="16777216"
+      causality="parameter"
+      variability="fixed">
+      <Real start="119.51"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 2 -->
+    <ScalarVariable
+      name="TR"
+      valueReference="16777217"
+      description="transmission ratio"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="2.28"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 3 -->
+    <ScalarVariable
+      name="PE_Circuit.currentSensor.p.v"
+      valueReference="436207618"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 4 -->
+    <ScalarVariable
+      name="PE_Circuit.currentSensor.p.i"
+      valueReference="335544320"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 5 -->
+    <ScalarVariable
+      name="PE_Circuit.currentSensor.n.v"
+      valueReference="436207618"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 6 -->
+    <ScalarVariable
+      name="PE_Circuit.currentSensor.n.i"
+      valueReference="369098753"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 7 -->
+    <ScalarVariable
+      name="PE_Circuit.currentSensor.i"
+      valueReference="335544320"
+      description="Current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 8 -->
+    <ScalarVariable
+      name="PE_Circuit.Voltage.p.v"
+      valueReference="436207618"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 9 -->
+    <ScalarVariable
+      name="PE_Circuit.Voltage.p.i"
+      valueReference="369098753"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 10 -->
+    <ScalarVariable
+      name="PE_Circuit.Voltage.n.v"
+      valueReference="100663296"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 11 -->
+    <ScalarVariable
+      name="PE_Circuit.Voltage.n.i"
+      valueReference="335544320"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 12 -->
+    <ScalarVariable
+      name="PE_Circuit.Voltage.v"
+      valueReference="436207618"
+      description="Voltage between pin p and n (= p.v - n.v) as input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 13 -->
+    <ScalarVariable
+      name="PE_Circuit.Voltage.i"
+      valueReference="369098753"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 14 -->
+    <ScalarVariable
+      name="PE_Circuit.realToBoolean.u"
+      valueReference="436207617"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 15 -->
+    <ScalarVariable
+      name="PE_Circuit.realToBoolean.y"
+      valueReference="369098754"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 16 -->
+    <ScalarVariable
+      name="PE_Circuit.realToBoolean.threshold"
+      valueReference="16777218"
+      description="Output signal y is true, if input u &gt;= threshold"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 17 -->
+    <ScalarVariable
+      name="PE_Circuit.realToBoolean1.u"
+      valueReference="436207616"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 18 -->
+    <ScalarVariable
+      name="PE_Circuit.realToBoolean1.y"
+      valueReference="369098755"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 19 -->
+    <ScalarVariable
+      name="PE_Circuit.realToBoolean1.threshold"
+      valueReference="16777219"
+      description="Output signal y is true, if input u &gt;= threshold"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 20 -->
+    <ScalarVariable
+      name="PE_Circuit.I_in"
+      valueReference="335544320"
+      description="Current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 21 -->
+    <ScalarVariable
+      name="PE_Circuit.Vin"
+      valueReference="436207618"
+      description="Voltage between pin p and n (= p.v - n.v) as input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 22 -->
+    <ScalarVariable
+      name="PE_Circuit.CW"
+      valueReference="436207616"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 23 -->
+    <ScalarVariable
+      name="PE_Circuit.CCW"
+      valueReference="436207617"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 24 -->
+    <ScalarVariable
+      name="PE_Circuit.P2.v"
+      valueReference="335544324"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 25 -->
+    <ScalarVariable
+      name="PE_Circuit.P2.i"
+      valueReference="369098756"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 26 -->
+    <ScalarVariable
+      name="PE_Circuit.P1.v"
+      valueReference="335544323"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 27 -->
+    <ScalarVariable
+      name="PE_Circuit.P1.i"
+      valueReference="369098757"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 28 -->
+    <ScalarVariable
+      name="PE_Circuit.ground.p.v"
+      valueReference="100663302"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 29 -->
+    <ScalarVariable
+      name="PE_Circuit.ground.p.i"
+      valueReference="905969671"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 30 -->
+    <ScalarVariable
+      name="PE_Circuit.N.v"
+      valueReference="100663304"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 31 -->
+    <ScalarVariable
+      name="PE_Circuit.N.i"
+      valueReference="905969673"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 32 -->
+    <ScalarVariable
+      name="PE_Circuit.Vcap"
+      valueReference="335544325"
+      description="Voltage between pin p and n (= p.v - n.v) as input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 33 -->
+    <ScalarVariable
+      name="PE_Circuit.lessEqualThreshold.threshold"
+      valueReference="16777220"
+      description="Comparison with respect to threshold"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 34 -->
+    <ScalarVariable
+      name="PE_Circuit.lessEqualThreshold.u"
+      valueReference="436207618"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 35 -->
+    <ScalarVariable
+      name="PE_Circuit.lessEqualThreshold.y"
+      valueReference="369098762"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 36 -->
+    <ScalarVariable
+      name="PE_Circuit.lessEqualThreshold1.threshold"
+      valueReference="16777221"
+      description="Comparison with respect to threshold"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 37 -->
+    <ScalarVariable
+      name="PE_Circuit.lessEqualThreshold1.u"
+      valueReference="369098763"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 38 -->
+    <ScalarVariable
+      name="PE_Circuit.lessEqualThreshold1.y"
+      valueReference="369098764"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 39 -->
+    <ScalarVariable
+      name="PE_Circuit.booleanToReal.u"
+      valueReference="369098762"
+      description="Connector of Boolean input signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 40 -->
+    <ScalarVariable
+      name="PE_Circuit.booleanToReal.realTrue"
+      valueReference="16777222"
+      description="Output signal for true Boolean input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 41 -->
+    <ScalarVariable
+      name="PE_Circuit.booleanToReal.realFalse"
+      valueReference="16777223"
+      description="Output signal for false Boolean input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 42 -->
+    <ScalarVariable
+      name="PE_Circuit.booleanToReal.y"
+      valueReference="369098765"
+      description="Connector of Real output signal"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 43 -->
+    <ScalarVariable
+      name="PE_Circuit.booleanToReal1.u"
+      valueReference="369098764"
+      description="Connector of Boolean input signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 44 -->
+    <ScalarVariable
+      name="PE_Circuit.booleanToReal1.realTrue"
+      valueReference="16777224"
+      description="Output signal for true Boolean input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 45 -->
+    <ScalarVariable
+      name="PE_Circuit.booleanToReal1.realFalse"
+      valueReference="16777225"
+      description="Output signal for false Boolean input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 46 -->
+    <ScalarVariable
+      name="PE_Circuit.booleanToReal1.y"
+      valueReference="369098766"
+      description="Connector of Real output signal"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 47 -->
+    <ScalarVariable
+      name="PE_Circuit.zoc1.k"
+      valueReference="16777226"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 48 -->
+    <ScalarVariable
+      name="PE_Circuit.zoc1.u"
+      valueReference="369098765"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 49 -->
+    <ScalarVariable
+      name="PE_Circuit.zoc1.y"
+      valueReference="335544321"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 50 -->
+    <ScalarVariable
+      name="PE_Circuit.zoc2.k"
+      valueReference="16777227"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 51 -->
+    <ScalarVariable
+      name="PE_Circuit.zoc2.u"
+      valueReference="369098766"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 52 -->
+    <ScalarVariable
+      name="PE_Circuit.zoc2.y"
+      valueReference="335544322"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 53 -->
+    <ScalarVariable
+      name="PE_Circuit.ZOC_Vline"
+      valueReference="335544321"
+      description="Output signal connector"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 54 -->
+    <ScalarVariable
+      name="PE_Circuit.ZOC_Vcap"
+      valueReference="335544322"
+      description="Output signal connector"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 55 -->
+    <ScalarVariable
+      name="PE_Circuit.switch1.u1"
+      valueReference="234881036"
+      description="Connector of first Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 56 -->
+    <ScalarVariable
+      name="PE_Circuit.switch1.u2"
+      valueReference="369098767"
+      description="Connector of Boolean input signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 57 -->
+    <ScalarVariable
+      name="PE_Circuit.switch1.u3"
+      valueReference="335544325"
+      description="Connector of second Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 58 -->
+    <ScalarVariable
+      name="PE_Circuit.switch1.y"
+      valueReference="369098763"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 59 -->
+    <ScalarVariable
+      name="PE_Circuit.zeroConstant.k"
+      valueReference="16777228"
+      description="Constant output value"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="V"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 60 -->
+    <ScalarVariable
+      name="PE_Circuit.zeroConstant.y"
+      valueReference="234881036"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 61 -->
+    <ScalarVariable
+      name="PE_Circuit.lessEqualThreshold2.threshold"
+      valueReference="16777229"
+      description="Comparison with respect to threshold"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 62 -->
+    <ScalarVariable
+      name="PE_Circuit.lessEqualThreshold2.u"
+      valueReference="335544325"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 63 -->
+    <ScalarVariable
+      name="PE_Circuit.lessEqualThreshold2.y"
+      valueReference="369098767"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 64 -->
+    <ScalarVariable
+      name="PE_Circuit.realToBoolean2.u"
+      valueReference="436207622"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 65 -->
+    <ScalarVariable
+      name="PE_Circuit.realToBoolean2.y"
+      valueReference="369098768"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 66 -->
+    <ScalarVariable
+      name="PE_Circuit.realToBoolean2.threshold"
+      valueReference="16777230"
+      description="Output signal y is true, if input u &gt;= threshold"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 67 -->
+    <ScalarVariable
+      name="PE_Circuit.SpinDirection"
+      valueReference="436207622"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 68 -->
+    <ScalarVariable
+      name="PE_Circuit.Direction"
+      valueReference="369098768"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 69 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.v"
+      valueReference="369098769"
+      description="Voltage drop of the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 70 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.i"
+      valueReference="369098770"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 71 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.p.v"
+      valueReference="436207618"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 72 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.p.i"
+      valueReference="369098770"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 73 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.n.v"
+      valueReference="335544324"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 74 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.n.i"
+      valueReference="369098756"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 75 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.Ron"
+      valueReference="16777231"
+      description="Closed switch resistance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        min="0.0"
+        start="1E-05"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 76 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.Goff"
+      valueReference="16777232"
+      description="Opened switch conductance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Conductance"
+        min="0.0"
+        start="1E-05"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 77 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.T"
+      valueReference="100663316"
+      description="Fixed device temperature if useHeatPort = false"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="293.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 78 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.LossPower"
+      valueReference="905969685"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 79 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.T_heatPort"
+      valueReference="100663318"
+      description="Temperature of heatPort"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="293.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 80 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.off"
+      valueReference="369098775"
+      description="Indicates off-state"
+      variability="discrete">
+      <Boolean/>
+    </ScalarVariable>
+    <!-- Index for next variable = 81 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.s"
+      valueReference="369098776"
+      description="Auxiliary variable">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 82 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCCW.control"
+      valueReference="369098754"
+      description="true =&gt; p--n connected, false =&gt; switch open"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 83 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.v"
+      valueReference="369098779"
+      description="Voltage drop of the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 84 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.i"
+      valueReference="369098780"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 85 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.p.v"
+      valueReference="436207618"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 86 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.p.i"
+      valueReference="369098780"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 87 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.n.v"
+      valueReference="335544323"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 88 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.n.i"
+      valueReference="369098757"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 89 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.Ron"
+      valueReference="16777233"
+      description="Closed switch resistance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        min="0.0"
+        start="1E-05"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 90 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.Goff"
+      valueReference="16777234"
+      description="Opened switch conductance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Conductance"
+        min="0.0"
+        start="1E-05"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 91 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.T"
+      valueReference="100663326"
+      description="Fixed device temperature if useHeatPort = false"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="293.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 92 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.LossPower"
+      valueReference="905969695"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 93 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.T_heatPort"
+      valueReference="100663328"
+      description="Temperature of heatPort"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="293.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 94 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.off"
+      valueReference="369098785"
+      description="Indicates off-state"
+      variability="discrete">
+      <Boolean/>
+    </ScalarVariable>
+    <!-- Index for next variable = 95 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.s"
+      valueReference="369098786"
+      description="Auxiliary variable">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 96 -->
+    <ScalarVariable
+      name="PE_Circuit.relayCW.control"
+      valueReference="369098755"
+      description="true =&gt; p--n connected, false =&gt; switch open"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 97 -->
+    <ScalarVariable
+      name="I_in"
+      valueReference="335544320"
+      description="Current in the branch from p to n as output signal"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 98 -->
+    <ScalarVariable
+      name="ZOC_Vline"
+      valueReference="335544321"
+      description="Output signal connector"
+      causality="output"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 99 -->
+    <ScalarVariable
+      name="ZOC_Vcap"
+      valueReference="335544322"
+      description="Output signal connector"
+      causality="output"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 100 -->
+    <ScalarVariable
+      name="CW"
+      valueReference="352321536"
+      description="Connector of Real input signal"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 101 -->
+    <ScalarVariable
+      name="CCW"
+      valueReference="352321537"
+      description="Connector of Real input signal"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 102 -->
+    <ScalarVariable
+      name="Vin"
+      valueReference="352321538"
+      description="Voltage between pin p and n (= p.v - n.v) as input signal"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 103 -->
+    <ScalarVariable
+      name="T_m"
+      valueReference="352321539"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="K"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 104 -->
+    <ScalarVariable
+      name="T_r"
+      valueReference="352321540"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="K"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 105 -->
+    <ScalarVariable
+      name="T_a"
+      valueReference="352321541"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="K"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 106 -->
+    <ScalarVariable
+      name="V_1"
+      valueReference="335544323"
+      description="Voltage across terminal p1"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 107 -->
+    <ScalarVariable
+      name="V_2"
+      valueReference="335544324"
+      description="Voltage across terminal p2."
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 108 -->
+    <ScalarVariable
+      name="V_cap1"
+      valueReference="335544325"
+      description="Voltage across cap with p1 or p2 as reference"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 109 -->
+    <ScalarVariable
+      name="I_1"
+      valueReference="335544326"
+      description="Current through terminal p1."
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 110 -->
+    <ScalarVariable
+      name="I_2"
+      valueReference="335544327"
+      description="Current through terminal p2."
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 111 -->
+    <ScalarVariable
+      name="Tau1"
+      valueReference="335544328"
+      description="Torque produced at shaft"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 112 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.c"
+      valueReference="16777235"
+      description="The capacitor values in micro Faraday&#39;s"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Capacitance"
+        start="4.85E-05"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 113 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.voltage"
+      valueReference="16777236"
+      causality="parameter"
+      variability="fixed">
+      <Real start="119.51"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 114 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_NL_120V"
+      valueReference="16777237"
+      description="No Load condition(first few seconds of pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="41.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 115 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_NL_108V"
+      valueReference="16777238"
+      description="No Load condition(first few seconds of pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="44.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 116 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_NL_132V"
+      valueReference="16777239"
+      description="No Load condition(first few seconds of pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="35"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 117 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_NL"
+      valueReference="16777240"
+      description="No Load condition(first few seconds of pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="3.38"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 118 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_NL"
+      valueReference="16777241"
+      description="No Load condition(first few seconds of pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="3.02"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 119 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_L"
+      valueReference="16777242"
+      description="once u start the loading (basically after from No Load untill LR in pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="47.1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 120 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_L_108V"
+      valueReference="16777243"
+      description="once u start the loading (basically after from No Load untill LR in pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="47.1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 121 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_L_120V"
+      valueReference="16777244"
+      description="once u start the loading (basically after from No Load untill LR in pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="47.1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 122 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_L_132V"
+      valueReference="16777245"
+      description="once u start the loading (basically after from No Load untill LR in pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="47.1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 123 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_L"
+      valueReference="16777246"
+      description="once u start the loading (basically after from No Load untill LR in pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="3.73"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 124 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_L"
+      valueReference="16777247"
+      description="once u start the loading (basically after from No Load untill LR in pull down)"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"
+        start="4.06"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 125 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.NP"
+      valueReference="16777248"
+      description="Number of poles"
+      causality="parameter"
+      variability="tunable">
+      <Integer start="4"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 126 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.J"
+      valueReference="16777249"
+      description="Moment of inercia of rotor"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MomentOfInertia"
+        start="0.00154"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 127 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.T_ref"
+      valueReference="16777250"
+      description="Reference temperature"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 128 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.R_m0"
+      valueReference="16777251"
+      description="main winding resistance after LR"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        start="4.735"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 129 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.R_a0"
+      valueReference="16777252"
+      description=" aux winding resistance after LR"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        start="4.735"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 130 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Statcore_loss_gain"
+      valueReference="16777253"
+      description="Percentage of the total rotational losses that are attributed to losses in the stator core"
+      causality="parameter"
+      variability="fixed">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 131 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Vm_LR"
+      valueReference="16777254"
+      description="main winding voltage applied during LR"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="50.675"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 132 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Va_LR"
+      valueReference="16777255"
+      description="Aux winding voltage applied during LR "
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="50.675"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 133 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Im_LR"
+      valueReference="16777256"
+      description="main winding current applied during LR"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="3.6455"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 134 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Ia_LR"
+      valueReference="16777257"
+      description="Aux winding current applied during LR "
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="3.3455"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 135 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Wm_LR"
+      valueReference="16777258"
+      description="Main winding watts during LR"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Power"
+        start="147.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 136 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Wa_LR"
+      valueReference="16777259"
+      description="Aux winding watts during LR"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Power"
+        start="147.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 137 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.V_NL"
+      valueReference="16777260"
+      description="The voltage at saturation point "
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="119.8"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 138 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.I_NL"
+      valueReference="16777261"
+      description="The current at saturation point"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="4.19563"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 139 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.W_NL"
+      valueReference="16777262"
+      description="The power at saturation point "
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Power"
+        start="165.4411"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 140 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Fri_coeff"
+      valueReference="16777263"
+      description="The multiplier used to consider the Dyno losses in Total losses"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.CoefficientOfFriction"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 141 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.stator_losses"
+      valueReference="16777264"
+      description="Constant value for stator losses"
+      causality="parameter"
+      variability="fixed">
+      <Real start="25"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 142 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.V_1"
+      valueReference="335544323"
+      description="Voltage across terminal p1">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 143 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.V_2"
+      valueReference="335544324"
+      description="Voltage across terminal p2.">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 144 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.V_cap"
+      valueReference="335544325"
+      description="Voltage across cap with p1 or p2 as reference">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 145 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.I_1"
+      valueReference="33554432"
+      description="Current through terminal p1.">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 146 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.I_2"
+      valueReference="33554433"
+      description="Current through terminal p2.">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 147 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.I_r1"
+      valueReference="33554434"
+      description="Rotor current 1">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 148 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.I_r2"
+      valueReference="33554435"
+      description="Rotor current 2">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 149 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Tau"
+      valueReference="335544328"
+      description="Torque produced at shaft">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 150 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Motor_Shaft.phi"
+      valueReference="369098924"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 151 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.Motor_Shaft.tau"
+      valueReference="335544329"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 152 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.T_m"
+      valueReference="436207619">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="K"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 153 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.T_r"
+      valueReference="436207620">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="K"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 154 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.T_a"
+      valueReference="436207621">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="K"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 155 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapV1Series.p.v"
+      valueReference="335544324"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 156 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapV1Series.p.i"
+      valueReference="100663333"
+      description="Current flowing into the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 157 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapV1Series.n.v"
+      valueReference="335544323"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 158 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapV1Series.n.i"
+      valueReference="100663334"
+      description="Current flowing into the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 159 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapV1Series.v"
+      valueReference="369098791"
+      description="Voltage between pin p and n (= p.v - n.v) as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 160 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapV2Series.p.v"
+      valueReference="335544323"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 161 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapV2Series.p.i"
+      valueReference="100663336"
+      description="Current flowing into the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 162 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapV2Series.n.v"
+      valueReference="335544324"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 163 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapV2Series.n.i"
+      valueReference="100663337"
+      description="Current flowing into the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 164 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapV2Series.v"
+      valueReference="369098794"
+      description="Voltage between pin p and n (= p.v - n.v) as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 165 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapSwitch.u1"
+      valueReference="369098791"
+      description="Connector of first Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 166 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapSwitch.u2"
+      valueReference="369098768"
+      description="Connector of Boolean input signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 167 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapSwitch.u3"
+      valueReference="369098794"
+      description="Connector of second Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 168 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.VcapSwitch.y"
+      valueReference="335544325"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 169 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.speedSensor.flange.phi"
+      valueReference="369098924"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 170 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.speedSensor.flange.phi)"
+      valueReference="369098925"
+      description="der(Absolute rotation angle of flange)">
+      <Real
+        unit="rad/s"
+        derivative="169"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 171 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.speedSensor.flange.tau"
+      valueReference="100663339"
+      description="Cut torque in the flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 172 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.speedSensor.w"
+      valueReference="369098925"
+      description="Absolute angular velocity of flange as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 173 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.u1"
+      valueReference="369098796"
+      description="Connector of Real input signal 1">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rev/min"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 174 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.X0_2D_Table.u1)"
+      valueReference="637534253"
+      description="der(Connector of Real input signal 1)">
+      <Real
+        unit="rev/(min.s)"
+        derivative="173"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 175 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.u2"
+      valueReference="234881044"
+      description="Connector of Real input signal 2">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 176 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.y"
+      valueReference="369098798"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="Ohm"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 177 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.X0_2D_Table.y)"
+      valueReference="637534255"
+      description="der(Connector of Real output signal)">
+      <Real
+        unit="Ohm/s"
+        derivative="176"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 178 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.tableOnFile"
+      valueReference="100663344"
+      description="= true, if table is defined on file or in function usertab"
+      variability="constant">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 179 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[1,1]"
+      valueReference="100663345"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="constant">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 180 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[1,2]"
+      valueReference="100663346"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="constant">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 181 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[1,3]"
+      valueReference="100663347"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="constant">
+      <Real start="108"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 182 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[1,4]"
+      valueReference="100663348"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="constant">
+      <Real start="120"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 183 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[1,5]"
+      valueReference="100663349"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="constant">
+      <Real start="132"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 184 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[2,1]"
+      valueReference="100663350"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 185 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[2,2]"
+      valueReference="100663351"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 186 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[2,3]"
+      valueReference="100663352"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 187 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[2,4]"
+      valueReference="100663353"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 188 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[2,5]"
+      valueReference="100663354"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 189 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[3,1]"
+      valueReference="100663355"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="constant">
+      <Real start="1400.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 190 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[3,2]"
+      valueReference="100663356"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 191 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[3,3]"
+      valueReference="100663357"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 192 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[3,4]"
+      valueReference="100663358"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 193 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[3,5]"
+      valueReference="100663359"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 194 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[4,1]"
+      valueReference="100663360"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="constant">
+      <Real start="1800.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 195 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[4,2]"
+      valueReference="100663361"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 196 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[4,3]"
+      valueReference="100663362"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 197 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[4,4]"
+      valueReference="100663363"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 198 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.table[4,5]"
+      valueReference="100663364"
+      description="Table matrix (grid u1 = first column, grid u2 = first row; e.g., table=[0, 0; 0, 1])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 199 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.verboseRead"
+      valueReference="16777265"
+      description="= true, if info message that file is loading is to be printed"
+      causality="parameter"
+      variability="fixed">
+      <Boolean start="true"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 200 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.smoothness"
+      valueReference="100663365"
+      description="Smoothness of table interpolation"
+      variability="constant">
+      <Enumeration
+        declaredType="Modelica.Blocks.Types.Smoothness"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 201 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.extrapolation"
+      valueReference="100663366"
+      description="Extrapolation of data outside the definition range"
+      variability="constant">
+      <Enumeration
+        declaredType="Modelica.Blocks.Types.Extrapolation"
+        start="2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 202 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.verboseExtrapolation"
+      valueReference="100663367"
+      description="= true, if warning messages are to be printed if table input is outside the definition range"
+      variability="constant">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 203 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.u_min[1]"
+      valueReference="100663368"
+      description="Minimum abscissa value defined in table"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 204 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.u_min[2]"
+      valueReference="100663369"
+      description="Minimum abscissa value defined in table"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 205 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.u_max[1]"
+      valueReference="100663370"
+      description="Maximum abscissa value defined in table"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 206 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.u_max[2]"
+      valueReference="100663371"
+      description="Maximum abscissa value defined in table"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 207 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X0_2D_Table.tableID.id"
+      valueReference="100663372"
+      variability="fixed">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 208 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.n"
+      valueReference="100663373"
+      description="Number of inputs (= number of outputs)"
+      variability="constant">
+      <Integer start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 209 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.u[1]"
+      valueReference="369098796"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rev/min"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 210 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.y[1]"
+      valueReference="369098830"
+      description="Connector of Real output signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="Ohm"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 211 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.X1m_Table.y[1])"
+      valueReference="637534287"
+      description="der(Connector of Real output signals)">
+      <Real
+        unit="Ohm/s"
+        derivative="210"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 212 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.tableOnFile"
+      valueReference="100663376"
+      description="= true, if table is defined on file or in function usertab"
+      variability="constant">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 213 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.table[1,1]"
+      valueReference="100663377"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 214 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.table[1,2]"
+      valueReference="100663378"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 215 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.table[2,1]"
+      valueReference="100663379"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="constant">
+      <Real start="1400.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 216 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.table[2,2]"
+      valueReference="100663380"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 217 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.table[3,1]"
+      valueReference="100663381"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="constant">
+      <Real start="1800.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 218 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.table[3,2]"
+      valueReference="100663382"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 219 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.verboseRead"
+      valueReference="16777266"
+      description="= true, if info message that file is loading is to be printed"
+      causality="parameter"
+      variability="fixed">
+      <Boolean start="true"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 220 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.columns[1]"
+      valueReference="100663383"
+      description="Columns of table to be interpolated"
+      variability="constant">
+      <Integer start="2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 221 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.smoothness"
+      valueReference="100663384"
+      description="Smoothness of table interpolation"
+      variability="constant">
+      <Enumeration
+        declaredType="Modelica.Blocks.Types.Smoothness"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 222 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.extrapolation"
+      valueReference="100663385"
+      description="Extrapolation of data outside the definition range"
+      variability="constant">
+      <Enumeration
+        declaredType="Modelica.Blocks.Types.Extrapolation"
+        start="2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 223 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.verboseExtrapolation"
+      valueReference="100663386"
+      description="= true, if warning messages are to be printed if table input is outside the definition range"
+      variability="constant">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 224 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.u_min"
+      valueReference="100663387"
+      description="Minimum abscissa value defined in table"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 225 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.u_max"
+      valueReference="100663388"
+      description="Maximum abscissa value defined in table"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 226 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1m_Table.tableID.id"
+      valueReference="100663389"
+      variability="fixed">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 227 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.n"
+      valueReference="100663390"
+      description="Number of inputs (= number of outputs)"
+      variability="constant">
+      <Integer start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 228 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.u[1]"
+      valueReference="369098796"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rev/min"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 229 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.y[1]"
+      valueReference="369098847"
+      description="Connector of Real output signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="Ohm"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 230 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.X1a_Table.y[1])"
+      valueReference="637534304"
+      description="der(Connector of Real output signals)">
+      <Real
+        unit="Ohm/s"
+        derivative="229"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 231 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.tableOnFile"
+      valueReference="100663393"
+      description="= true, if table is defined on file or in function usertab"
+      variability="constant">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 232 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.table[1,1]"
+      valueReference="100663394"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 233 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.table[1,2]"
+      valueReference="100663395"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 234 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.table[2,1]"
+      valueReference="100663396"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="constant">
+      <Real start="1400.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 235 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.table[2,2]"
+      valueReference="100663397"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 236 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.table[3,1]"
+      valueReference="100663398"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="constant">
+      <Real start="1800.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 237 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.table[3,2]"
+      valueReference="100663399"
+      description="Table matrix (grid = first column; e.g., table=[0, 0; 1, 1; 2, 4])"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 238 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.verboseRead"
+      valueReference="16777267"
+      description="= true, if info message that file is loading is to be printed"
+      causality="parameter"
+      variability="fixed">
+      <Boolean start="true"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 239 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.columns[1]"
+      valueReference="100663400"
+      description="Columns of table to be interpolated"
+      variability="constant">
+      <Integer start="2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 240 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.smoothness"
+      valueReference="100663401"
+      description="Smoothness of table interpolation"
+      variability="constant">
+      <Enumeration
+        declaredType="Modelica.Blocks.Types.Smoothness"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 241 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.extrapolation"
+      valueReference="100663402"
+      description="Extrapolation of data outside the definition range"
+      variability="constant">
+      <Enumeration
+        declaredType="Modelica.Blocks.Types.Extrapolation"
+        start="2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 242 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.verboseExtrapolation"
+      valueReference="100663403"
+      description="= true, if warning messages are to be printed if table input is outside the definition range"
+      variability="constant">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 243 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.u_min"
+      valueReference="100663404"
+      description="Minimum abscissa value defined in table"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 244 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.u_max"
+      valueReference="100663405"
+      description="Maximum abscissa value defined in table"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 245 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.X1a_Table.tableID.id"
+      valueReference="100663406"
+      variability="fixed">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 246 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.to_rpm.u"
+      valueReference="369098925"
+      description="Connector of Real input signal to be converted">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 247 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.to_rpm.y"
+      valueReference="369098796"
+      description="Connector of Real output signal containing input signal u in another unit">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rev/min"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 248 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.v1"
+      valueReference="335544323"
+      description="Voltage drop of port 1 (= p1.v - n1.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 249 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.v2"
+      valueReference="335544324"
+      description="Voltage drop of port 2 (= p2.v - n2.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 250 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.i1"
+      valueReference="33554432"
+      description="Current flowing from pos. to neg. pin of port 1"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 251 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.i1)"
+      valueReference="587202560"
+      description="der(Current flowing from pos. to neg. pin of port 1)">
+      <Real
+        unit="A/s"
+        derivative="250"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 252 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.i2"
+      valueReference="33554433"
+      description="Current flowing from pos. to neg. pin of port 2"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 253 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.i2)"
+      valueReference="587202561"
+      description="der(Current flowing from pos. to neg. pin of port 2)">
+      <Real
+        unit="A/s"
+        derivative="252"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 254 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.p1.v"
+      valueReference="335544323"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 255 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.p1.i"
+      valueReference="33554432"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 256 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.n1.v"
+      valueReference="100663407"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 257 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.n1.i"
+      valueReference="100663408"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 258 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.p2.v"
+      valueReference="335544324"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 259 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.p2.i"
+      valueReference="33554433"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 260 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.n2.v"
+      valueReference="100663409"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 261 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.n2.i"
+      valueReference="100663410"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 262 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.NP"
+      valueReference="100663411"
+      description="Number of poles"
+      variability="tunable">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 263 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.J"
+      valueReference="100663412"
+      description="Moment of inercia of rotor"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MomentOfInertia"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 264 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.T_ref"
+      valueReference="100663413"
+      description="Reference temperature"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 265 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.alpha_m"
+      valueReference="16777268"
+      description="Temperature coefficient of main resistance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.LinearTemperatureCoefficient"
+        start="0.004"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 266 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.alpha_a"
+      valueReference="16777269"
+      description="Temperature coefficient of auxiliary resistance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.LinearTemperatureCoefficient"
+        start="0.004"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 267 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.alpha_r"
+      valueReference="16777270"
+      description="Temperature coefficient of the rotor resistance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.LinearTemperatureCoefficient"
+        start="0.004"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 268 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.R_r0"
+      valueReference="637534326"
+      description="Resistance of the rotor at temperature T_ref">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 269 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.L_m"
+      valueReference="637534327"
+      description="Self-inductance of the main winding">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 270 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.L_m)"
+      valueReference="637534328"
+      description="der(Self-inductance of the main winding)">
+      <Real
+        unit="Ohm"
+        derivative="269"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 271 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.L_a"
+      valueReference="637534329"
+      description="Self-inductance of the auxiliary winding">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 272 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.L_a)"
+      valueReference="637534330"
+      description="der(Self-inductance of the auxiliary winding)">
+      <Real
+        unit="Ohm"
+        derivative="271"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 273 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.L_r"
+      valueReference="637534327"
+      description="Self-inductance of the rotor">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 274 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.L_r)"
+      valueReference="637534328"
+      description="der(Self-inductance of the rotor)">
+      <Real
+        unit="Ohm"
+        derivative="273"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 275 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.M1"
+      valueReference="369098875"
+      description="Amplitude of the mutual inductance main/rotor">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 276 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.M1)"
+      valueReference="637534332"
+      description="der(Amplitude of the mutual inductance main/rotor)">
+      <Real
+        unit="Ohm"
+        derivative="275"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 277 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.M2"
+      valueReference="369098877"
+      description="Amplitude of the mutual inductance auxiliar/rotor">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 278 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.M2)"
+      valueReference="637534334"
+      description="der(Amplitude of the mutual inductance auxiliar/rotor)">
+      <Real
+        unit="Ohm"
+        derivative="277"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 279 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.R_M"
+      valueReference="100663423"
+      description="total resistance of main winding calculated after LR test"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 280 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.R_A"
+      valueReference="100663424"
+      description="total resistance of aux winding calculated after LR test"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 281 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Zm"
+      valueReference="100663425"
+      description="The total impedance of main winding "
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Impedance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 282 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Za"
+      valueReference="100663426"
+      description="The total impedance of Aux winding "
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Impedance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 283 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Xm"
+      valueReference="100663427"
+      description="The SC reactance of main winding"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 284 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Xa"
+      valueReference="100663428"
+      description="The SC reactance of Aux winding"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Reactance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 285 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.LM"
+      valueReference="369098875">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 286 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Ls_m"
+      valueReference="637534341">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 287 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.Ls_m)"
+      valueReference="637534342">
+      <Real
+        unit="Ohm"
+        derivative="286"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 288 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Lr_m"
+      valueReference="637534341">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 289 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.LA"
+      valueReference="369098877">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 290 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Ls_a"
+      valueReference="637534343">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 291 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.Ls_a)"
+      valueReference="637534344">
+      <Real
+        unit="Ohm"
+        derivative="290"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 292 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Lr_a"
+      valueReference="637534343">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 293 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Kr"
+      valueReference="637534345">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 294 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Kp"
+      valueReference="905969802">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 295 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.c"
+      valueReference="100663435"
+      description="The capacitor values in micro Faraday&#39;s"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Capacitance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 296 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.R_m0"
+      valueReference="100663436"
+      description="main winding resistance after LR"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 297 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.R_a0"
+      valueReference="100663437"
+      description=" aux winding resistance after LR"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 298 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Statcore_loss_gain"
+      valueReference="100663438"
+      description="Percentage of the total rotational losses that are attributed to losses in the stator core"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 299 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Vm_LR"
+      valueReference="100663439"
+      description="main winding voltage applied during LR"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 300 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Va_LR"
+      valueReference="100663440"
+      description="Aux winding voltage applied during LR "
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 301 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Im_LR"
+      valueReference="100663441"
+      description="main winding current applied during LR"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 302 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Ia_LR"
+      valueReference="100663442"
+      description="Aux winding current applied during LR "
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 303 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Wm_LR"
+      valueReference="100663443"
+      description="Main winding watts during LR"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 304 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Wa_LR"
+      valueReference="100663444"
+      description="Aux winding watts during LR"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 305 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.V_NL"
+      valueReference="100663445"
+      description="The voltage at saturation point "
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 306 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.I_NL"
+      valueReference="100663446"
+      description="The current at saturation point"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 307 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.W_NL"
+      valueReference="100663447"
+      description="The power at saturation point "
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 308 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Fri_coeff"
+      valueReference="100663448"
+      description="The multiplier used to consider the Dyno losses in Total losses"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.CoefficientOfFriction"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 309 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.stator_losses"
+      valueReference="100663449"
+      description="Constant value for stator losses"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 310 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.R_m"
+      valueReference="637534362"
+      description="Resistance of the main winding at temperature T_m">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 311 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.R_a"
+      valueReference="637534363"
+      description="Resistance of the auxiliary winding at temperature T_a">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 312 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.R_r"
+      valueReference="637534364"
+      description="Resistance of the rotor at temperature T_r">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 313 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.wr"
+      valueReference="369098925"
+      description="Mechanical (true) speed">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"
+        displayUnit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 314 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.wr)"
+      valueReference="369098926"
+      description="der(Mechanical (true) speed)">
+      <Real
+        unit="rad/s2"
+        derivative="313"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 315 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.V_1"
+      valueReference="335544323"
+      description="Voltage across terminal p1">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 316 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.V_2"
+      valueReference="335544324"
+      description="Voltage across terminal p2.">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 317 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.I_1"
+      valueReference="33554432"
+      description="Current through terminal p1.">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 318 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.I_2"
+      valueReference="33554433"
+      description="Current through terminal p2.">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 319 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.i_r1"
+      valueReference="33554434"
+      description="Rotor current in d quadrant"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 320 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.i_r1)"
+      valueReference="587202562"
+      description="der(Rotor current in d quadrant)">
+      <Real
+        unit="A/s"
+        derivative="319"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 321 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.i_r2"
+      valueReference="33554435"
+      description="Rotor current in q quadrant"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 322 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.i_r2)"
+      valueReference="587202563"
+      description="der(Rotor current in q quadrant)">
+      <Real
+        unit="A/s"
+        derivative="321"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 323 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.To_i"
+      valueReference="369098909"
+      description="Inertia torque">
+      <Real
+        unit="J.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 324 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.To_l"
+      valueReference="369098921"
+      description="Load torque">
+      <Real
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 325 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.NPP"
+      valueReference="100663454"
+      description="Number of pole pairs"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 326 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.NPP)"
+      valueReference="100663455"
+      description="der(Number of pole pairs)"
+      variability="constant">
+      <Real start="0.0"
+        derivative="325"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 327 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.I_r1"
+      valueReference="33554434"
+      description="Rotor current 1">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 328 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.I_r2"
+      valueReference="33554435"
+      description="Rotor current 2">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 329 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Tau"
+      valueReference="335544328"
+      description="Torque produced at shaft">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"
+        displayUnit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 330 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Winding_Losses_Instantaneous"
+      valueReference="905969824"
+      description="Sum of main and auxiliary winding losses">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 331 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Rotor_Losses_Instantaneous"
+      valueReference="905969825"
+      description="Instantaneous resistive rotor losses">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 332 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Stator_Losses"
+      valueReference="100663449"
+      description="Steel losses in stator laminations">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 333 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.T_a"
+      valueReference="436207621"
+      description="Auxiliary winding temperature (Input as Kelvin)">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="K"
+        displayUnit="degC"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 334 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.T_m"
+      valueReference="436207619"
+      description="Main winding temperature (Input as Kelvin)">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="K"
+        displayUnit="degC"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 335 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.T_r"
+      valueReference="436207620"
+      description="Rotor temperature (Input as Kelvin) ">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="K"
+        displayUnit="degC"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 336 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Motor_Shaft.phi"
+      valueReference="369098924"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 337 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.pSC_4EQ_Electrical.Motor_Shaft.phi)"
+      valueReference="369098925"
+      description="der(Absolute rotation angle of flange)">
+      <Real
+        unit="rad/s"
+        derivative="336"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 338 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.Motor_Shaft.tau"
+      valueReference="335544329"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 339 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.X0"
+      valueReference="369098798">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="Ohm"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 340 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.X1m"
+      valueReference="369098830">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="Ohm"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 341 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.pSC_4EQ_Electrical.X1a"
+      valueReference="369098847">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="Ohm"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 342 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.capacitor.v"
+      valueReference="33554436"
+      description="Voltage drop of the two pins (= p.v - n.v)"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 343 -->
+    <ScalarVariable
+      name="der(pSC_4Eq_WORecord.capacitor.v)"
+      valueReference="587202564"
+      description="der(Voltage drop of the two pins (= p.v - n.v))">
+      <Real
+        unit="V/s"
+        derivative="342"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 344 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.capacitor.i"
+      valueReference="369098914"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 345 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.capacitor.p.v"
+      valueReference="335544324"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 346 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.capacitor.p.i"
+      valueReference="369098914"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 347 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.capacitor.n.v"
+      valueReference="335544323"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 348 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.capacitor.n.i"
+      valueReference="369098915"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 349 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.capacitor.C"
+      valueReference="100663460"
+      description="Capacitance"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Capacitance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 350 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.n.v"
+      valueReference="100663461"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 351 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.n.i"
+      valueReference="905969830"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 352 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.spinDirection"
+      valueReference="369098768"
+      description="Connector of Boolean input signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 353 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.p2.v"
+      valueReference="335544324"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 354 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.p2.i"
+      valueReference="369098770"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 355 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.p1.v"
+      valueReference="335544323"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.ElectricPotential"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 356 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.p1.i"
+      valueReference="369098780"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 357 -->
+    <ScalarVariable
+      name="pSC_4Eq_WORecord.realExpression.y"
+      valueReference="234881044"
+      description="Value of Real output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 358 -->
+    <ScalarVariable
+      name="SpinDirection"
+      valueReference="352321542"
+      description="Connector of Real input signal"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 359 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.flange.phi"
+      valueReference="369098924"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 360 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.flange.tau"
+      valueReference="369098921"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 361 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.phi"
+      valueReference="369098924"
+      description="Angle to drive the flange">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 362 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.w"
+      valueReference="369098925"
+      description="Speed to drive the flange (w=der(phi) required)">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 363 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.a"
+      valueReference="369098926"
+      description="Angular acceleration to drive the flange (a = der(w) required)">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 364 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.tau"
+      valueReference="335544329"
+      description="Torque needed to drive the flange according to phi, w, a">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 365 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.move.flange.phi"
+      valueReference="369098924"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 366 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.move.flange.tau"
+      valueReference="369098921"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 367 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.move.phi_support"
+      valueReference="100663467"
+      description="Absolute angle of support flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 368 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.move.phi"
+      valueReference="369098924"
+      description="Rotation angle of flange with respect to support">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 369 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.move.u[1]"
+      valueReference="369098924"
+      description="Angle, angular velocity and angular acceleration of flange with respect to support as input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 370 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.move.u[2]"
+      valueReference="369098925"
+      description="Angle, angular velocity and angular acceleration of flange with respect to support as input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 371 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.move.u[3]"
+      valueReference="369098926"
+      description="Angle, angular velocity and angular acceleration of flange with respect to support as input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 372 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.multiplex3.n1"
+      valueReference="100663471"
+      description="Dimension of input signal connector 1"
+      variability="constant">
+      <Integer start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 373 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.multiplex3.n2"
+      valueReference="100663472"
+      description="Dimension of input signal connector 2"
+      variability="constant">
+      <Integer start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 374 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.multiplex3.n3"
+      valueReference="100663473"
+      description="Dimension of input signal connector 3"
+      variability="constant">
+      <Integer start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 375 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.multiplex3.u1[1]"
+      valueReference="369098924"
+      description="Connector of Real input signals 1">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 376 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.multiplex3.u2[1]"
+      valueReference="369098925"
+      description="Connector of Real input signals 2">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 377 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.multiplex3.u3[1]"
+      valueReference="369098926"
+      description="Connector of Real input signals 3">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 378 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.multiplex3.y[1]"
+      valueReference="369098924"
+      description="Connector of Real output signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 379 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.multiplex3.y[2]"
+      valueReference="369098925"
+      description="Connector of Real output signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 380 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.multiplex3.y[3]"
+      valueReference="369098926"
+      description="Connector of Real output signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 381 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.torqueSensor.flange_a.phi"
+      valueReference="369098924"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 382 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.torqueSensor.flange_a.tau"
+      valueReference="335544329"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 383 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.torqueSensor.flange_b.phi"
+      valueReference="369098924"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 384 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.torqueSensor.flange_b.tau"
+      valueReference="369098921"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 385 -->
+    <ScalarVariable
+      name="angleToTorqueAdaptor.torqueSensor.tau"
+      valueReference="335544329"
+      description="Torque in flange flange_a and flange_b (tau = flange_a.tau = -flange_b.tau) as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 386 -->
+    <ScalarVariable
+      name="MotorReactiontorque"
+      valueReference="335544329"
+      description="Torque needed to drive the flange according to phi, w, a"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 387 -->
+    <ScalarVariable
+      name="a"
+      valueReference="352321543"
+      description="Angular acceleration to drive the flange (a = der(w) required)"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 388 -->
+    <ScalarVariable
+      name="w"
+      valueReference="352321544"
+      description="Angular acceleration to drive the flange (a = der(w) required)"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 389 -->
+    <ScalarVariable
+      name="phi"
+      valueReference="352321545"
+      description="Angular acceleration to drive the flange (a = der(w) required)"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 390 -->
+    <ScalarVariable
+      name="gain1.k"
+      valueReference="100663474"
+      description="Gain value multiplied with input signal"
+      variability="tunable">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 391 -->
+    <ScalarVariable
+      name="gain1.u"
+      valueReference="436207623"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 392 -->
+    <ScalarVariable
+      name="gain1.y"
+      valueReference="369098926"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 393 -->
+    <ScalarVariable
+      name="gain2.k"
+      valueReference="100663475"
+      description="Gain value multiplied with input signal"
+      variability="tunable">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 394 -->
+    <ScalarVariable
+      name="gain2.u"
+      valueReference="436207624"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 395 -->
+    <ScalarVariable
+      name="gain2.y"
+      valueReference="369098925"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 396 -->
+    <ScalarVariable
+      name="gain3.k"
+      valueReference="100663476"
+      description="Gain value multiplied with input signal"
+      variability="tunable">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 397 -->
+    <ScalarVariable
+      name="gain3.u"
+      valueReference="436207625"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 398 -->
+    <ScalarVariable
+      name="gain3.y"
+      valueReference="369098924"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"/>
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="97"
+        dependencies="100 101 250 252 342"
+        dependenciesKind="dependent dependent dependent dependent dependent"/>
+      <Unknown index="98"
+        dependencies="102"
+        dependenciesKind="dependent"/>
+      <Unknown index="99"
+        dependencies="100 101 102 250 252 342 358"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent dependent"/>
+      <Unknown index="106"
+        dependencies="100 101 102 250 252 342"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent"/>
+      <Unknown index="107"
+        dependencies="100 101 102 250 252 342"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent"/>
+      <Unknown index="108"
+        dependencies="100 101 102 250 252 342 358"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent dependent"/>
+      <Unknown index="109"
+        dependencies="250"
+        dependenciesKind="fixed"/>
+      <Unknown index="110"
+        dependencies="252"
+        dependenciesKind="fixed"/>
+      <Unknown index="111"
+        dependencies="250 252 319 321 388 389"
+        dependenciesKind="dependent dependent dependent dependent fixed fixed"/>
+      <Unknown index="386"
+        dependencies="250 252 319 321 387 388 389"
+        dependenciesKind="dependent dependent dependent dependent fixed fixed fixed"/>
+    </Outputs>
+    <Derivatives>
+      <Unknown index="251"
+        dependencies="100 101 102 103 104 105 250 252 319 321 342 387 388 389"
+        dependenciesKind="dependent dependent fixed fixed dependent fixed dependent dependent dependent dependent dependent fixed fixed fixed"/>
+      <Unknown index="253"
+        dependencies="100 101 102 103 104 105 250 252 319 321 342 387 388 389"
+        dependenciesKind="dependent dependent fixed fixed dependent fixed dependent dependent dependent dependent dependent fixed fixed fixed"/>
+      <Unknown index="320"
+        dependencies="100 101 102 103 104 105 250 252 319 321 342 387 388 389"
+        dependenciesKind="dependent dependent fixed fixed dependent fixed dependent dependent dependent dependent dependent fixed fixed fixed"/>
+      <Unknown index="322"
+        dependencies="100 101 102 103 104 105 250 252 319 321 342 387 388 389"
+        dependenciesKind="dependent dependent fixed fixed dependent fixed dependent dependent dependent dependent dependent fixed fixed fixed"/>
+      <Unknown index="343"
+        dependencies="100 101 250 252 342"
+        dependenciesKind="dependent dependent dependent dependent dependent"/>
+    </Derivatives>
+    <InitialUnknowns>
+      <Unknown index="97"
+        dependencies="16 19 75 76 89 90 100 101 250 252 342"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="98"
+        dependencies="33 40 41 47 102"
+        dependenciesKind="dependent dependent dependent dependent dependent"/>
+      <Unknown index="99"
+        dependencies="16 19 36 44 45 50 59 61 66 75 76 89 90 100 101 102 250 252 342 358"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="106"
+        dependencies="16 19 75 76 89 90 100 101 102 250 252 342"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="107"
+        dependencies="16 19 75 76 89 90 100 101 102 250 252 342"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="108"
+        dependencies="16 19 66 75 76 89 90 100 101 102 250 252 342 358"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="109"
+        dependencies="250"
+        dependenciesKind="dependent"/>
+      <Unknown index="110"
+        dependencies="252"
+        dependenciesKind="dependent"/>
+      <Unknown index="111"
+        dependencies="2 113 114 115 116 117 118 119 120 121 122 123 124 125 199 219 238 250 252 319 321 388 389"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="251"
+        dependencies="2 16 19 75 76 89 90 100 101 102 103 104 105 113 114 115 116 117 118 119 120 121 122 123 124 125 127 128 129 131 133 135 199 219 238 250 252 265 266 267 319 321 342 387 388 389"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="253"
+        dependencies="2 16 19 75 76 89 90 100 101 102 103 104 105 113 114 115 116 117 118 119 120 121 122 123 124 125 127 128 129 131 133 135 199 219 238 250 252 265 266 267 319 321 342 387 388 389"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="320"
+        dependencies="2 16 19 75 76 89 90 100 101 102 103 104 105 113 114 115 116 117 118 119 120 121 122 123 124 125 127 128 129 131 133 135 199 219 238 250 252 265 266 267 319 321 342 387 388 389"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="322"
+        dependencies="2 16 19 75 76 89 90 100 101 102 103 104 105 113 114 115 116 117 118 119 120 121 122 123 124 125 127 128 129 131 133 135 199 219 238 250 252 265 266 267 319 321 342 387 388 389"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="343"
+        dependencies="16 19 75 76 89 90 100 101 112 250 252 342"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="386"
+        dependencies="2 113 114 115 116 117 118 119 120 121 122 123 124 125 126 199 219 238 250 252 319 321 387 388 389"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>

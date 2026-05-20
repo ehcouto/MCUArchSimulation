@@ -1,0 +1,17 @@
+Single Phase Motor Simulation Architecture Releases
+===================================================
+v0.5 - 17/05/2023 - Eduardo H Couto 
+  - minor update - Reviewed parameters for SF updates on Vostok
+  
+v0.4 - 11/10/2022 - Eduardo H Couto 
+  - minor update - Updated for Matlab 2022b 
+  
+v0.3 - 13/01/2021 - Szymon Bednarz 
+  - major update - follow the release tracker to see details  
+
+v0.2 - 11/25/2020 - Szymon Bednarz 
+  - major update - follow the release tracker to see details
+
+v0.1 - 11/10/2020 - Szymon Bednarz 
+  - pilot version - only basic functionalities included
+
