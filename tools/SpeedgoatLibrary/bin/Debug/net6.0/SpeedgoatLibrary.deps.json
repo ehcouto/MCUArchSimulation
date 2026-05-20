@@ -1,0 +1,53 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "SpeedgoatLibrary/1.0.0": {
+        "dependencies": {
+          "MathWorks.MATLAB.Engine": "9.13.0.0",
+          "MathWorks.MATLAB.Types": "9.13.0.0"
+        },
+        "runtime": {
+          "SpeedgoatLibrary.dll": {}
+        }
+      },
+      "MathWorks.MATLAB.Engine/9.13.0.0": {
+        "runtime": {
+          "MathWorks.MATLAB.Engine.dll": {
+            "assemblyVersion": "9.13.0.0",
+            "fileVersion": "9.13.0.0"
+          }
+        }
+      },
+      "MathWorks.MATLAB.Types/9.13.0.0": {
+        "runtime": {
+          "MathWorks.MATLAB.Types.dll": {
+            "assemblyVersion": "9.13.0.0",
+            "fileVersion": "9.13.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SpeedgoatLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MathWorks.MATLAB.Engine/9.13.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MathWorks.MATLAB.Types/9.13.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

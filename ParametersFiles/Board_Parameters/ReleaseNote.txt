@@ -1,0 +1,7 @@
+For Etna, Havana, Illyria, Hermey, Webber2 and Godzilla, 
+the ADC parameters (except C2 - current offset) are from MCI-1.0 motor control software. 
+
+The C2 is the half of the Vcc which is an approximation.  
+
+Main contact: Baojie Mu, baojie_mu@whirlpool.com
+Support: Eduardo Couto, eduardo_h_couto@whirlpool.com 

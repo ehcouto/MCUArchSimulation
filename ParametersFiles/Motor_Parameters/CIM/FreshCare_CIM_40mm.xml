@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Motor_Parameter>
+<p_Pole_Pairs>1</p_Pole_Pairs>
+<Ls>0.786</Ls>
+<Rr>10.55</Rr> 
+<Lr>0.786</Lr>
+<Lm>0.7586</Lm>
+<Rs_Ref>16.19</Rs_Ref>
+<Rs_Ref_Temperature>22</Rs_Ref_Temperature>
+<Rot_Loss_a0>0</Rot_Loss_a0>
+<Rot_Loss_a1>0</Rot_Loss_a1>
+<Rot_Loss_a2>0</Rot_Loss_a2>
+<Rot_Loss_a3>0</Rot_Loss_a3>
+<Rot_Loss_a4>0</Rot_Loss_a4>
+<Rot_Loss_a5>0</Rot_Loss_a5>
+<Rot_Loss_gain>0</Rot_Loss_gain>	    
+     <TrRef>22</TrRef>
+     <Jrotor>1.2838E-2</Jrotor>
+     <Jadd>0</Jadd>
+     <alpha_s>3.8698E-3</alpha_s>
+     <Conn>3</Conn>
+     <f_offset_rotlosses>1</f_offset_rotlosses>
+     <f_rot_losses>0.8</f_rot_losses>
+     <Time_to_Turn_ON_Rot_Losses>1000000</Time_to_Turn_ON_Rot_Losses>
+     <alpha_r>3.8698E-3</alpha_r>
+     <TR>10</TR>
+     <MotorVariant>FreshCare - CIM - 40mm</MotorVariant>
+</Motor_Parameter>

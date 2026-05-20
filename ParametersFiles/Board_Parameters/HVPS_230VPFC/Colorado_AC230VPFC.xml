@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Board_Parameters>
+	<BoardVariant>AC230VPFC</BoardVariant> 
+	<R_line>0.8</R_line>
+	<L_line>0.00005</L_line> 
+	<C_buscap>0.00033</C_buscap>
+	<R_diode>0.068</R_diode>
+	<R_buscap>0.603</R_buscap>
+	<V_knee>0.75</V_knee>
+	<G_off>1.25E-8</G_off>
+	<L_pfc>0.0097</L_pfc>
+	<R_pfc>0.7</R_pfc>
+    <Vr>230</Vr>
+    <Vdc_i>300</Vdc_i>
+    <freq>50</freq>
+    <C1>-0.1364963504</C1>
+    <C2>1.6259124088</C2>
+    <Cvolt>0.007170435742</Cvolt>
+    <Vcc>3.3</Vcc>
+    <ADCBit>12</ADCBit>
+    <PGA_Gain>2.5</PGA_Gain>
+    <Vce>1.25</Vce> 
+	<Vfd>0.6</Vfd> 
+	<RonT>0.144</RonT>
+	<RonD>0.28</RonD> 
+	<Rshunt>0.068</Rshunt> 
+	<tdt>1.0000e-06</tdt>
+	<tau>0.1</tau>
+</Board_Parameters>
+

@@ -1,0 +1,210 @@
+Simulation Architecture Releases
+
+====== SimArch_r01.01.26 ====== 
+	= author	Szymon Bednarz
+	= date		02/20/2023
+	= details
+		- Rectifier S-Functions (1217710)
+        - New inverter plant model (1243839)
+        - BPM motor model variants consolidation (1256299)
+        - Synchronization with the Global Plant Model Library (1247999, 1250016)
+        - Simulation Tools refractoring (1248701)
+        
+====== SimArch_r01.01.25 ====== 
+	= author	Luigi Fagnano
+	= date		10/05/2022
+	= details
+		- Unified ADC model for usage in SIL\PIL and RT PIL (1217707)
+        - Colorado MCU: Support for Simulation (Simulation Architecture & RT PIL) (1232788)
+        - Extended Sim. Arch. : Laundry HA (unified sBPM & DD - Colorado) (1232848)
+        - Extender Sim. Arch. : Compressor
+
+====== SimArch_r01.01.24 ====== 
+	= author	Szymon Bednarz
+	= date		05/16/2022
+	= details
+		- Major update of the BPM model (v2.4) in order to fix open defects:
+			- Electrical Motor Power calculation (1224395)
+			- Motor currents are not converging to zero in case of null voltages (1217676)
+
+====== SimArch_r01.01.23 ====== 
+	= author	Alessio Beato
+	= date		05/16/2022
+	= details
+		- Extended SimArch: Dishwasher with Dual Pump (1226123)
+
+====== SimArch_r01.01.22 ====== 
+	= author	Alessio Beato
+	= date		05/06/2022
+	= details
+		- Extended SimArch: Compressor (1228916)
+		- Extended SimArch: Dishwasher with Dual Pump (1226123)
+		- ReadPdb support tool updates (1228173)
+		
+====== SimArch_r01.01.21 ====== 
+	= author	Szymon Bednarz, Luigi Fagnano, Alessio Beato
+	= date		03/29/2022
+	= details
+		- Rotational Losses: LUT implementation for Transient Simulation Architecture (1217680)
+
+====== SimArch_r01.01.20 ====== 
+	= author	Szymon Bednarz, Alessio Beato, Luigi Fagnano
+	= date		02/24/2022
+	= details
+		- New approach to source code parameterization: Support for Setting File binary (1214920)
+		- Compressor Plant Models: first working release (1217687)
+		- Added Mci_Fvt Start on MCI API library (1217404)
+		- Speadgoat SimArch: First Experiments with partial re-use (1220011)
+		- DTC Basic Framework for RX66T (1169450)
+		- Simulink PIL for RX13T (1209167)
+
+====== SimArch_r01.01.19 ====== 
+	= author	Szymon Bednarz
+	= date		11/09/2021
+	= details
+		- BPM S-functions added to Simulation Architecture (Szymon)
+			- added S-functions files to the folder structure (source\simulink\PlantModels\Motors\BPM)
+			- updated MCU_Simulation_Architecure.slx model (addpath for S-Functions)
+			- updated Sim_Arch_Config_UI_App (box for BPM Model Executable Variant selection)
+		- link to the detailed report from S-functions tests:
+		  (https://docs.google.com/spreadsheets/d/19bx_-ZBifd8JVkuLvCO-BvoL8pPSjg5yx_dGSp_X8k4/edit?usp=sharing)
+
+====== SimArch_r01.01.18 ====== 
+	= author	Alessio Beato, Luigi Fagnano, Szymon Bednarz, Thiago Schmatz, Madhura Patil	
+	= date		10/29/2021
+	= details
+		- Simulation Architecture support extended to Nucleus single micro architecture (Alessio)
+		- Python Algorithm Development (Luigi)
+		- Mci Dual Motor (Luigi)
+		- Fixed MTPV trajectory plot (Luigi)
+		- Plant Model Parameter database updates - Baselines 36-44 (Szymon & Thiago)
+		- V&V - resolved issue in Harness_Temp_Vary.slx (Madhura)
+
+====== SimArch_r01.01.17 ====== 
+	= author	Madhura Patil	
+	= date		03/26/2019
+	= details
+		- Updated VV folder with three test cases
+		
+====== SimArch_r01.01.16 ====== 
+	= author	Alessio Beato	
+	= date		03/20/2019
+	= details
+		- Support for Simulation - Update SRMCAtod Mock up (new functions added)
+
+====== SimArch_r01.01.15 ====== 
+	= author	Thiago Schmatz	
+	= date		02/18/2019
+	= details
+		- Fixed bug preventing electrical parameters to update when UI in Dyno load mode
+		
+====== SimArch_r01.01.14 ====== 
+	= author	Thiago Schmatz	
+	= date		02/18/2019
+	= details
+		- Plant Models parameters synchronized with SDT, version 34
+		
+====== SimArch_r01.01.13 ====== 
+	= author	Thiago Schmatz	
+	= date		01/07/2019
+	= details
+		- Baojie fixed Dyno Load model
+				
+====== SimArch_r01.01.12 ====== 
+	= author	Thiago Schmatz	
+	= date		12/17/2018
+	= details
+		- Refactored the User Interface
+		- Plant models changes by Baojie
+		- Settings database changes by Baojie
+		
+====== SimArch_r01.01.11 ====== 
+	= author	Thiago Schmatz	
+	= date		11/15/2018
+	= details
+		- Removed specific files from project template component
+	
+====== SimArch_r01.01.10 ====== 
+	= author	Madhura P Patil	
+	= date		11/13/2018
+	= details
+		- Added V&V and Harness folders to project template
+		
+====== SimArch_r01.01.09 ====== 
+	= author	Thiago Schmatz	
+	= date		11/09/2018
+	= details
+		- Changed documents format from docx to pdf
+		- Added SPI option to PIL Serial Configuration block
+	
+====== SimArch_r01.01.08 ====== 
+	= author	Baojie Mu	
+	= date		10/29/2018
+	= details
+		- Updated plant models and parameters' database to support LUTs in the FMUs.
+
+====== SimArch_r01.01.07 ====== 
+	= author	Thiago Schmatz	
+	= date		10/25/2018
+	= details
+		- Added extra port for CPU Cycles when running on PIL (Processor in the Loop) mode.
+	
+====== SimArch_r01.01.06 ====== 
+	= author	Thiago Schmatz	
+	= date		10/19/2018
+	= details
+        - Fixed issue preventing speed profile to continue.
+
+====== SimArch_r01.01.05 ====== 
+	= author	Thiago Schmatz	
+	= date		10/02/2018
+	= details
+		- Externalized temperatures Ts and Tr as inputs to exported block.
+
+====== SimArch_r01.01.04 ====== 
+	= author	Luigi Fagnano	
+	= date		08/24/2018
+	= details
+		- Updated motor control trajectory plot scripts.
+
+====== SimArch_r01.01.03 ====== 
+	= author	Thiago Schmatz	
+	= date		08/22/2018
+	= details
+		- Parameters from atomic block (in Harness models) can now be change in Base Workspace. NO NEED to run any update function.  
+		
+====== SimArch_r01.01.02 ======
+	= author	Thiago Schmatz	
+	= date		08/02/2018
+	= details
+		- Using baseline 24 for PLANT_MODELS_PARAMETERS component. It returns previous values to rectifiers parameters that were mistakenly changed in release r01.01.00 
+		
+====== SimArch_r01.01.01 ====== 
+	= author	Thiago Schmatz	
+	= date		07/31/2018
+	= details
+		- PIL mode can be exported as atomic block too.
+
+====== SimArch_r01.01.00 ====== 
+	= author	Thiago Schmatz	
+	= date		07/25/2018
+	= details
+		- Tested PIL support for sBPM motor
+		- Added remaining parameters for older boards (Etna, Havana, Weber2, Godzilla, Hermey, Illyria)
+		- Added support to MCU Floating
+		- MUST use _MCU_Framework stream's snapshot starting at MCU_Framework_V3
+
+====== SimArch_r01.00.01 ====== 
+	= author	Thiago Schmatz
+	= date		07/02/2018
+	= details
+		- changed developer load rule to load release document in correct folder
+		
+====== SimArch_r01.00.00 ====== 
+	= author	Thiago Schmatz
+	= date		07/02/2018
+	= details
+		- first release under release standard number.
+		- refactored main model
+		- support to exporting atomic blocks
+		- support to reading debug files and access to source code's global variables

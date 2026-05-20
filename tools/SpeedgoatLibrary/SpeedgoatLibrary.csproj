@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="MathWorks.MATLAB.Engine">
+      <HintPath>C:\Program Files\MATLAB\R2022b\extern\dotnet\netstandard2.0\MathWorks.MATLAB.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="MathWorks.MATLAB.Types">
+      <HintPath>C:\Program Files\MATLAB\R2022b\extern\dotnet\netstandard2.0\MathWorks.MATLAB.Types.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

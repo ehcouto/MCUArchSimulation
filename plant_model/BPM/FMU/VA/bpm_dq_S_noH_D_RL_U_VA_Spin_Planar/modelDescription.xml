@@ -1,0 +1,4663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="2.0"
+  modelName="bpm_dq_S_noH_D_RL_U_VA_Spin_Planar"
+  guid="{5fabf88f-349c-4ff1-9391-09cd2bcc3771}"
+  description="BPM v2.5.0"
+  version="2.5.0"
+  generationTool="Dymola Version 2021 (64-bit), 2020-04-17 (using Cvode with tolerance 1e-09)"
+  generationDateAndTime="2023-01-25T17:09:24Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="14">
+  <CoSimulation
+    modelIdentifier="bpm_dq_S_noH_D_RL_U_VA_Spin_Planar"
+    canHandleVariableCommunicationStepSize="true"
+    canInterpolateInputs="true"
+    maxOutputDerivativeOrder="1"
+    canBeInstantiatedOnlyOncePerProcess="true"
+    canNotUseMemoryManagementFunctions="true"
+    providesDirectionalDerivative="true"/>
+  <UnitDefinitions>
+    <Unit
+      name="1"/>
+    <Unit
+      name="J.s.rad-1">
+      <BaseUnit kg="1"
+        m="2"
+        s="-1"
+        rad="-1"/>
+    </Unit>
+    <Unit
+      name="J.s2.rad-1">
+      <BaseUnit kg="1"
+        m="2"
+        rad="-1"/>
+    </Unit>
+    <Unit
+      name="N.m">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"/>
+    </Unit>
+    <Unit
+      name="W.rad">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        rad="1"/>
+    </Unit>
+    <Unit
+      name="rad">
+      <BaseUnit rad="1"/>
+      <DisplayUnit
+        name="deg"
+        factor="57.29577951308232"/>
+    </Unit>
+    <Unit
+      name="rad/s">
+      <BaseUnit s="-1"
+        rad="1"/>
+    </Unit>
+    <Unit
+      name="rad/s2">
+      <BaseUnit s="-2"
+        rad="1"/>
+    </Unit>
+    <Unit
+      name="s">
+      <BaseUnit s="1"/>
+    </Unit>
+  </UnitDefinitions>
+  <TypeDefinitions>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.IntegerInput">
+      <Integer/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.IntegerOutput">
+      <Integer/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealInput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealOutput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Angle">
+      <Real
+        quantity="Angle"
+        unit="rad"
+        displayUnit="deg"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.AngularAcceleration">
+      <Real
+        quantity="AngularAcceleration"
+        unit="rad/s2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.AngularVelocity">
+      <Real
+        quantity="AngularVelocity"
+        unit="rad/s"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Time">
+      <Real
+        quantity="Time"
+        unit="s"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Torque">
+      <Real
+        quantity="Torque"
+        unit="N.m"/>
+    </SimpleType>
+  </TypeDefinitions>
+  <DefaultExperiment startTime="0.0"
+    stopTime="1.0"
+    tolerance="1E-09"/>
+  <ModelVariables>
+    <!-- Index for next variable = 1 -->
+    <ScalarVariable
+      name="Rs0"
+      valueReference="16777216"
+      description="Initial stator winding resistance [Ohm]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="9.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 2 -->
+    <ScalarVariable
+      name="Ld0"
+      valueReference="16777217"
+      description="Initial stator inductance in the d axis [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.0884"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 3 -->
+    <ScalarVariable
+      name="Lq0"
+      valueReference="16777218"
+      description="Initial stator inductance in the q axis [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.0972"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 4 -->
+    <ScalarVariable
+      name="phiPM1"
+      valueReference="16777219"
+      description="Initial PM flux amplitude of the fundamental harmonic [V*s]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.1151"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 5 -->
+    <ScalarVariable
+      name="NPP"
+      valueReference="16777220"
+      description="Number of pole pairs [-]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="3"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 6 -->
+    <ScalarVariable
+      name="Jrotor"
+      valueReference="16777221"
+      description="Rotor&#39;s intertia [kg*m2]"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="J.s2.rad-1"
+        start="0.000515"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 7 -->
+    <ScalarVariable
+      name="B"
+      valueReference="16777222"
+      description="Friction coefficient [-]"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="J.s.rad-1"
+        start="0.0001"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 8 -->
+    <ScalarVariable
+      name="Ts"
+      valueReference="16777223"
+      description="Step size of the internal delay block (if used) [s]"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="s"
+        start="0.0002"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 9 -->
+    <ScalarVariable
+      name="TsRef"
+      valueReference="16777224"
+      description="Reference temperature of the rotor (PM) [degC]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="22"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 10 -->
+    <ScalarVariable
+      name="TrRef"
+      valueReference="16777225"
+      description="Reference temperature of the stator [degC]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="22"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 11 -->
+    <ScalarVariable
+      name="alpha_s"
+      valueReference="16777226"
+      description="Stator resistance temperature coefficient [1/degC]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.004"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 12 -->
+    <ScalarVariable
+      name="d_magnet"
+      valueReference="16777227"
+      description="Magnets temperature coefficient [1/degC]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.00206"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 13 -->
+    <ScalarVariable
+      name="Rsa_aux"
+      valueReference="16777228"
+      description="Additional stator winding resistance, phase a [Ohm]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 14 -->
+    <ScalarVariable
+      name="Rsb_aux"
+      valueReference="16777229"
+      description="Additional stator winding resistance, phase b [Ohm]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 15 -->
+    <ScalarVariable
+      name="Rsc_aux"
+      valueReference="16777230"
+      description="Additional stator winding resistance, phase c [Ohm]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="3"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 16 -->
+    <ScalarVariable
+      name="flux_harm_enable"
+      valueReference="16777231"
+      description="PM Flux harmonics enable - 0 or 1"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 17 -->
+    <ScalarVariable
+      name="phiPM2"
+      valueReference="16777232"
+      description="Initial PM flux amplitude of 2nd harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0.0008"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 18 -->
+    <ScalarVariable
+      name="phiPM3"
+      valueReference="16777233"
+      description="Initial PM flux amplitude of 3nd harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="1E-10"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 19 -->
+    <ScalarVariable
+      name="phiPM4"
+      valueReference="16777234"
+      description="Initial PM flux amplitude of 4th harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0.0005"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 20 -->
+    <ScalarVariable
+      name="phiPM5"
+      valueReference="16777235"
+      description="Initial PM flux amplitude of 5th harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0.0121"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 21 -->
+    <ScalarVariable
+      name="phiPM6"
+      valueReference="16777236"
+      description="Initial PM flux amplitude of 6th harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="1E-10"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 22 -->
+    <ScalarVariable
+      name="phiPM7"
+      valueReference="16777237"
+      description="Initial PM flux amplitude of 7th harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0.0036"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 23 -->
+    <ScalarVariable
+      name="phiPM8"
+      valueReference="16777238"
+      description="Initial PM flux amplitude of 8th harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="1E-10"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 24 -->
+    <ScalarVariable
+      name="phiPM9"
+      valueReference="16777239"
+      description="Initial PM flux amplitude of 9th harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="1E-10"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 25 -->
+    <ScalarVariable
+      name="phiPM10"
+      valueReference="16777240"
+      description="Initial PM flux amplitude of 10th harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0.0021"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 26 -->
+    <ScalarVariable
+      name="phiPM11"
+      valueReference="16777241"
+      description="Initial PM flux amplitude of 11th harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="1E-10"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 27 -->
+    <ScalarVariable
+      name="phiPM12"
+      valueReference="16777242"
+      description="Initial PM flux amplitude of 12th harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="1E-10"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 28 -->
+    <ScalarVariable
+      name="phiPM13"
+      valueReference="16777243"
+      description="Initial PM flux amplitude of 13th harmonic [V*s]"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0.0043"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 29 -->
+    <ScalarVariable
+      name="Ls_Sat_enable"
+      valueReference="16777244"
+      description="Stator inductance saturation enable - 0 or 1"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 30 -->
+    <ScalarVariable
+      name="I_pk0"
+      valueReference="16777245"
+      description="Stator inductance LUT input coefficient [A]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 31 -->
+    <ScalarVariable
+      name="I_pk1"
+      valueReference="16777246"
+      description="Stator inductance LUT input coefficient [A]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 32 -->
+    <ScalarVariable
+      name="I_pk2"
+      valueReference="16777247"
+      description="Stator inductance LUT input coefficient [A]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 33 -->
+    <ScalarVariable
+      name="I_pk3"
+      valueReference="16777248"
+      description="Stator inductance LUT input coefficient [A]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="3"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 34 -->
+    <ScalarVariable
+      name="I_pk4"
+      valueReference="16777249"
+      description="Stator inductance LUT input coefficient [A]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="4"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 35 -->
+    <ScalarVariable
+      name="I_pk5"
+      valueReference="16777250"
+      description="Stator inductance LUT input coefficient [A]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 36 -->
+    <ScalarVariable
+      name="I_pk6"
+      valueReference="16777251"
+      description="Stator inductance LUT input coefficient [A]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="6"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 37 -->
+    <ScalarVariable
+      name="I_pk7"
+      valueReference="16777252"
+      description="Stator inductance LUT input coefficient [A]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="7"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 38 -->
+    <ScalarVariable
+      name="Ld_a0"
+      valueReference="16777253"
+      description="Stator inductance LUT coefficient to estimate Ld = f(id) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02117"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 39 -->
+    <ScalarVariable
+      name="Ld_a1"
+      valueReference="16777254"
+      description="Stator inductance LUT coefficient to estimate Ld = f(id) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02117"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 40 -->
+    <ScalarVariable
+      name="Ld_a2"
+      valueReference="16777255"
+      description="Stator inductance LUT coefficient to estimate Ld = f(id) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02117"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 41 -->
+    <ScalarVariable
+      name="Ld_a3"
+      valueReference="16777256"
+      description="Stator inductance LUT coefficient to estimate Ld = f(id) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02117"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 42 -->
+    <ScalarVariable
+      name="Ld_a4"
+      valueReference="16777257"
+      description="Stator inductance LUT coefficient to estimate Ld = f(id) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02117"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 43 -->
+    <ScalarVariable
+      name="Ld_a5"
+      valueReference="16777258"
+      description="Stator inductance LUT coefficient to estimate Ld = f(id) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02117"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 44 -->
+    <ScalarVariable
+      name="Ld_a6"
+      valueReference="16777259"
+      description="Stator inductance LUT coefficient to estimate Ld = f(id) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02117"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 45 -->
+    <ScalarVariable
+      name="Ld_a7"
+      valueReference="16777260"
+      description="Stator inductance LUT coefficient to estimate Ld = f(id) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02117"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 46 -->
+    <ScalarVariable
+      name="Lq_b0"
+      valueReference="16777261"
+      description="Stator inductance LUT coefficient to estimate Lq = f(iq) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02744"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 47 -->
+    <ScalarVariable
+      name="Lq_b1"
+      valueReference="16777262"
+      description="Stator inductance LUT coefficient to estimate Lq = f(iq) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02777"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 48 -->
+    <ScalarVariable
+      name="Lq_b2"
+      valueReference="16777263"
+      description="Stator inductance LUT coefficient to estimate Lq = f(iq) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02742"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 49 -->
+    <ScalarVariable
+      name="Lq_b3"
+      valueReference="16777264"
+      description="Stator inductance LUT coefficient to estimate Lq = f(iq) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02646"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 50 -->
+    <ScalarVariable
+      name="Lq_b4"
+      valueReference="16777265"
+      description="Stator inductance LUT coefficient to estimate Lq = f(iq) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02426"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 51 -->
+    <ScalarVariable
+      name="Lq_b5"
+      valueReference="16777266"
+      description="Stator inductance LUT coefficient to estimate Lq = f(iq) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02329"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 52 -->
+    <ScalarVariable
+      name="Lq_b6"
+      valueReference="16777267"
+      description="Stator inductance LUT coefficient to estimate Lq = f(iq) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02241"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 53 -->
+    <ScalarVariable
+      name="Lq_b7"
+      valueReference="16777268"
+      description="Stator inductance LUT coefficient to estimate Lq = f(iq) [H]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.02241"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 54 -->
+    <ScalarVariable
+      name="Rot_Loss_enable"
+      valueReference="16777269"
+      description="Rotational losses calculation enable - 0 or 1"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 55 -->
+    <ScalarVariable
+      name="Rot_Loss_omega_th"
+      valueReference="16777270"
+      description="Rotational losses calculation speed threshold [rad/s]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="10"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 56 -->
+    <ScalarVariable
+      name="Rot_Loss_Speed0"
+      valueReference="16777271"
+      description="Rotational losses LUT input coefficient [RPM]"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="rad/s"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 57 -->
+    <ScalarVariable
+      name="Rot_Loss_Speed1"
+      valueReference="16777272"
+      description="Rotational losses LUT input coefficient [RPM]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="500"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 58 -->
+    <ScalarVariable
+      name="Rot_Loss_Speed2"
+      valueReference="16777273"
+      description="Rotational losses LUT input coefficient [RPM]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="3000"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 59 -->
+    <ScalarVariable
+      name="Rot_Loss_Speed3"
+      valueReference="16777274"
+      description="Rotational losses LUT input coefficient [RPM]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="4000"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 60 -->
+    <ScalarVariable
+      name="Rot_Loss_Speed4"
+      valueReference="16777275"
+      description="Rotational losses LUT input coefficient [RPM]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="5000"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 61 -->
+    <ScalarVariable
+      name="Rot_Loss_Speed5"
+      valueReference="16777276"
+      description="Rotational losses LUT input coefficient [RPM]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="7000"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 62 -->
+    <ScalarVariable
+      name="Rot_Loss_Speed6"
+      valueReference="16777277"
+      description="Rotational losses LUT input coefficient [RPM]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="12000"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 63 -->
+    <ScalarVariable
+      name="Rot_Loss_Speed7"
+      valueReference="16777278"
+      description="Rotational losses LUT input coefficient [RPM]"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="rad/s"
+        start="18000"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 64 -->
+    <ScalarVariable
+      name="Rot_Loss_Power0"
+      valueReference="16777279"
+      description="Rotational losses LUT coefficient to estimate power_rot_loss = f(speed) [W]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 65 -->
+    <ScalarVariable
+      name="Rot_Loss_Power1"
+      valueReference="16777280"
+      description="Rotational losses LUT coefficient to estimate power_rot_loss = f(speed) [W]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 66 -->
+    <ScalarVariable
+      name="Rot_Loss_Power2"
+      valueReference="16777281"
+      description="Rotational losses LUT coefficient to estimate power_rot_loss = f(speed) [W]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="12"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 67 -->
+    <ScalarVariable
+      name="Rot_Loss_Power3"
+      valueReference="16777282"
+      description="Rotational losses LUT coefficient to estimate power_rot_loss = f(speed) [W]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="19"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 68 -->
+    <ScalarVariable
+      name="Rot_Loss_Power4"
+      valueReference="16777283"
+      description="Rotational losses LUT coefficient to estimate power_rot_loss = f(speed) [W]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="26"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 69 -->
+    <ScalarVariable
+      name="Rot_Loss_Power5"
+      valueReference="16777284"
+      description="Rotational losses LUT coefficient to estimate power_rot_loss = f(speed) [W]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="35"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 70 -->
+    <ScalarVariable
+      name="Rot_Loss_Power6"
+      valueReference="16777285"
+      description="Rotational losses LUT coefficient to estimate power_rot_loss = f(speed) [W]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="41"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 71 -->
+    <ScalarVariable
+      name="Rot_Loss_Power7"
+      valueReference="16777286"
+      description="Rotational losses LUT coefficient to estimate power_rot_loss = f(speed) [W]"
+      causality="parameter"
+      variability="tunable">
+      <Real start="56"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 72 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rs0"
+      valueReference="100663296"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 73 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rsa_aux"
+      valueReference="100663297"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 74 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rsb_aux"
+      valueReference="100663298"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 75 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rsc_aux"
+      valueReference="100663299"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 76 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ld0"
+      valueReference="100663300"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 77 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Lq0"
+      valueReference="100663301"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 78 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM1"
+      valueReference="100663302"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 79 -->
+    <ScalarVariable
+      name="bPM_motor_complete.NPP"
+      valueReference="100663303"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 80 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Jrotor"
+      valueReference="100663304"
+      variability="tunable">
+      <Real
+        unit="J.s2.rad-1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 81 -->
+    <ScalarVariable
+      name="bPM_motor_complete.B"
+      valueReference="100663305"
+      variability="tunable">
+      <Real
+        unit="J.s.rad-1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 82 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ts"
+      valueReference="100663306"
+      variability="tunable">
+      <Real
+        unit="s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 83 -->
+    <ScalarVariable
+      name="bPM_motor_complete.TsRef"
+      valueReference="100663307"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 84 -->
+    <ScalarVariable
+      name="bPM_motor_complete.TrRef"
+      valueReference="100663308"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 85 -->
+    <ScalarVariable
+      name="bPM_motor_complete.alpha_s"
+      valueReference="100663309"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 86 -->
+    <ScalarVariable
+      name="bPM_motor_complete.d_magnet"
+      valueReference="100663310"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 87 -->
+    <ScalarVariable
+      name="bPM_motor_complete.flux_harm_enable"
+      valueReference="100663311"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 88 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM2"
+      valueReference="100663312"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 89 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM3"
+      valueReference="100663313"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 90 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM4"
+      valueReference="100663314"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 91 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM5"
+      valueReference="100663315"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 92 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM6"
+      valueReference="100663316"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 93 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM7"
+      valueReference="100663317"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 94 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM8"
+      valueReference="100663318"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 95 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM9"
+      valueReference="100663319"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 96 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM10"
+      valueReference="100663320"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 97 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM11"
+      valueReference="100663321"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 98 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM12"
+      valueReference="100663322"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 99 -->
+    <ScalarVariable
+      name="bPM_motor_complete.phiPM13"
+      valueReference="100663323"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 100 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ls_Sat_enable"
+      valueReference="100663324"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 101 -->
+    <ScalarVariable
+      name="bPM_motor_complete.I_pk0"
+      valueReference="100663325"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 102 -->
+    <ScalarVariable
+      name="bPM_motor_complete.I_pk1"
+      valueReference="100663326"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 103 -->
+    <ScalarVariable
+      name="bPM_motor_complete.I_pk2"
+      valueReference="100663327"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 104 -->
+    <ScalarVariable
+      name="bPM_motor_complete.I_pk3"
+      valueReference="100663328"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 105 -->
+    <ScalarVariable
+      name="bPM_motor_complete.I_pk4"
+      valueReference="100663329"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 106 -->
+    <ScalarVariable
+      name="bPM_motor_complete.I_pk5"
+      valueReference="100663330"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 107 -->
+    <ScalarVariable
+      name="bPM_motor_complete.I_pk6"
+      valueReference="100663331"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 108 -->
+    <ScalarVariable
+      name="bPM_motor_complete.I_pk7"
+      valueReference="100663332"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 109 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ld_a0"
+      valueReference="100663333"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 110 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ld_a1"
+      valueReference="100663334"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 111 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ld_a2"
+      valueReference="100663335"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 112 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ld_a3"
+      valueReference="100663336"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 113 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ld_a4"
+      valueReference="100663337"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 114 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ld_a5"
+      valueReference="100663338"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 115 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ld_a6"
+      valueReference="100663339"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 116 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Ld_a7"
+      valueReference="100663340"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 117 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Lq_b0"
+      valueReference="100663341"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 118 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Lq_b1"
+      valueReference="100663342"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 119 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Lq_b2"
+      valueReference="100663343"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 120 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Lq_b3"
+      valueReference="100663344"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 121 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Lq_b4"
+      valueReference="100663345"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 122 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Lq_b5"
+      valueReference="100663346"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 123 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Lq_b6"
+      valueReference="100663347"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 124 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Lq_b7"
+      valueReference="100663348"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 125 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_enable"
+      valueReference="100663349"
+      variability="tunable">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 126 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Speed0"
+      valueReference="100663350"
+      variability="tunable">
+      <Real
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 127 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Speed1"
+      valueReference="100663351"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 128 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Speed2"
+      valueReference="100663352"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 129 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Speed3"
+      valueReference="100663353"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 130 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Speed4"
+      valueReference="100663354"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 131 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Speed5"
+      valueReference="100663355"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 132 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Speed6"
+      valueReference="100663356"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 133 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Speed7"
+      valueReference="100663357"
+      variability="tunable">
+      <Real
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 134 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Power0"
+      valueReference="100663358"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 135 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Power1"
+      valueReference="100663359"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 136 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Power2"
+      valueReference="100663360"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 137 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Power3"
+      valueReference="100663361"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 138 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Power4"
+      valueReference="100663362"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 139 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Power5"
+      valueReference="100663363"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 140 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Power6"
+      valueReference="100663364"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 141 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_Power7"
+      valueReference="100663365"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 142 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Rot_Loss_omega_th"
+      valueReference="100663366"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 143 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.Rs0"
+      valueReference="100663367"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 144 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.Ld0"
+      valueReference="100663368"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 145 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.Lq0"
+      valueReference="100663369"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 146 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM1"
+      valueReference="100663370"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 147 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.NPP"
+      valueReference="100663371"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 148 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.flux_harm_enable"
+      valueReference="100663372"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 149 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM2"
+      valueReference="100663373"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 150 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM3"
+      valueReference="100663374"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 151 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM4"
+      valueReference="100663375"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 152 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM5"
+      valueReference="100663376"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 153 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM6"
+      valueReference="100663377"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 154 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM7"
+      valueReference="100663378"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 155 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM8"
+      valueReference="100663379"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 156 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM9"
+      valueReference="100663380"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 157 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM10"
+      valueReference="100663381"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 158 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM11"
+      valueReference="100663382"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 159 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM12"
+      valueReference="100663383"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 160 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phiPM13"
+      valueReference="100663384"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 161 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.vs_de_DQ"
+      valueReference="369098841">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 162 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.vs_qe_DQ"
+      valueReference="369098842">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 163 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.vs_ne_DQ"
+      valueReference="369098843">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 164 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.k_phiPM1"
+      valueReference="369098844">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 165 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phis_de_DQ"
+      valueReference="369098845">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 166 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phis_qe_DQ"
+      valueReference="369098846">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 167 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.phis_ne_DQ"
+      valueReference="100663391"
+      variability="constant">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 168 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.ia_DQ"
+      valueReference="335544320">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 169 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.ib_DQ"
+      valueReference="335544321">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 170 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.ic_DQ"
+      valueReference="335544322">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 171 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.is_de_DQ"
+      valueReference="33554432"
+      initial="exact">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 172 -->
+    <ScalarVariable
+      name="der(bPM_motor_complete.bpm_core_model.is_de_DQ)"
+      valueReference="587202560">
+      <Real derivative="171"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 173 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.is_qe_DQ"
+      valueReference="33554433"
+      initial="exact">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 174 -->
+    <ScalarVariable
+      name="der(bPM_motor_complete.bpm_core_model.is_qe_DQ)"
+      valueReference="587202561">
+      <Real derivative="173"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 175 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.is_ne_DQ"
+      valueReference="100663392"
+      variability="constant">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 176 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.Te_DQ"
+      valueReference="335544323">
+      <Real
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 177 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.Ld_var"
+      valueReference="335544335"
+      variability="discrete">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 178 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.Lq_var"
+      valueReference="335544336"
+      variability="discrete">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 179 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.Rs_var"
+      valueReference="369098849">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 180 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.P_e_abc"
+      valueReference="335544341">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 181 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.P_e_dq"
+      valueReference="335544329">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 182 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.P_j"
+      valueReference="369098850">
+      <Real
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 183 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.i_va"
+      valueReference="369098851">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 184 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.i_vb"
+      valueReference="369098852">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 185 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.i_vc"
+      valueReference="369098853">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 186 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_ia"
+      valueReference="335544320">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 187 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_ib"
+      valueReference="335544321">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 188 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_ic"
+      valueReference="335544322">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 189 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_tau_e"
+      valueReference="335544323">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 190 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.i_Ld_var"
+      valueReference="335544335"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 191 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.i_Lq_var"
+      valueReference="335544336"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 192 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.i_theta_e"
+      valueReference="369098871"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 193 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.i_omega_e"
+      valueReference="637534332"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 194 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.i_k_temp_Rs"
+      valueReference="369098854">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 195 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.i_k_temp_phiPM"
+      valueReference="369098855">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 196 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_id"
+      valueReference="33554432">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 197 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_iq"
+      valueReference="33554433">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 198 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_ea"
+      valueReference="100663400"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 199 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_eb"
+      valueReference="100663401"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 200 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_ec"
+      valueReference="100663402"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 201 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_pe_vi_abc"
+      valueReference="335544341">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 202 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_pj"
+      valueReference="369098850">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 203 -->
+    <ScalarVariable
+      name="bPM_motor_complete.bpm_core_model.o_pe_vi_dq"
+      valueReference="335544329">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 204 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.NPP"
+      valueReference="100663403"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 205 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.Jrotor"
+      valueReference="100663404"
+      variability="tunable">
+      <Real
+        unit="J.s2.rad-1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 206 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.B"
+      valueReference="100663405"
+      variability="tunable">
+      <Real
+        unit="J.s.rad-1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 207 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.omega_m"
+      valueReference="335544324">
+      <Real
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 208 -->
+    <ScalarVariable
+      name="der(bPM_motor_complete.mechanical_Dynamics_flange.omega_m)"
+      valueReference="587202575">
+      <Real
+        unit="rad/s2"
+        derivative="207"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 209 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.omega_e"
+      valueReference="335544325">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 210 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.theta_m"
+      valueReference="335544326">
+      <Real
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 211 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.theta_e"
+      valueReference="335544327">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 212 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.To_i"
+      valueReference="905969774">
+      <Real
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 213 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.To_l"
+      valueReference="905969775">
+      <Real
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 214 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.flange_a.phi"
+      valueReference="369099195"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 215 -->
+    <ScalarVariable
+      name="der(bPM_motor_complete.mechanical_Dynamics_flange.flange_a.phi)"
+      valueReference="335544324"
+      description="der(Absolute rotation angle of flange)">
+      <Real
+        unit="rad/s"
+        derivative="214"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 216 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.flange_a.tau"
+      valueReference="905969776"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 217 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.ite"
+      valueReference="335544323">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 218 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.oomega_m"
+      valueReference="335544324">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 219 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.oomega_e"
+      valueReference="335544325">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 220 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.otheta_m"
+      valueReference="335544326">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 221 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.otheta_e"
+      valueReference="335544327">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 222 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.op_inertia"
+      valueReference="100663409"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W.rad"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 223 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.it_rotloss"
+      valueReference="335544339">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 224 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.ot_shaft"
+      valueReference="335544337">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 225 -->
+    <ScalarVariable
+      name="bPM_motor_complete.mechanical_Dynamics_flange.op_shaft"
+      valueReference="335544338">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 226 -->
+    <ScalarVariable
+      name="bPM_motor_complete.i_temp_stat"
+      valueReference="436207616">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 227 -->
+    <ScalarVariable
+      name="bPM_motor_complete.i_temp_rot"
+      valueReference="436207617">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 228 -->
+    <ScalarVariable
+      name="bPM_motor_complete.i_va"
+      valueReference="436207618">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 229 -->
+    <ScalarVariable
+      name="bPM_motor_complete.i_vb"
+      valueReference="436207619">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 230 -->
+    <ScalarVariable
+      name="bPM_motor_complete.i_vc"
+      valueReference="436207620">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 231 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_ia"
+      valueReference="335544320">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 232 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_ib"
+      valueReference="335544321">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 233 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_ic"
+      valueReference="335544322">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 234 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_tau_e"
+      valueReference="335544323">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 235 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_omega_m"
+      valueReference="335544324">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 236 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_omega_e"
+      valueReference="335544325">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 237 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_theta_m"
+      valueReference="335544326">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 238 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_theta_e"
+      valueReference="335544327">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 239 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_pe_b"
+      valueReference="335544328">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 240 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_pe_dq"
+      valueReference="335544329">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 241 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_ea"
+      valueReference="100663421"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 242 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_eb"
+      valueReference="100663422"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 243 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_ec"
+      valueReference="100663423"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 244 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_id"
+      valueReference="33554432">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 245 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_iq"
+      valueReference="33554433">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 246 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_Ld"
+      valueReference="335544335"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 247 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_Lq"
+      valueReference="335544336"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 248 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_tau_shaft"
+      valueReference="335544337">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 249 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Power_Balance.P_Joule"
+      valueReference="369098850">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 250 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Power_Balance.P_Inertia"
+      valueReference="100663475"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="W.rad"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 251 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Power_Balance.P_RotLoss"
+      valueReference="335544340">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 252 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Power_Balance.P_Shaft"
+      valueReference="335544338">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 253 -->
+    <ScalarVariable
+      name="bPM_motor_complete.Power_Balance.P_total_2"
+      valueReference="335544328">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 254 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_p_shaft"
+      valueReference="335544338">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 255 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_tau_rot_loss"
+      valueReference="335544339">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 256 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_p_rot_loss"
+      valueReference="335544340">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 257 -->
+    <ScalarVariable
+      name="bPM_motor_complete.o_pe_abc"
+      valueReference="335544341">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 258 -->
+    <ScalarVariable
+      name="bPM_motor_complete.flange_a.phi"
+      valueReference="369099195"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 259 -->
+    <ScalarVariable
+      name="bPM_motor_complete.flange_a.tau"
+      valueReference="905969844"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 260 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.Rsa_aux"
+      valueReference="100663482"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 261 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.Rsb_aux"
+      valueReference="100663483"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 262 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.Rsc_aux"
+      valueReference="100663484"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 263 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_n_123"
+      valueReference="369098941">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 264 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_a1"
+      valueReference="369098942">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 265 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_b1"
+      valueReference="369098943">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 266 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_c1"
+      valueReference="369098944">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 267 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_a2"
+      valueReference="369098945">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 268 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_b2"
+      valueReference="369098946">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 269 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_c2"
+      valueReference="369098947">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 270 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_a3"
+      valueReference="369098948">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 271 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_b3"
+      valueReference="369098949">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 272 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_c3"
+      valueReference="369098950">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 273 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_n_0"
+      valueReference="369098951">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 274 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_a0"
+      valueReference="369098952">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 275 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_b0"
+      valueReference="369098953">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 276 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_ph_c0"
+      valueReference="369098954">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 277 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_pole_a"
+      valueReference="436207618">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 278 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_pole_b"
+      valueReference="436207619">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 279 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_pole_c"
+      valueReference="436207620">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 280 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_phase_a"
+      valueReference="369098851">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 281 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_phase_b"
+      valueReference="369098852">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 282 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.v_phase_c"
+      valueReference="369098853">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 283 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.i_phase_a"
+      valueReference="335544320">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 284 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.i_phase_b"
+      valueReference="335544321">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 285 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.i_phase_c"
+      valueReference="335544322">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 286 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_a.nin"
+      valueReference="100663499"
+      description="Number of inputs"
+      variability="constant">
+      <Integer start="4"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 287 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_a.u[1]"
+      valueReference="369098952"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 288 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_a.u[2]"
+      valueReference="369098942"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 289 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_a.u[3]"
+      valueReference="369098945"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 290 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_a.u[4]"
+      valueReference="369098948"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 291 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_a.y"
+      valueReference="369098851"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 292 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_a.allowOutOfRange"
+      valueReference="16777293"
+      description="Index may be out of range"
+      causality="parameter"
+      variability="tunable">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 293 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_a.outOfRangeValue"
+      valueReference="16777294"
+      description="Output signal if index is out of range"
+      causality="parameter"
+      variability="tunable">
+      <Real start="10000000000.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 294 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_a.index"
+      valueReference="369098956"
+      variability="discrete"
+      initial="exact">
+      <Integer
+        declaredType="Modelica.Blocks.Interfaces.IntegerInput"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 295 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_b.nin"
+      valueReference="100663505"
+      description="Number of inputs"
+      variability="constant">
+      <Integer start="4"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 296 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_b.u[1]"
+      valueReference="369098953"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 297 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_b.u[2]"
+      valueReference="369098943"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 298 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_b.u[3]"
+      valueReference="369098946"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 299 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_b.u[4]"
+      valueReference="369098949"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 300 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_b.y"
+      valueReference="369098852"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 301 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_b.allowOutOfRange"
+      valueReference="16777295"
+      description="Index may be out of range"
+      causality="parameter"
+      variability="tunable">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 302 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_b.outOfRangeValue"
+      valueReference="16777296"
+      description="Output signal if index is out of range"
+      causality="parameter"
+      variability="tunable">
+      <Real start="10000000000.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 303 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_b.index"
+      valueReference="369098962"
+      variability="discrete"
+      initial="exact">
+      <Integer
+        declaredType="Modelica.Blocks.Interfaces.IntegerInput"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 304 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_c.nin"
+      valueReference="100663511"
+      description="Number of inputs"
+      variability="constant">
+      <Integer start="4"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 305 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_c.u[1]"
+      valueReference="369098954"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 306 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_c.u[2]"
+      valueReference="369098944"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 307 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_c.u[3]"
+      valueReference="369098947"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 308 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_c.u[4]"
+      valueReference="369098950"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 309 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_c.y"
+      valueReference="369098853"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 310 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_c.allowOutOfRange"
+      valueReference="16777297"
+      description="Index may be out of range"
+      causality="parameter"
+      variability="tunable">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 311 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_c.outOfRangeValue"
+      valueReference="16777298"
+      description="Output signal if index is out of range"
+      causality="parameter"
+      variability="tunable">
+      <Real start="10000000000.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 312 -->
+    <ScalarVariable
+      name="bPM_motor_complete.pole_to_phase.extractor_v_c.index"
+      valueReference="369098968"
+      variability="discrete"
+      initial="exact">
+      <Integer
+        declaredType="Modelica.Blocks.Interfaces.IntegerInput"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 313 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Ld_0"
+      valueReference="100663517"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 314 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Lq_0"
+      valueReference="100663518"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 315 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Lsat_enable"
+      valueReference="100663519"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 316 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Ld_calc"
+      valueReference="369098976"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 317 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Lq_calc"
+      valueReference="369098977"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 318 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.oLd"
+      valueReference="335544335"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 319 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.oLq"
+      valueReference="335544336"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 320 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Ld_fixed.k"
+      valueReference="100663522"
+      description="Constant output value"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 321 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Ld_fixed.y"
+      valueReference="100663522"
+      description="Connector of Real output signal"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 322 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Lq_fixed.k"
+      valueReference="100663523"
+      description="Constant output value"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 323 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Lq_fixed.y"
+      valueReference="100663523"
+      description="Connector of Real output signal"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 324 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Ld.nin"
+      valueReference="100663524"
+      description="Number of inputs"
+      variability="constant">
+      <Integer start="2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 325 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Ld.u[1]"
+      valueReference="100663522"
+      description="Connector of Real input signals"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 326 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Ld.u[2]"
+      valueReference="369098976"
+      description="Connector of Real input signals"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 327 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Ld.y"
+      valueReference="335544335"
+      description="Connector of Real output signal"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 328 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Ld.allowOutOfRange"
+      valueReference="16777299"
+      description="Index may be out of range"
+      causality="parameter"
+      variability="tunable">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 329 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Ld.outOfRangeValue"
+      valueReference="16777300"
+      description="Output signal if index is out of range"
+      causality="parameter"
+      variability="tunable">
+      <Real start="10000000000.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 330 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Ld.index"
+      valueReference="369098981"
+      variability="discrete"
+      initial="exact">
+      <Integer
+        declaredType="Modelica.Blocks.Interfaces.IntegerInput"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 331 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Lq.nin"
+      valueReference="100663528"
+      description="Number of inputs"
+      variability="constant">
+      <Integer start="2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 332 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Lq.u[1]"
+      valueReference="100663523"
+      description="Connector of Real input signals"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 333 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Lq.u[2]"
+      valueReference="369098977"
+      description="Connector of Real input signals"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 334 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Lq.y"
+      valueReference="335544336"
+      description="Connector of Real output signal"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 335 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Lq.allowOutOfRange"
+      valueReference="16777301"
+      description="Index may be out of range"
+      causality="parameter"
+      variability="tunable">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 336 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Lq.outOfRangeValue"
+      valueReference="16777302"
+      description="Output signal if index is out of range"
+      causality="parameter"
+      variability="tunable">
+      <Real start="10000000000.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 337 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.extractor_Lq.index"
+      valueReference="369098985"
+      variability="discrete"
+      initial="exact">
+      <Integer
+        declaredType="Modelica.Blocks.Interfaces.IntegerInput"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 338 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Lsat_enabler_r.k"
+      valueReference="100663532"
+      description="Constant output value"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 339 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.Lsat_enabler_r.y"
+      valueReference="100663532"
+      description="Connector of Real output signal"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 340 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.realToInteger.u"
+      valueReference="100663533"
+      description="Connector of Real input signal"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 341 -->
+    <ScalarVariable
+      name="bPM_motor_complete.ls_sat_enabler.realToInteger.y"
+      valueReference="100663534"
+      description="Connector of Integer output signal"
+      variability="tunable">
+      <Integer
+        declaredType="Modelica.Blocks.Interfaces.IntegerOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 342 -->
+    <ScalarVariable
+      name="o_ia"
+      valueReference="335544320"
+      description="Output current, phase a [A]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 343 -->
+    <ScalarVariable
+      name="o_ib"
+      valueReference="335544321"
+      description="Output current, phase b [A]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 344 -->
+    <ScalarVariable
+      name="o_ic"
+      valueReference="335544322"
+      description="Output current, phase c [A]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 345 -->
+    <ScalarVariable
+      name="o_tau_e"
+      valueReference="335544323"
+      description="Electromagnetic torque [Nm]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 346 -->
+    <ScalarVariable
+      name="o_omega_m"
+      valueReference="335544324"
+      description="Rotor mechanical rotational speed [rad/s]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 347 -->
+    <ScalarVariable
+      name="o_omega_e"
+      valueReference="335544325"
+      description="Rotor electrical rotational speed [rad/s]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 348 -->
+    <ScalarVariable
+      name="o_theta_m"
+      valueReference="335544326"
+      description="Rotor mechanical position [rad]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 349 -->
+    <ScalarVariable
+      name="o_theta_e"
+      valueReference="335544327"
+      description="Rotor electrical position [rad]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 350 -->
+    <ScalarVariable
+      name="o_pe_b"
+      valueReference="335544328"
+      description="Motor total power - calculated using power balance equation [W]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 351 -->
+    <ScalarVariable
+      name="o_pe_dq"
+      valueReference="335544329"
+      description="Motor total power - calculated by v*i in dq coordinates [W]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 352 -->
+    <ScalarVariable
+      name="o_ea"
+      valueReference="67108874"
+      description="Back-electromotive force, phase a [V]"
+      causality="output"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 353 -->
+    <ScalarVariable
+      name="o_eb"
+      valueReference="67108875"
+      description="Back-electromotive force, phase b [V]"
+      causality="output"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 354 -->
+    <ScalarVariable
+      name="o_ec"
+      valueReference="67108876"
+      description="Back-electromotive force, phase c [V]"
+      causality="output"
+      variability="constant">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 355 -->
+    <ScalarVariable
+      name="o_id"
+      valueReference="335544333"
+      description="Output current, axis d [A]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 356 -->
+    <ScalarVariable
+      name="o_iq"
+      valueReference="335544334"
+      description="Output current, axis q [A]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 357 -->
+    <ScalarVariable
+      name="o_Ld"
+      valueReference="335544335"
+      description="(debug output) Stator inductance, axis d [H]"
+      causality="output"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 358 -->
+    <ScalarVariable
+      name="o_Lq"
+      valueReference="335544336"
+      description="(debug output) Stator inductance, axis d [H]"
+      causality="output"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 359 -->
+    <ScalarVariable
+      name="o_tau_shaft"
+      valueReference="335544337"
+      description="Torque delivered to the shaft [Nm]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 360 -->
+    <ScalarVariable
+      name="o_p_shaft"
+      valueReference="335544338"
+      description="Power delivered to the shaft [W]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 361 -->
+    <ScalarVariable
+      name="o_tau_rot_loss"
+      valueReference="335544339"
+      description="Output Rotational Losses torque [Nm]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 362 -->
+    <ScalarVariable
+      name="o_p_rot_loss"
+      valueReference="335544340"
+      description="Output Rotational Losses [W]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="W.rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 363 -->
+    <ScalarVariable
+      name="o_pe_abc"
+      valueReference="335544341"
+      description="Motor total power - calculated by v*i in abc coordinates [W]"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 364 -->
+    <ScalarVariable
+      name="i_temp_stat"
+      valueReference="352321536"
+      description="Stator temperature [degC]"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 365 -->
+    <ScalarVariable
+      name="i_temp_rot"
+      valueReference="352321537"
+      description="Rotor temperature [degC]"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 366 -->
+    <ScalarVariable
+      name="i_va"
+      valueReference="352321538"
+      description="Input voltage, phase a [V]"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 367 -->
+    <ScalarVariable
+      name="i_vb"
+      valueReference="352321539"
+      description="Input voltage, phase b [V]"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 368 -->
+    <ScalarVariable
+      name="i_vc"
+      valueReference="352321540"
+      description="Input voltage, phase c [V]"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 369 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.m_t"
+      valueReference="16777310"
+      description="tub mass"
+      causality="parameter"
+      variability="tunable">
+      <Real start="13.7"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 370 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.m_d"
+      valueReference="16777311"
+      description="drum mass(empty mass+cloth load) Empty mass=15.79 for 5.3cubft"
+      causality="parameter"
+      variability="tunable">
+      <Real start="15.79"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 371 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.m_u"
+      valueReference="16777312"
+      description="unbalance mass"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1E-09"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 372 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.m_b1"
+      valueReference="16777313"
+      description="mass of water ring1"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 373 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.m_b2"
+      valueReference="16777314"
+      description="mass of water ring2"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 374 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.e"
+      valueReference="16777315"
+      description="unbalance radius"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.25349"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 375 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.d"
+      valueReference="16777316"
+      description="balance ring radius"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.266"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 376 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.I_zt"
+      valueReference="16777317"
+      description="tub inertia"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.65004"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 377 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.K"
+      valueReference="16777318"
+      description="spring Co-efficient(N/m)"
+      causality="parameter"
+      variability="tunable">
+      <Real start="2700"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 378 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Cd"
+      valueReference="16777319"
+      description="Damping Coefficient"
+      causality="parameter"
+      variability="tunable">
+      <Real start="80"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 379 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.T_f"
+      valueReference="16777320"
+      description="friction torque"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 380 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.C_b1"
+      valueReference="16777321"
+      description="viscous drag co-efficient of water ring1"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 381 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.C_b2"
+      valueReference="16777322"
+      description="viscous drag co-efficient of water ring2"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 382 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.D_r"
+      valueReference="16777323"
+      description="viscous drag co-efficient of machine shaft"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.016"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 383 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.TR"
+      valueReference="16777324"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 384 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[1,1]"
+      valueReference="16777325"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.2237"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 385 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[1,2]"
+      valueReference="16777326"
+      causality="parameter"
+      variability="tunable">
+      <Real start="-0.2215"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 386 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[1,3]"
+      valueReference="16777327"
+      causality="parameter"
+      variability="tunable">
+      <Real start="-0.2214"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 387 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[1,4]"
+      valueReference="16777328"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.2135"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 388 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[2,1]"
+      valueReference="16777329"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.2252"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 389 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[2,2]"
+      valueReference="16777330"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.225"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 390 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[2,3]"
+      valueReference="16777331"
+      causality="parameter"
+      variability="tunable">
+      <Real start="-0.2298"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 391 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[2,4]"
+      valueReference="16777332"
+      causality="parameter"
+      variability="tunable">
+      <Real start="-0.2199"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 392 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[3,1]"
+      valueReference="16777333"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.06633"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 393 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[3,2]"
+      valueReference="16777334"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.06554"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 394 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[3,3]"
+      valueReference="16777335"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.0629"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 395 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_d[3,4]"
+      valueReference="16777336"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.06111"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 396 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[1,1]"
+      valueReference="16777337"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.3985"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 397 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[1,2]"
+      valueReference="16777338"
+      causality="parameter"
+      variability="tunable">
+      <Real start="-0.3985"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 398 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[1,3]"
+      valueReference="16777339"
+      causality="parameter"
+      variability="tunable">
+      <Real start="-0.3985"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 399 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[1,4]"
+      valueReference="16777340"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.3985"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 400 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[2,1]"
+      valueReference="16777341"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.3985"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 401 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[2,2]"
+      valueReference="16777342"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.3985"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 402 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[2,3]"
+      valueReference="16777343"
+      causality="parameter"
+      variability="tunable">
+      <Real start="-0.3985"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 403 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[2,4]"
+      valueReference="16777344"
+      causality="parameter"
+      variability="tunable">
+      <Real start="-0.3985"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 404 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[3,1]"
+      valueReference="16777345"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.87027"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 405 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[3,2]"
+      valueReference="16777346"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.87027"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 406 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[3,3]"
+      valueReference="16777347"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.87027"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 407 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.S_u[3,4]"
+      valueReference="16777348"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.87027"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 408 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.I_zd"
+      valueReference="100663629"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 409 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.x"
+      valueReference="33554434"
+      initial="exact">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 410 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.x)"
+      valueReference="587202562">
+      <Real derivative="409"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 411 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.y"
+      valueReference="33554435"
+      initial="exact">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 412 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.y)"
+      valueReference="587202563">
+      <Real derivative="411"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 413 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.xdot"
+      valueReference="33554436"
+      initial="exact">
+      <Real start="0.0"
+        derivative="409"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 414 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.xdot)"
+      valueReference="587202564">
+      <Real derivative="413"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 415 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.ydot"
+      valueReference="33554437"
+      initial="exact">
+      <Real start="0.0"
+        derivative="411"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 416 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.ydot)"
+      valueReference="587202565">
+      <Real derivative="415"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 417 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.theta"
+      valueReference="33554438"
+      initial="exact">
+      <Real
+        unit="rad"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 418 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.theta)"
+      valueReference="587202566">
+      <Real
+        unit="rad/s"
+        derivative="417"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 419 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.gamma"
+      valueReference="33554439"
+      initial="exact">
+      <Real
+        unit="rad"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 420 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.gamma)"
+      valueReference="587202567">
+      <Real
+        unit="rad/s"
+        derivative="419"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 421 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.phi1"
+      valueReference="33554440"
+      initial="exact">
+      <Real
+        unit="rad"
+        start="2.0944"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 422 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.phi1)"
+      valueReference="587202568">
+      <Real
+        unit="rad/s"
+        derivative="421"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 423 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.phi2"
+      valueReference="33554441"
+      initial="exact">
+      <Real
+        unit="rad"
+        start="4.1888"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 424 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.phi2)"
+      valueReference="587202569">
+      <Real
+        unit="rad/s"
+        derivative="423"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 425 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.thetadot"
+      valueReference="33554442"
+      initial="exact">
+      <Real
+        unit="rad/s"
+        start="0.0"
+        derivative="417"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 426 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.thetadot)"
+      valueReference="587202570">
+      <Real
+        unit="rad/s2"
+        derivative="425"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 427 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.gammadot"
+      valueReference="33554443"
+      initial="exact">
+      <Real
+        unit="rad/s"
+        start="0.0"
+        derivative="419"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 428 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.gammadot)"
+      valueReference="587202571">
+      <Real
+        unit="rad/s2"
+        derivative="427"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 429 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.phi1dot"
+      valueReference="33554444"
+      initial="exact">
+      <Real
+        unit="rad/s"
+        start="0.0"
+        derivative="421"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 430 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.phi1dot)"
+      valueReference="587202572">
+      <Real
+        unit="rad/s2"
+        derivative="429"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 431 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.phi2dot"
+      valueReference="33554445"
+      initial="exact">
+      <Real
+        unit="rad/s"
+        start="0.0"
+        derivative="423"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 432 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.phi2dot)"
+      valueReference="587202573">
+      <Real
+        unit="rad/s2"
+        derivative="431"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 433 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Rd"
+      valueReference="100663630"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 434 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[1,1]"
+      valueReference="100663631"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 435 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[1,2]"
+      valueReference="100663632"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 436 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[1,3]"
+      valueReference="637534545">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 437 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[1,4]"
+      valueReference="637534546">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 438 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[1,5]"
+      valueReference="637534547">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 439 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[1,6]"
+      valueReference="637534548">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 440 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[2,1]"
+      valueReference="100663637"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 441 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[2,2]"
+      valueReference="100663638"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 442 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[2,3]"
+      valueReference="637534551">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 443 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[2,4]"
+      valueReference="637534552">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 444 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[2,5]"
+      valueReference="637534553">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 445 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[2,6]"
+      valueReference="637534554">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 446 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[3,1]"
+      valueReference="637534555">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 447 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[3,2]"
+      valueReference="637534556">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 448 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[3,3]"
+      valueReference="100663645"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 449 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[3,4]"
+      valueReference="100663646"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 450 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[3,5]"
+      valueReference="100663647"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 451 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[3,6]"
+      valueReference="100663648"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 452 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[4,1]"
+      valueReference="637534561">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 453 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[4,2]"
+      valueReference="637534562">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 454 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[4,3]"
+      valueReference="100663651"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 455 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[4,4]"
+      valueReference="100663652"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 456 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[4,5]"
+      valueReference="100663653"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 457 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[4,6]"
+      valueReference="100663654"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 458 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[5,1]"
+      valueReference="637534567">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 459 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[5,2]"
+      valueReference="637534568">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 460 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[5,3]"
+      valueReference="100663657"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 461 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[5,4]"
+      valueReference="100663658"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 462 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[5,5]"
+      valueReference="100663659"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 463 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[5,6]"
+      valueReference="100663660"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 464 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[6,1]"
+      valueReference="637534573">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 465 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[6,2]"
+      valueReference="637534574">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 466 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[6,3]"
+      valueReference="100663663"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 467 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[6,4]"
+      valueReference="100663664"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 468 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[6,5]"
+      valueReference="100663665"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 469 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.M[6,6]"
+      valueReference="100663666"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 470 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.R[1]"
+      valueReference="637534579">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 471 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.R[2]"
+      valueReference="637534580">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 472 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.R[3]"
+      valueReference="100663669"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 473 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.R[4]"
+      valueReference="100663670"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 474 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.R[5]"
+      valueReference="100663671"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 475 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.R[6]"
+      valueReference="100663672"
+      variability="constant">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 476 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Q[1]"
+      valueReference="637534585">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 477 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Q[2]"
+      valueReference="637534586">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 478 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Q[3]"
+      valueReference="637534587">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 479 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Q[4]"
+      valueReference="637534588">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 480 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Q[5]"
+      valueReference="637534589">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 481 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Q[6]"
+      valueReference="637534590">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 482 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Z[1]"
+      valueReference="587202564">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 483 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Z[2]"
+      valueReference="587202565">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 484 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Z[3]"
+      valueReference="637534591">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 485 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Z[4]"
+      valueReference="637534592">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 486 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Z[5]"
+      valueReference="637534593">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 487 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Z[6]"
+      valueReference="637534594">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 488 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[1,1]"
+      valueReference="637534595">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 489 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[1,2]"
+      valueReference="637534596">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 490 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[1,3]"
+      valueReference="637534597">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 491 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[1,4]"
+      valueReference="637534598">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 492 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[2,1]"
+      valueReference="637534599">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 493 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[2,2]"
+      valueReference="637534600">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 494 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[2,3]"
+      valueReference="637534601">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 495 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[2,4]"
+      valueReference="637534602">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 496 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[3,1]"
+      valueReference="637534603">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 497 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[3,2]"
+      valueReference="637534604">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 498 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[3,3]"
+      valueReference="637534605">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 499 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fs[3,4]"
+      valueReference="637534606">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 500 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[1,1]"
+      valueReference="637534607">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 501 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[1,2]"
+      valueReference="637534608">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 502 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[1,3]"
+      valueReference="637534609">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 503 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[1,4]"
+      valueReference="637534610">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 504 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[2,1]"
+      valueReference="637534611">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 505 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[2,2]"
+      valueReference="637534612">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 506 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[2,3]"
+      valueReference="637534613">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 507 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[2,4]"
+      valueReference="637534614">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 508 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[3,1]"
+      valueReference="637534615">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 509 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[3,2]"
+      valueReference="637534616">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 510 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[3,3]"
+      valueReference="637534617">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 511 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Fd[3,4]"
+      valueReference="637534618">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 512 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[1,1]"
+      valueReference="637534619">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 513 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[1,2]"
+      valueReference="637534620">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 514 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[1,3]"
+      valueReference="637534621">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 515 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[1,4]"
+      valueReference="637534622">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 516 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[2,1]"
+      valueReference="637534623">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 517 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[2,2]"
+      valueReference="637534624">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 518 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[2,3]"
+      valueReference="637534625">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 519 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[2,4]"
+      valueReference="637534626">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 520 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[3,1]"
+      valueReference="637534627">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 521 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[3,2]"
+      valueReference="637534628">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 522 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[3,3]"
+      valueReference="637534629">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 523 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.F[3,4]"
+      valueReference="637534630">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 524 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Mv[1]"
+      valueReference="637534631">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 525 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Mv[2]"
+      valueReference="637534632">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 526 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Mv[3]"
+      valueReference="637534633">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 527 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Mv[4]"
+      valueReference="637534634">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 528 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Dr"
+      valueReference="637534635"
+      variability="discrete">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 529 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Tf"
+      valueReference="637534636"
+      variability="discrete">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 530 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.v1"
+      valueReference="905970093">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 531 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.v2"
+      valueReference="905970094">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 532 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.v3"
+      valueReference="905970095">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 533 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Cd1"
+      valueReference="637534640"
+      variability="discrete">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 534 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.l0[1]"
+      valueReference="637534641">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 535 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.l0[2]"
+      valueReference="637534642">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 536 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.l0[3]"
+      valueReference="637534643">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 537 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.l0[4]"
+      valueReference="637534644">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 538 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.lt[1]"
+      valueReference="637534645">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 539 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.lt[2]"
+      valueReference="637534646">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 540 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.lt[3]"
+      valueReference="637534647">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 541 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.lt[4]"
+      valueReference="637534648">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 542 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Rd1"
+      valueReference="100663737"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 543 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Tm"
+      valueReference="335544323">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 544 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.Basketspeed"
+      valueReference="905970112">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 545 -->
+    <ScalarVariable
+      name="der(VA_Spin_Planar_Mechanics.Basketspeed)"
+      valueReference="587202575">
+      <Real
+        unit="rad/s2"
+        derivative="544"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 546 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.BasketAceleration"
+      valueReference="587202575">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 547 -->
+    <ScalarVariable
+      name="VA_Spin_Planar_Mechanics.PrevBasketSpeed_radPerSec"
+      valueReference="637534657"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 548 -->
+    <ScalarVariable
+      name="accelerate.flange.phi"
+      valueReference="369099195"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 549 -->
+    <ScalarVariable
+      name="accelerate.flange.tau"
+      valueReference="905970108"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 550 -->
+    <ScalarVariable
+      name="accelerate.phi"
+      valueReference="33554446"
+      description="Rotation angle of flange with respect to support"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 551 -->
+    <ScalarVariable
+      name="der(accelerate.phi)"
+      valueReference="587202574"
+      description="der(Rotation angle of flange with respect to support)">
+      <Real
+        unit="rad/s"
+        derivative="550"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 552 -->
+    <ScalarVariable
+      name="accelerate.w"
+      valueReference="33554447"
+      description="Angular velocity of flange with respect to support">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"
+        derivative="550"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 553 -->
+    <ScalarVariable
+      name="der(accelerate.w)"
+      valueReference="587202575"
+      description="der(Angular velocity of flange with respect to support)">
+      <Real
+        unit="rad/s2"
+        derivative="552"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 554 -->
+    <ScalarVariable
+      name="accelerate.a"
+      valueReference="587202575"
+      description="Angular acceleration of flange with respect to support">
+      <Real
+        declaredType="Modelica.SIunits.AngularAcceleration"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 555 -->
+    <ScalarVariable
+      name="accelerate.a_ref"
+      valueReference="587202575"
+      description="Absolute angular acceleration of flange with respect to support as input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 556 -->
+    <ScalarVariable
+      name="unitDelay.y_start"
+      valueReference="16777349"
+      description="Initial value of output signal"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        unit="rad/s"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 557 -->
+    <ScalarVariable
+      name="unitDelay.samplePeriod"
+      valueReference="16777350"
+      description="Sample period of component"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Time"
+        min="1E-13"
+        start="0.001"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 558 -->
+    <ScalarVariable
+      name="unitDelay.startTime"
+      valueReference="16777351"
+      description="First sample time instant"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Time"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 559 -->
+    <ScalarVariable
+      name="unitDelay.u"
+      valueReference="905970112"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 560 -->
+    <ScalarVariable
+      name="unitDelay.y"
+      valueReference="637534657"
+      description="Connector of Real output signal"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="342"
+        dependencies="171 173"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="343"
+        dependencies="171 173"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="344"
+        dependencies="171 173"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="345"
+        dependencies="171 173 365"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="346"
+        dependencies="552"
+        dependenciesKind="fixed"/>
+      <Unknown index="347"
+        dependencies="552"
+        dependenciesKind="fixed"/>
+      <Unknown index="348"
+        dependencies="550"
+        dependenciesKind="fixed"/>
+      <Unknown index="349"
+        dependencies="550"
+        dependenciesKind="fixed"/>
+      <Unknown index="350"
+        dependencies="171 173 364 365 552"
+        dependenciesKind="dependent dependent fixed fixed dependent"/>
+      <Unknown index="351"
+        dependencies="171 173 366 367 368"
+        dependenciesKind="dependent dependent fixed fixed fixed"/>
+      <Unknown index="352"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="353"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="354"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="355"
+        dependencies="171"
+        dependenciesKind="fixed"/>
+      <Unknown index="356"
+        dependencies="173"
+        dependenciesKind="fixed"/>
+      <Unknown index="357"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="358"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="359"
+        dependencies="171 173 365 552"
+        dependenciesKind="dependent dependent fixed dependent"/>
+      <Unknown index="360"
+        dependencies="171 173 365 552"
+        dependenciesKind="dependent dependent fixed dependent"/>
+      <Unknown index="361"
+        dependencies="552"
+        dependenciesKind="dependent"/>
+      <Unknown index="362"
+        dependencies="552"
+        dependenciesKind="dependent"/>
+      <Unknown index="363"
+        dependencies="171 173 366 367 368"
+        dependenciesKind="dependent dependent fixed fixed fixed"/>
+    </Outputs>
+    <Derivatives>
+      <Unknown index="172"
+        dependencies="171 173 364 366 367 368"
+        dependenciesKind="dependent dependent fixed fixed fixed fixed"/>
+      <Unknown index="174"
+        dependencies="171 173 364 365 366 367 368"
+        dependenciesKind="dependent dependent fixed fixed fixed fixed fixed"/>
+      <Unknown index="410"
+        dependencies="413"
+        dependenciesKind="fixed"/>
+      <Unknown index="412"
+        dependencies="415"
+        dependenciesKind="fixed"/>
+      <Unknown index="414"
+        dependencies="171 173 365 409 411 413 415 417 419 421 423 425 427 429 431"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="416"
+        dependencies="171 173 365 409 411 413 415 417 419 421 423 425 427 429 431"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="418"
+        dependencies="425"
+        dependenciesKind="fixed"/>
+      <Unknown index="420"
+        dependencies="427"
+        dependenciesKind="fixed"/>
+      <Unknown index="422"
+        dependencies="429"
+        dependenciesKind="fixed"/>
+      <Unknown index="424"
+        dependencies="431"
+        dependenciesKind="fixed"/>
+      <Unknown index="426"
+        dependencies="171 173 365 409 411 413 415 417 419 421 423 425 427 429 431"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="428"
+        dependencies="171 173 365 409 411 413 415 417 419 421 423 425 427 429 431"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="430"
+        dependencies="171 173 365 409 411 413 415 417 419 421 423 425 427 429 431"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="432"
+        dependencies="171 173 365 409 411 413 415 417 419 421 423 425 427 429 431"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="551"
+        dependencies="552"
+        dependenciesKind="fixed"/>
+      <Unknown index="553"
+        dependencies="171 173 365 409 411 413 415 417 419 421 423 425 427 429 431"
+        dependenciesKind="dependent dependent fixed dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+    </Derivatives>
+    <InitialUnknowns>
+      <Unknown index="172"
+        dependencies="1 2 3 9 11 13 14 15 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 171 173 292 293 301 302 310 311 328 329 335 336 364 366 367 368"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="174"
+        dependencies="1 2 3 4 9 10 11 12 13 14 15 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 171 173 292 293 301 302 310 311 328 329 335 336 364 365 366 367 368"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="342"
+        dependencies="171 173"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="343"
+        dependencies="171 173"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="344"
+        dependencies="171 173"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="345"
+        dependencies="2 3 4 5 10 12 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 171 173 328 329 335 336 365"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="346"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="347"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="348"
+        dependencies="550"
+        dependenciesKind="dependent"/>
+      <Unknown index="349"
+        dependencies="5 550"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="350"
+        dependencies="1 9 11 54 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 171 173 364"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="351"
+        dependencies="13 14 15 171 173 292 293 301 302 310 311 366 367 368"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="352"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="353"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="354"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="355"
+        dependencies="171"
+        dependenciesKind="dependent"/>
+      <Unknown index="356"
+        dependencies="173"
+        dependenciesKind="dependent"/>
+      <Unknown index="357"
+        dependencies="2 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 328 329"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="358"
+        dependencies="3 29 30 31 32 33 34 35 36 37 46 47 48 49 50 51 52 53 335 336"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="359"
+        dependencies="2 3 4 5 10 12 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 171 173 328 329 335 336 365"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="360"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="361"
+        dependencies="54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="362"
+        dependencies="54 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="363"
+        dependencies="13 14 15 171 173 292 293 301 302 310 311 366 367 368"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="410"
+        dependencies="413"
+        dependenciesKind="dependent"/>
+      <Unknown index="412"
+        dependencies="415"
+        dependenciesKind="dependent"/>
+      <Unknown index="414"
+        dependencies="2 3 4 5 10 12 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 171 173 328 329 335 336 365 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 407 409 411 413 415 417 419 421 423 425 427 429 431 556"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="416"
+        dependencies="2 3 4 5 10 12 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 171 173 328 329 335 336 365 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 407 409 411 413 415 417 419 421 423 425 427 429 431 556"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="418"
+        dependencies="425"
+        dependenciesKind="dependent"/>
+      <Unknown index="420"
+        dependencies="427"
+        dependenciesKind="dependent"/>
+      <Unknown index="422"
+        dependencies="429"
+        dependenciesKind="dependent"/>
+      <Unknown index="424"
+        dependencies="431"
+        dependenciesKind="dependent"/>
+      <Unknown index="426"
+        dependencies="2 3 4 5 10 12 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 171 173 328 329 335 336 365 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 407 409 411 413 415 417 419 421 423 425 427 429 431 556"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="428"
+        dependencies="2 3 4 5 10 12 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 171 173 328 329 335 336 365 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 407 409 411 413 415 417 419 421 423 425 427 429 431 556"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="430"
+        dependencies="2 3 4 5 10 12 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 171 173 328 329 335 336 365 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 407 409 411 413 415 417 419 421 423 425 427 429 431 556"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="432"
+        dependencies="2 3 4 5 10 12 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 171 173 328 329 335 336 365 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 407 409 411 413 415 417 419 421 423 425 427 429 431 556"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="551"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="552"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="553"
+        dependencies="2 3 4 5 10 12 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 171 173 328 329 335 336 365 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 407 409 411 413 415 417 419 421 423 425 427 429 431 556"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>

@@ -1,0 +1,91 @@
+<html>
+
+
+
+
+<head>
+  <title>Dyno Input</title>
+</head>
+
+
+
+<body>
+
+
+<font size="6">
+
+<h2  style="color:Blue;">Dyno Input</h2>
+
+<font size="3">
+
+
+
+
+<h2 style="color:green;">Description</h2>
+
+ This Matlab function block is used to input Dyno load.
+<br><br><br><br>
+
+<img src ="./images/Dyno_Input/Block.PNG" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+ <br><br><br><br>
+
+<h2 style="color:green;">Input</h2>
+ The <b>Speed_attained</b> is input signal coming from the speed attained block.
+
+
+<br>
+
+<h2 style="color:green;">Output</h2>
+<b>1.</b> <b>Dyno Input</b> is the dyno load torque signal generated as per user defined value.
+<br><br>
+<b>2.</b> <b>Dyno_applied</b> is status signal generated once dyno load torque has been applied.
+
+
+<h2 style="color:green;">Parameters</h2>
+
+<img src ="./images/Dyno_Input/Parameter.png" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+<br><br>
+
+This block contains two configurable Parameters which are configured through the parameter initialization file:
+
+<dl>
+ <dt><b>Dyno Load Value</b></dt><dd> It is the dyno load torque value defined by the user. </dd>
+ <dt><b>Dyno Step Size</b></dt><dd>  It is the value assigned to generate the ramp input of dyno load before reaching stable value. </dd>
+ 
+</dl>
+
+
+
+<h2 style="color:green;"> Working </h2>
+
+
+
+<img src="./images/Dyno_Input/Graph.png" align="left">
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+ <p> In above figure there are two graphs ,one depicts Dyno Input signal and other is  Dyno attained status.
+ <p>Once the <b>Speed_attained</b> signal is activated, that is logic 1. <b>Dyno Input</b> signal will start generating a ramp (<b>Dyno Step Size</b>) signal till<p>
+ <p>its value reaches to <b>Dyno Load Value</b>.Once reach <b>Dyno Load Value</b> in the signal, <p>
+ <p> <b>Dyno_applied</b> will give logic 1 signal. <b>Dyno_applied</b> status may be send to other functions to begin their executions.<p>
+    
+    
+    
+       
+    
+<h2 style="color:green;">Data</h2>
+<p>This test is supported by two .m files, one for parameter initialization<mark style="color:blue;"><b>'Parameter_Initialization.m'</b></mark>
+and other one to run the script <mark style="color:blue;"><b>'Automatic_script_Temp.m'</b></mark>.<p>
+<p>A test example named <mark style="color:blue;"><b>'Harness_Vary_Temp.slx'</b></mark> and can be found in the <i>'Sim_Arch\Harness' </i>folder. <p>
+    
+
+   
+
+</body>
+
+
+</html>

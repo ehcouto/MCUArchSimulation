@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mechanical_Parameters_VA_Agitation>
+    <water_volume>132.6500</water_volume>
+    <Clothes_mass>13.6</Clothes_mass>
+    <Basket_diameter>0.580</Basket_diameter>
+    <J_basket>0.77357</J_basket>
+    <J_impeller> 0.0000112</J_impeller>
+    <gear_ratio>6.0</gear_ratio>
+    <belt_ratio>1.0</belt_ratio>
+    <Basket_density>7850</Basket_density>
+    <Impeller_density>1300</Impeller_density>
+    <MechanicalVariant>VA_Agitation</MechanicalVariant>
+</Mechanical_Parameters_VA_Agitation>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Board_Parameters>
+<BoardVariant>AC120V</BoardVariant> 
+<R_line>0.81</R_line>
+<L_line>5.0E-5</L_line> 
+<C_buscap>0.0012</C_buscap>
+<R_diode>0.079</R_diode>
+<R_buscap>0.138</R_buscap>
+<V_knee>0.70</V_knee>
+<G_off>0.00000000833</G_off>
+<L_pfc>0</L_pfc>
+<R_pfc>0</R_pfc>
+<Vr>120</Vr>
+<Vdc_i>300</Vdc_i>
+<freq>60</freq>
+<C1>0.007684131074</C1>
+<C2>2.5</C2>
+<Cvolt>0.121402809</Cvolt>
+<Vcc>5</Vcc>
+<ADCBit>12</ADCBit>
+</Board_Parameters>
+

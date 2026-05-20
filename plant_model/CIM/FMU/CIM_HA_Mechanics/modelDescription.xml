@@ -1,0 +1,3577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="2.0"
+  modelName="CIM_HA_Mechanics"
+  guid="{830cbc23-fd03-423e-8f3d-77258ec4925d}"
+  generationTool="Dymola Version 2017 FD01 (64-bit), 2016-12-02 (using Cvode with tolerance 1e-009)"
+  generationDateAndTime="2018-03-28T13:51:24Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="14">
+  <CoSimulation
+    modelIdentifier="CIM_HA_Mechanics"
+    canHandleVariableCommunicationStepSize="true"
+    canBeInstantiatedOnlyOncePerProcess="true"
+    canNotUseMemoryManagementFunctions="true"/>
+  <UnitDefinitions>
+    <Unit
+      name="1"/>
+    <Unit
+      name="1/K">
+      <BaseUnit K="-1"/>
+    </Unit>
+    <Unit
+      name="A">
+      <BaseUnit A="1"/>
+    </Unit>
+    <Unit
+      name="A/s">
+      <BaseUnit s="-1"
+        A="1"/>
+    </Unit>
+    <Unit
+      name="H">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="K">
+      <BaseUnit K="1"/>
+      <DisplayUnit
+        name="degC"
+        offset="-273.15"/>
+    </Unit>
+    <Unit
+      name="N.m">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"/>
+    </Unit>
+    <Unit
+      name="Ohm">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="W">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"/>
+    </Unit>
+    <Unit
+      name="kg.m2">
+      <BaseUnit kg="1"
+        m="2"/>
+    </Unit>
+    <Unit
+      name="rad">
+      <BaseUnit rad="1"/>
+      <DisplayUnit
+        name="deg"
+        factor="57.29577951308232"/>
+      <DisplayUnit
+        name="rad"/>
+    </Unit>
+    <Unit
+      name="rad/s">
+      <BaseUnit s="-1"
+        rad="1"/>
+      <DisplayUnit
+        name="rpm"
+        factor="9.549296585513721"/>
+    </Unit>
+    <Unit
+      name="rad/s2">
+      <BaseUnit s="-2"
+        rad="1"/>
+    </Unit>
+    <Unit
+      name="rev/min">
+      <BaseUnit s="-1"
+        rad="1"
+        factor="0.10471975511965977"/>
+    </Unit>
+    <Unit
+      name="s">
+      <BaseUnit s="1"/>
+    </Unit>
+  </UnitDefinitions>
+  <TypeDefinitions>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.BooleanInput">
+      <Boolean/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.BooleanOutput">
+      <Boolean/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealInput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealOutput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Angle">
+      <Real
+        quantity="Angle"
+        unit="rad"
+        displayUnit="deg"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.AngularAcceleration">
+      <Real
+        quantity="AngularAcceleration"
+        unit="rad/s2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.AngularVelocity">
+      <Real
+        quantity="AngularVelocity"
+        unit="rad/s"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Current">
+      <Real
+        quantity="ElectricCurrent"
+        unit="A"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Inductance">
+      <Real
+        quantity="Inductance"
+        unit="H"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Inertia">
+      <Real
+        quantity="MomentOfInertia"
+        unit="kg.m2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.LinearTemperatureCoefficient">
+      <Real
+        quantity="LinearTemperatureCoefficient"
+        unit="1/K"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.MomentOfInertia">
+      <Real
+        quantity="MomentOfInertia"
+        unit="kg.m2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Power">
+      <Real
+        quantity="Power"
+        unit="W"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Resistance">
+      <Real
+        quantity="Resistance"
+        unit="Ohm"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Temperature">
+      <Real
+        quantity="ThermodynamicTemperature"
+        unit="K"
+        displayUnit="degC"
+        min="0.0"
+        nominal="300.0"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Time">
+      <Real
+        quantity="Time"
+        unit="s"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Torque">
+      <Real
+        quantity="Torque"
+        unit="N.m"/>
+    </SimpleType>
+  </TypeDefinitions>
+  <DefaultExperiment startTime="0.0"
+    stopTime="1.0"
+    tolerance="1E-009"/>
+  <ModelVariables>
+    <!-- Index for next variable = 1 -->
+    <ScalarVariable
+      name="p"
+      valueReference="16777216"
+      causality="parameter"
+      variability="tunable">
+      <Integer start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 2 -->
+    <ScalarVariable
+      name="Rs"
+      valueReference="16777217"
+      causality="parameter"
+      variability="tunable">
+      <Real start="9.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 3 -->
+    <ScalarVariable
+      name="TsRef"
+      valueReference="16777218"
+      causality="parameter"
+      variability="tunable">
+      <Real start="22.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 4 -->
+    <ScalarVariable
+      name="Rr"
+      valueReference="16777219"
+      causality="parameter"
+      variability="tunable">
+      <Real start="5.82"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 5 -->
+    <ScalarVariable
+      name="TrRef"
+      valueReference="16777220"
+      causality="parameter"
+      variability="tunable">
+      <Real start="22.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 6 -->
+    <ScalarVariable
+      name="Lm"
+      valueReference="16777221"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.4969"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 7 -->
+    <ScalarVariable
+      name="Ls"
+      valueReference="16777222"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.5097"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 8 -->
+    <ScalarVariable
+      name="Lr"
+      valueReference="16777223"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.5106"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 9 -->
+    <ScalarVariable
+      name="alpha_s"
+      valueReference="16777224"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.00386982"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 10 -->
+    <ScalarVariable
+      name="alpha_r"
+      valueReference="16777225"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.00386982"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 11 -->
+    <ScalarVariable
+      name="Jrotor"
+      valueReference="16777226"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.0012838"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 12 -->
+    <ScalarVariable
+      name="Jadd"
+      valueReference="16777227"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 13 -->
+    <ScalarVariable
+      name="Connection"
+      valueReference="16777228"
+      description="1-Y Connection; 3-Delta Connection"
+      causality="parameter"
+      variability="tunable">
+      <Integer start="3"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 14 -->
+    <ScalarVariable
+      name="f_rot_losses"
+      valueReference="16777229"
+      description="RotLoss Split Factor - 1=Steel; 0=Bearing"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.8"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 15 -->
+    <ScalarVariable
+      name="f_offset_rotlosses"
+      valueReference="16777230"
+      description="Offset gain on the rotational losses"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 16 -->
+    <ScalarVariable
+      name="Time_to_Turn_ON_Rot_Losses"
+      valueReference="16777231"
+      description="Time at which Rotational Losses are enabled"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1000"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 17 -->
+    <ScalarVariable
+      name="J_Drum"
+      valueReference="16777232"
+      description="Drum balanced inertia"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.006899"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 18 -->
+    <ScalarVariable
+      name="TR"
+      valueReference="16777233"
+      description="Transmission Ratio"
+      causality="parameter"
+      variability="fixed">
+      <Real start="10.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 19 -->
+    <ScalarVariable
+      name="damp"
+      valueReference="16777234"
+      description="Friction Damping"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.28"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 20 -->
+    <ScalarVariable
+      name="m_unb"
+      valueReference="16777235"
+      description="unbalance mass"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 21 -->
+    <ScalarVariable
+      name="r_unb"
+      valueReference="16777236"
+      description="unbalance radius"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.254"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 22 -->
+    <ScalarVariable
+      name="J_load"
+      valueReference="16777237"
+      description="Load Inertia for Dyno"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 23 -->
+    <ScalarVariable
+      name="Mech_Flag"
+      valueReference="16777238"
+      description="0: HA Spin Model -1:Dyno Load Model"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 24 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.p"
+      valueReference="100663296"
+      variability="tunable">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 25 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Rs"
+      valueReference="100663297"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 26 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.TsRef"
+      valueReference="100663298"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 27 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Rr"
+      valueReference="100663299"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 28 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.TrRef"
+      valueReference="100663300"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 29 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Lm"
+      valueReference="100663301"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 30 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Ls"
+      valueReference="100663302"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 31 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Lr"
+      valueReference="100663303"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 32 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.alpha_s"
+      valueReference="100663304"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 33 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.alpha_r"
+      valueReference="100663305"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 34 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Jrotor"
+      valueReference="100663306"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 35 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Jadd"
+      valueReference="100663307"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 36 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Connection"
+      valueReference="100663308"
+      variability="tunable">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 37 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.f_rot_losses"
+      valueReference="100663309"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 38 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.f_offset_rotlosses"
+      valueReference="100663310"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 39 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Time_to_Turn_ON_Rot_Losses"
+      valueReference="100663311"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 40 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.loadInertia.flange_a.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 41 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.loadInertia.flange_a.tau"
+      valueReference="369098768"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 42 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.loadInertia.flange_b.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 43 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.loadInertia.flange_b.tau"
+      valueReference="369098769"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 44 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.loadInertia.J"
+      valueReference="100663314"
+      description="Moment of inertia"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inertia"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 45 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.loadInertia.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of component">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 46 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.loadInertia.phi)"
+      valueReference="335544322"
+      description="der(Absolute rotation angle of component)">
+      <Real
+        unit="rad/s"
+        derivative="45"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 47 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.loadInertia.w"
+      valueReference="335544322"
+      description="Absolute angular velocity of component (= der(phi))">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 48 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.loadInertia.w)"
+      valueReference="369098773"
+      description="der(Absolute angular velocity of component (= der(phi)))">
+      <Real
+        unit="rad/s2"
+        derivative="47"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 49 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.loadInertia.a"
+      valueReference="369098773"
+      description="Absolute angular acceleration of component (= der(w))">
+      <Real
+        declaredType="Modelica.SIunits.AngularAcceleration"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 50 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.oTshaft"
+      valueReference="335544325"
+      description="Power in Watts">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 51 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Ia"
+      valueReference="335544326"
+      description="current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 52 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vab_gain.k"
+      valueReference="16777239"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 53 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vab_gain.u"
+      valueReference="352321536"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 54 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vab_gain.y"
+      valueReference="637534230"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 55 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vbc_gain.k"
+      valueReference="16777240"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 56 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vbc_gain.u"
+      valueReference="352321537"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 57 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vbc_gain.y"
+      valueReference="637534231"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 58 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vac_gain.k"
+      valueReference="16777241"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 59 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vac_gain.u"
+      valueReference="352321538"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 60 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vac_gain.y"
+      valueReference="637534232"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 61 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.iVa"
+      valueReference="352321536"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 62 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.iVb"
+      valueReference="352321537"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 63 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.iVc"
+      valueReference="352321538"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 64 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Ib"
+      valueReference="335544327"
+      description="current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 65 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Ic"
+      valueReference="335544328"
+      description="current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 66 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.torqueSensor.flange_a.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 67 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.torqueSensor.flange_a.tau"
+      valueReference="335544325"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 68 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.torqueSensor.flange_b.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 69 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.torqueSensor.flange_b.tau"
+      valueReference="369098805"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 70 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.torqueSensor.tau"
+      valueReference="335544325"
+      description="Torque in flange flange_a and flange_b (tau = flange_a.tau = -flange_b.tau) as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 71 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.flange_a.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 72 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.flange_a.tau"
+      valueReference="335544325"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 73 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.flange_b.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 74 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.flange_b.tau"
+      valueReference="369098805"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 75 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.useSupport"
+      valueReference="100663321"
+      description="Use support or fixed housing"
+      variability="constant">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 76 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.P"
+      valueReference="335544323">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        quantity="Power"
+        unit="W"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 77 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.torqueSensor.flange_a.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 78 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.torqueSensor.flange_a.tau"
+      valueReference="335544325"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 79 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.torqueSensor.flange_b.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 80 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.torqueSensor.flange_b.tau"
+      valueReference="369098805"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 81 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.torqueSensor.tau"
+      valueReference="335544325"
+      description="Torque in flange flange_a and flange_b (tau = flange_a.tau = -flange_b.tau) as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 82 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.product.u1"
+      valueReference="335544322"
+      description="Connector of Real input signal 1">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 83 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.product.u2"
+      valueReference="335544325"
+      description="Connector of Real input signal 2">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 84 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.product.y"
+      valueReference="335544323"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 85 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.relSpeedSensor.flange_a.phi"
+      valueReference="16777242"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 86 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.relSpeedSensor.flange_a.tau"
+      valueReference="100663322"
+      description="Cut torque in the flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 87 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.relSpeedSensor.flange_b.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 88 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.relSpeedSensor.flange_b.tau"
+      valueReference="100663323"
+      description="Cut torque in the flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 89 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.relSpeedSensor.phi_rel"
+      valueReference="905969692"
+      description="Relative angle between two flanges (flange_b.phi - flange_a.phi)">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 90 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.mechanicalPowerSensor.relSpeedSensor.phi_rel)"
+      valueReference="335544322"
+      description="der(Relative angle between two flanges (flange_b.phi - flange_a.phi))">
+      <Real
+        unit="rad/s"
+        derivative="89"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 91 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.relSpeedSensor.w_rel"
+      valueReference="335544322"
+      description="Relative angular velocity between two flanges (= der(flange_b.phi) - der(flange_a.phi)) as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 92 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.fixed.phi0"
+      valueReference="16777242"
+      description="Fixed offset angle of housing"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 93 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.fixed.flange.phi"
+      valueReference="16777242"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 94 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mechanicalPowerSensor.fixed.flange.tau"
+      valueReference="100663325"
+      description="Cut torque in the flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 95 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.oPshaft"
+      valueReference="335544323">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 96 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.oPmotor"
+      valueReference="335544324"
+      description="instantaneous Power / Active">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 97 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.IRMS_s.y"
+      valueReference="335544320"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 98 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.IRMS_s.m"
+      valueReference="100663326"
+      description="Number of phases"
+      variability="constant">
+      <Integer min="2"
+        start="3"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 99 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.IRMS_s.u[1]"
+      valueReference="335544326">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 100 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.IRMS_s.u[2]"
+      valueReference="335544327">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 101 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.IRMS_s.u[3]"
+      valueReference="335544328">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 102 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.oIrms_line"
+      valueReference="335544320"
+      description="equal to phase for Y connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 103 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.iTs"
+      valueReference="352321539">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 104 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.iTr"
+      valueReference="352321540">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 105 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.R_s0"
+      valueReference="100663327"
+      description="Resistance of the stator at temperature T_ref"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 106 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.R_r0"
+      valueReference="100663328"
+      description="Resistance of the rotor at temperature T_ref"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 107 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.Ts_ref"
+      valueReference="100663329"
+      description="Reference temperature"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 108 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.Tr_ref"
+      valueReference="100663330"
+      description="Reference temperature"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 109 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.alpha_s"
+      valueReference="100663331"
+      description="Temperature coefficient of stator resistance"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.LinearTemperatureCoefficient"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 110 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.alpha_r"
+      valueReference="100663332"
+      description="Temperature coefficient of rotor resistance"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.LinearTemperatureCoefficient"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 111 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.L_ss"
+      valueReference="100663333"
+      description="Self-inductance of the stator"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 112 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.L_rr"
+      valueReference="100663334"
+      description="Self-inductance of the rotor"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 113 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.L_sr"
+      valueReference="100663335"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 114 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.p"
+      valueReference="100663336"
+      description="Number of poles"
+      variability="tunable">
+      <Integer/>
+    </ScalarVariable>
+    <!-- Index for next variable = 115 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.J"
+      valueReference="100663337"
+      description="Moment of inercia of rotor"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.MomentOfInertia"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 116 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.R_s"
+      valueReference="369098794"
+      description="Resistance of the stator at temperature T_s">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 117 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.R_r"
+      valueReference="369098795"
+      description="Resistance of the rotor at temperature T_r">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 118 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.wr"
+      valueReference="335544322"
+      description="Mechanical (true) speed">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"
+        displayUnit="rpm"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 119 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.model_6eq.wr)"
+      valueReference="369098773"
+      description="der(Mechanical (true) speed)">
+      <Real
+        unit="rad/s2"
+        derivative="118"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 120 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.speed"
+      valueReference="905969708"
+      description="Mechanical (synchronous) speed">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"
+        displayUnit="rpm"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 121 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.i_as"
+      valueReference="33554432"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 122 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.model_6eq.i_as)"
+      valueReference="587202560">
+      <Real
+        unit="A/s"
+        derivative="121"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 123 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.i_bs"
+      valueReference="33554433"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 124 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.model_6eq.i_bs)"
+      valueReference="587202561">
+      <Real
+        unit="A/s"
+        derivative="123"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 125 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.i_cs"
+      valueReference="33554434"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 126 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.model_6eq.i_cs)"
+      valueReference="587202562">
+      <Real
+        unit="A/s"
+        derivative="125"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 127 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.i_ar"
+      valueReference="33554435"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 128 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.model_6eq.i_ar)"
+      valueReference="587202563">
+      <Real
+        unit="A/s"
+        derivative="127"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 129 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.i_br"
+      valueReference="33554436"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 130 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.model_6eq.i_br)"
+      valueReference="587202564">
+      <Real
+        unit="A/s"
+        derivative="129"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 131 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.i_cr"
+      valueReference="33554437"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 132 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.model_6eq.i_cr)"
+      valueReference="587202565">
+      <Real
+        unit="A/s"
+        derivative="131"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 133 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.To_i"
+      valueReference="369098797"
+      description="Inercia torque">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 134 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.To_l"
+      valueReference="369098768"
+      description="Load torque">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 135 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.tau_elec"
+      valueReference="369098798">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 136 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.I_s1"
+      valueReference="33554432">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 137 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.I_s2"
+      valueReference="33554433">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 138 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.flange_a.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 139 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.model_6eq.flange_a.phi)"
+      valueReference="335544322"
+      description="der(Absolute rotation angle of flange)">
+      <Real
+        unit="rad/s"
+        derivative="138"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 140 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.flange_a.tau"
+      valueReference="369098799"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 141 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.I_r1"
+      valueReference="33554435">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 142 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.I_r2"
+      valueReference="33554436">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 143 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.I_s3"
+      valueReference="33554434">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 144 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.I_r3"
+      valueReference="33554437">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 145 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.T_s"
+      valueReference="352321539">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 146 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.T_r"
+      valueReference="352321540">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 147 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.rpm"
+      valueReference="905969708">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 148 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.Va_s"
+      valueReference="637534230"
+      description="peak phase voltage">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 149 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.Vb_s"
+      valueReference="637534231"
+      description="peak phase voltage">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 150 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.tau_load"
+      valueReference="369098768">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 151 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.oQrotor"
+      valueReference="335544321">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 152 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.oQwinding"
+      valueReference="369098800">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 153 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.Vc_s"
+      valueReference="637534232"
+      description="peak phase voltage">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 154 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.model_6eq.oP_inertia_Rotor"
+      valueReference="369098801">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 155 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.oQrotor"
+      valueReference="335544321"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 156 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses.k1"
+      valueReference="16777243"
+      description="Gain of upper input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 157 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses.k2"
+      valueReference="16777244"
+      description="Gain of middle input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 158 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses.k3"
+      valueReference="16777245"
+      description="Gain of lower input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 159 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses.u1"
+      valueReference="369098800"
+      description="Connector 1 of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 160 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses.u2"
+      valueReference="335544321"
+      description="Connector 2 of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 161 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses.u3"
+      valueReference="369098802"
+      description="Connector 3 of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 162 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses.y"
+      valueReference="369098803"
+      description="Connector of Real output signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 163 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Rotational_loss.u1"
+      valueReference="335544332"
+      description="Connector of Real input signal 1">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 164 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Rotational_loss.u2"
+      valueReference="335544333"
+      description="Connector of Real input signal 2">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 165 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Rotational_loss.y"
+      valueReference="369098802"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 166 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Rotational_loss.k1"
+      valueReference="16777246"
+      description="Gain of upper input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 167 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Rotational_loss.k2"
+      valueReference="16777247"
+      description="Gain of lower input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 168 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.speedSensor.flange.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 169 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.speedSensor.flange.phi)"
+      valueReference="335544322"
+      description="der(Absolute rotation angle of flange)">
+      <Real
+        unit="rad/s"
+        derivative="168"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 170 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.speedSensor.flange.tau"
+      valueReference="100663348"
+      description="Cut torque in the flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 171 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.speedSensor.w"
+      valueReference="335544322"
+      description="Absolute angular velocity of flange as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 172 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.oSpeed"
+      valueReference="335544322"
+      description="Absolute angular velocity of flange as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 173 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses1.k1"
+      valueReference="16777248"
+      description="Gain of upper input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 174 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses1.k2"
+      valueReference="16777249"
+      description="Gain of middle input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 175 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses1.k3"
+      valueReference="16777250"
+      description="Gain of lower input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 176 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses1.u1"
+      valueReference="369098803"
+      description="Connector 1 of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 177 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses1.u2"
+      valueReference="369098801"
+      description="Connector 2 of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 178 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses1.u3"
+      valueReference="335544323"
+      description="Connector 3 of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 179 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.mot_losses1.y"
+      valueReference="335544324"
+      description="Connector of Real output signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 180 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.flange_b1.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 181 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.flange_b1.tau"
+      valueReference="369098805"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 182 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.oSpeed_RotFlux"
+      valueReference="335544330"
+      description="speed rotor flux as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 183 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.oPosition_RotFlux"
+      valueReference="33554441"
+      description="position rotor flux as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 184 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Iab_gain.k"
+      valueReference="16777251"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="1.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 185 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Iab_gain.u"
+      valueReference="33554432"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 186 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Iab_gain.y"
+      valueReference="335544326"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 187 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Ibc_gain.k"
+      valueReference="16777252"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="1.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 188 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Ibc_gain.u"
+      valueReference="33554433"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 189 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Ibc_gain.y"
+      valueReference="335544327"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 190 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Iac_gain.k"
+      valueReference="16777253"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="1.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 191 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Iac_gain.u"
+      valueReference="33554434"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 192 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Iac_gain.y"
+      valueReference="335544328"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 193 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vline_rms.y"
+      valueReference="369098806"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 194 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vline_rms.m"
+      valueReference="100663351"
+      description="Number of phases"
+      variability="constant">
+      <Integer min="2"
+        start="3"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 195 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vline_rms.u[1]"
+      valueReference="352321536">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 196 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vline_rms.u[2]"
+      valueReference="352321537">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 197 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Vline_rms.u[3]"
+      valueReference="352321538">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 198 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.rot_Losses.p"
+      valueReference="100663352"
+      description="Number of pole pairs"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 199 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.rot_Losses.f_rot_losses"
+      valueReference="100663353"
+      description="RotLoss Split Factor - 1=Steel; 0=Bearing"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 200 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.rot_Losses.f_offset_rotlosses"
+      valueReference="100663354"
+      description="Offset gain on the rotational losses"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 201 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.rot_Losses.fHz"
+      valueReference="369098811">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 202 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.rot_Losses.Vline_rms"
+      valueReference="369098806">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 203 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.rot_Losses.Trot"
+      valueReference="369098812">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 204 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.rot_Losses.wr"
+      valueReference="335544322">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 205 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.rot_Losses.oLoss_Rot"
+      valueReference="369098813">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 206 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.rot_Losses.oLoss_Steel"
+      valueReference="369098814">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 207 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.rot_Losses.oLoss_Mech"
+      valueReference="369098815">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 208 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.torque.flange.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 209 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.torque.flange.tau"
+      valueReference="369098817"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 210 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.torque.tau"
+      valueReference="369098854"
+      description="Accelerating torque acting at flange (= -flange.tau)">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 211 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.toSpacePhasor.nin"
+      valueReference="100663363"
+      description="Number of inputs"
+      variability="constant">
+      <Integer start="3"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 212 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.toSpacePhasor.nout"
+      valueReference="100663364"
+      description="Number of outputs"
+      variability="constant">
+      <Integer start="2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 213 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.toSpacePhasor.u[1]"
+      valueReference="637534230"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 214 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.toSpacePhasor.u[2]"
+      valueReference="637534231"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 215 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.toSpacePhasor.u[3]"
+      valueReference="637534232"
+      description="Connector of Real input signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 216 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.toSpacePhasor.y[1]"
+      valueReference="637534277"
+      description="Connector of Real output signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 217 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.toSpacePhasor.y[2]"
+      valueReference="637534278"
+      description="Connector of Real output signals">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 218 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.toSpacePhasor.m"
+      valueReference="100663367"
+      description="Number of phases"
+      variability="constant">
+      <Integer min="1"
+        start="3"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 219 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.toSpacePhasor.zero"
+      valueReference="905969751"
+      description="Zero sequence component">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 220 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.f"
+      valueReference="16777254"
+      description="frequency"
+      causality="parameter"
+      variability="tunable">
+      <Real start="60"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 221 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.p"
+      valueReference="100663384"
+      description="par of polos"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 222 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.R_s"
+      valueReference="100663385"
+      description="stator resistance"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 223 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.R_r"
+      valueReference="100663386"
+      description="rotor resistance"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 224 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.L_s"
+      valueReference="100663387"
+      description="stator self-inductance"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 225 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.L_r"
+      valueReference="100663388"
+      description="rotor self-inductance"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 226 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.L_m"
+      valueReference="100663389"
+      description="mutual inductance"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 227 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.w_e"
+      valueReference="318767113">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 228 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.w_sl"
+      valueReference="318767115">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 229 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.w_s"
+      valueReference="369098846"
+      variability="discrete">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 230 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.i_dse"
+      valueReference="33554438"
+      initial="exact">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 231 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.Controler_INDESIT.i_dse)"
+      valueReference="587202566">
+      <Real derivative="230"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 232 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.i_qse"
+      valueReference="33554439"
+      initial="exact">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 233 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.Controler_INDESIT.i_qse)"
+      valueReference="587202567">
+      <Real derivative="232"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 234 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.v_dse"
+      valueReference="637534303">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 235 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.v_qse"
+      valueReference="637534304">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 236 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.flux_dr"
+      valueReference="33554440"
+      initial="exact">
+      <Real start="1E-006"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 237 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.Controler_INDESIT.flux_dr)"
+      valueReference="587202568">
+      <Real derivative="236"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 238 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.tetha_e"
+      valueReference="33554441"
+      initial="exact">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 239 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.Controler_INDESIT.tetha_e)"
+      valueReference="318767113">
+      <Real derivative="238"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 240 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.tetha_r"
+      valueReference="33554442"
+      initial="exact">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 241 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.Controler_INDESIT.tetha_r)"
+      valueReference="587202570">
+      <Real derivative="240"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 242 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.tetha_sl"
+      valueReference="33554443"
+      initial="exact">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 243 -->
+    <ScalarVariable
+      name="der(FMU_CIM_6eq_Coupled.Controler_INDESIT.tetha_sl)"
+      valueReference="318767115">
+      <Real derivative="242"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 244 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.tau_e"
+      valueReference="905969761">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 245 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.R"
+      valueReference="100663394"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 246 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.L"
+      valueReference="100663395"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 247 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.v_ds"
+      valueReference="637534277">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 248 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.v_qs"
+      valueReference="637534278">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 249 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.w_r"
+      valueReference="335544322">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 250 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.omega_rotor_flux"
+      valueReference="335544330">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 251 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.Controler_INDESIT.tetha_rotor_flux"
+      valueReference="33554441">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 252 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.oQSteel"
+      valueReference="335544332"
+      description="Dissipated Heat in the Stator Steel">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 253 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.oQbearings"
+      valueReference="335544333"
+      description="Bearing / Drag Heat Dissipation">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 254 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.switch1.u1"
+      valueReference="369098812"
+      description="Connector of first Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 255 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.switch1.u2"
+      valueReference="369098852"
+      description="Connector of Boolean input signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 256 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.switch1.u3"
+      valueReference="16777255"
+      description="Connector of second Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 257 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.switch1.y"
+      valueReference="369098854"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 258 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.const.k"
+      valueReference="16777255"
+      description="Constant output value"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 259 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.const.y"
+      valueReference="16777255"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 260 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.i_input"
+      valueReference="369098812"
+      description="Connector of second Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 261 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.realToBoolean.u"
+      valueReference="369098853"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 262 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.realToBoolean.y"
+      valueReference="369098852"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 263 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.realToBoolean.threshold"
+      valueReference="16777256"
+      description="Output signal y is true, if input u &gt;= threshold"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 264 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.i_turn_ON"
+      valueReference="369098853"
+      description="signal to turn ON [1] or OFF [0] the effect"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 265 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_3.o_result"
+      valueReference="369098854"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 266 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.switch1.u1"
+      valueReference="369098815"
+      description="Connector of first Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 267 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.switch1.u2"
+      valueReference="369098855"
+      description="Connector of Boolean input signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 268 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.switch1.u3"
+      valueReference="16777257"
+      description="Connector of second Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 269 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.switch1.y"
+      valueReference="335544333"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 270 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.const.k"
+      valueReference="16777257"
+      description="Constant output value"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 271 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.const.y"
+      valueReference="16777257"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 272 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.i_input"
+      valueReference="369098815"
+      description="Connector of second Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 273 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.realToBoolean.u"
+      valueReference="369098853"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 274 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.realToBoolean.y"
+      valueReference="369098855"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 275 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.realToBoolean.threshold"
+      valueReference="16777258"
+      description="Output signal y is true, if input u &gt;= threshold"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 276 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.i_turn_ON"
+      valueReference="369098853"
+      description="signal to turn ON [1] or OFF [0] the effect">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 277 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_1.o_result"
+      valueReference="335544333"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 278 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.switch1.u1"
+      valueReference="369098814"
+      description="Connector of first Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 279 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.switch1.u2"
+      valueReference="369098856"
+      description="Connector of Boolean input signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 280 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.switch1.u3"
+      valueReference="16777259"
+      description="Connector of second Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 281 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.switch1.y"
+      valueReference="335544332"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 282 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.const.k"
+      valueReference="16777259"
+      description="Constant output value"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 283 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.const.y"
+      valueReference="16777259"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 284 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.i_input"
+      valueReference="369098814"
+      description="Connector of second Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 285 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.realToBoolean.u"
+      valueReference="369098853"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 286 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.realToBoolean.y"
+      valueReference="369098856"
+      description="Connector of Boolean output signal"
+      variability="discrete">
+      <Boolean
+        declaredType="Modelica.Blocks.Interfaces.BooleanOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 287 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.realToBoolean.threshold"
+      valueReference="16777260"
+      description="Output signal y is true, if input u &gt;= threshold"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 288 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.i_turn_ON"
+      valueReference="369098853"
+      description="signal to turn ON [1] or OFF [0] the effect">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 289 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.switch_command_2.o_result"
+      valueReference="335544332"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 290 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.step.height"
+      valueReference="16777261"
+      description="Height of step"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 291 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.step.y"
+      valueReference="369098853"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 292 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.step.offset"
+      valueReference="16777262"
+      description="Offset of output signal y"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 293 -->
+    <ScalarVariable
+      name="FMU_CIM_6eq_Coupled.step.startTime"
+      valueReference="100663401"
+      description="Output y = offset for time &lt; startTime"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Time"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 294 -->
+    <ScalarVariable
+      name="iVa"
+      valueReference="352321536"
+      description="Input signal connector"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 295 -->
+    <ScalarVariable
+      name="iVb"
+      valueReference="352321537"
+      description="Input signal connector"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 296 -->
+    <ScalarVariable
+      name="iVc"
+      valueReference="352321538"
+      description="Input signal connector"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 297 -->
+    <ScalarVariable
+      name="iTs"
+      valueReference="352321539"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 298 -->
+    <ScalarVariable
+      name="oIrms_line"
+      valueReference="335544320"
+      description="equal to phase for Y connector"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 299 -->
+    <ScalarVariable
+      name="oQrotor"
+      valueReference="335544321"
+      description="Rotor Joule Losses"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 300 -->
+    <ScalarVariable
+      name="oSpeed"
+      valueReference="335544322"
+      description="Absolute angular velocity of flange as output signal"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 301 -->
+    <ScalarVariable
+      name="oPshaft"
+      valueReference="335544323"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 302 -->
+    <ScalarVariable
+      name="oPmotor"
+      valueReference="335544324"
+      description="instantaneous Power / Active"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 303 -->
+    <ScalarVariable
+      name="oTshaft"
+      valueReference="335544325"
+      description="Power in Watts"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 304 -->
+    <ScalarVariable
+      name="Ia"
+      valueReference="335544326"
+      description="current in the branch from p to n as output signal"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 305 -->
+    <ScalarVariable
+      name="Ib"
+      valueReference="335544327"
+      description="current in the branch from p to n as output signal"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 306 -->
+    <ScalarVariable
+      name="Ic"
+      valueReference="335544328"
+      description="current in the branch from p to n as output signal"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 307 -->
+    <ScalarVariable
+      name="oSpeed_Drum"
+      valueReference="335544329"
+      description="Absolute angular velocity of flange as output signal"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 308 -->
+    <ScalarVariable
+      name="oSpeed_RotFlux"
+      valueReference="335544330"
+      description="speed rotor flux as output signal"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 309 -->
+    <ScalarVariable
+      name="oPosition_RotFlux"
+      valueReference="335544331"
+      description="position rotor flux as output signal"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 310 -->
+    <ScalarVariable
+      name="oQSteel"
+      valueReference="335544332"
+      description="Dissipated Heat in the Stator Steel"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 311 -->
+    <ScalarVariable
+      name="oQbearings"
+      valueReference="335544333"
+      description="Bearing / Drag Heat Dissipation"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 312 -->
+    <ScalarVariable
+      name="iTr"
+      valueReference="352321540"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 313 -->
+    <ScalarVariable
+      name="hA_Spin.J_Drum"
+      valueReference="100663402"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 314 -->
+    <ScalarVariable
+      name="hA_Spin.TR"
+      valueReference="100663403"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 315 -->
+    <ScalarVariable
+      name="hA_Spin.damp"
+      valueReference="100663404"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 316 -->
+    <ScalarVariable
+      name="hA_Spin.m_unb"
+      valueReference="100663405"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 317 -->
+    <ScalarVariable
+      name="hA_Spin.r_unb"
+      valueReference="100663406"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 318 -->
+    <ScalarVariable
+      name="hA_Spin.CF"
+      valueReference="16777263"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 319 -->
+    <ScalarVariable
+      name="hA_Spin.inertia.flange_a.phi"
+      valueReference="369098867"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 320 -->
+    <ScalarVariable
+      name="hA_Spin.inertia.flange_a.tau"
+      valueReference="369098863"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 321 -->
+    <ScalarVariable
+      name="hA_Spin.inertia.flange_b.phi"
+      valueReference="369098867"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 322 -->
+    <ScalarVariable
+      name="hA_Spin.inertia.flange_b.tau"
+      valueReference="369098864"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 323 -->
+    <ScalarVariable
+      name="hA_Spin.inertia.J"
+      valueReference="100663409"
+      description="Moment of inertia"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inertia"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 324 -->
+    <ScalarVariable
+      name="hA_Spin.inertia.phi"
+      valueReference="369098867"
+      description="Absolute rotation angle of component">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 325 -->
+    <ScalarVariable
+      name="der(hA_Spin.inertia.phi)"
+      valueReference="335544329"
+      description="der(Absolute rotation angle of component)">
+      <Real
+        unit="rad/s"
+        derivative="324"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 326 -->
+    <ScalarVariable
+      name="hA_Spin.inertia.w"
+      valueReference="335544329"
+      description="Absolute angular velocity of component (= der(phi))">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 327 -->
+    <ScalarVariable
+      name="der(hA_Spin.inertia.w)"
+      valueReference="369098874"
+      description="der(Absolute angular velocity of component (= der(phi)))">
+      <Real
+        unit="rad/s2"
+        derivative="326"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 328 -->
+    <ScalarVariable
+      name="hA_Spin.inertia.a"
+      valueReference="369098874"
+      description="Absolute angular acceleration of component (= der(w))">
+      <Real
+        declaredType="Modelica.SIunits.AngularAcceleration"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 329 -->
+    <ScalarVariable
+      name="hA_Spin.idealGear.flange_a.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 330 -->
+    <ScalarVariable
+      name="hA_Spin.idealGear.flange_a.tau"
+      valueReference="335544325"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 331 -->
+    <ScalarVariable
+      name="hA_Spin.idealGear.flange_b.phi"
+      valueReference="369098867"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 332 -->
+    <ScalarVariable
+      name="hA_Spin.idealGear.flange_b.tau"
+      valueReference="369098869"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 333 -->
+    <ScalarVariable
+      name="hA_Spin.idealGear.ratio"
+      valueReference="100663415"
+      description="Transmission ratio (flange_a.phi/flange_b.phi)"
+      variability="fixed">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 334 -->
+    <ScalarVariable
+      name="hA_Spin.idealGear.phi_a"
+      valueReference="369098772"
+      description="Angle between left shaft flange and support">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 335 -->
+    <ScalarVariable
+      name="hA_Spin.idealGear.phi_b"
+      valueReference="369098867"
+      description="Angle between right shaft flange and support">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 336 -->
+    <ScalarVariable
+      name="hA_Spin.fixed.phi0"
+      valueReference="16777264"
+      description="Fixed offset angle of housing"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 337 -->
+    <ScalarVariable
+      name="hA_Spin.fixed.flange.phi"
+      valueReference="16777264"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 338 -->
+    <ScalarVariable
+      name="hA_Spin.fixed.flange.tau"
+      valueReference="369098889"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 339 -->
+    <ScalarVariable
+      name="hA_Spin.speedSensor.flange.phi"
+      valueReference="369098867"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 340 -->
+    <ScalarVariable
+      name="der(hA_Spin.speedSensor.flange.phi)"
+      valueReference="335544329"
+      description="der(Absolute rotation angle of flange)">
+      <Real
+        unit="rad/s"
+        derivative="339"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 341 -->
+    <ScalarVariable
+      name="hA_Spin.speedSensor.flange.tau"
+      valueReference="100663416"
+      description="Cut torque in the flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 342 -->
+    <ScalarVariable
+      name="hA_Spin.speedSensor.w"
+      valueReference="335544329"
+      description="Absolute angular velocity of flange as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 343 -->
+    <ScalarVariable
+      name="hA_Spin.oSpeed_Drum"
+      valueReference="335544329"
+      description="Absolute angular velocity of flange as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 344 -->
+    <ScalarVariable
+      name="hA_Spin.flange_a1.phi"
+      valueReference="369098772"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 345 -->
+    <ScalarVariable
+      name="hA_Spin.flange_a1.tau"
+      valueReference="335544325"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 346 -->
+    <ScalarVariable
+      name="hA_Spin.accSensor.flange.phi"
+      valueReference="369098867"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 347 -->
+    <ScalarVariable
+      name="der(hA_Spin.accSensor.flange.phi)"
+      valueReference="335544329"
+      description="der(Absolute rotation angle of flange)">
+      <Real
+        unit="rad/s"
+        derivative="346"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 348 -->
+    <ScalarVariable
+      name="hA_Spin.accSensor.flange.tau"
+      valueReference="100663417"
+      description="Cut torque in the flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 349 -->
+    <ScalarVariable
+      name="hA_Spin.accSensor.w"
+      valueReference="335544329"
+      description="Absolute angular velocity of flange">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 350 -->
+    <ScalarVariable
+      name="der(hA_Spin.accSensor.w)"
+      valueReference="369098874"
+      description="der(Absolute angular velocity of flange)">
+      <Real
+        unit="rad/s2"
+        derivative="349"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 351 -->
+    <ScalarVariable
+      name="hA_Spin.accSensor.a"
+      valueReference="369098874"
+      description="Absolute angular acceleration of flange as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 352 -->
+    <ScalarVariable
+      name="hA_Spin.oAccel_Drum"
+      valueReference="369098874"
+      description="Absolute angular acceleration of flange as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 353 -->
+    <ScalarVariable
+      name="hA_Spin.torque1.flange.phi"
+      valueReference="369098867"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 354 -->
+    <ScalarVariable
+      name="hA_Spin.torque1.flange.tau"
+      valueReference="369098876"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 355 -->
+    <ScalarVariable
+      name="hA_Spin.torque1.tau"
+      valueReference="369098881"
+      description="Accelerating torque acting at flange (= -flange.tau)">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 356 -->
+    <ScalarVariable
+      name="hA_Spin.angleSensor.flange.phi"
+      valueReference="369098867"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 357 -->
+    <ScalarVariable
+      name="hA_Spin.angleSensor.flange.tau"
+      valueReference="100663422"
+      description="Cut torque in the flange"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Torque"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 358 -->
+    <ScalarVariable
+      name="hA_Spin.angleSensor.phi"
+      valueReference="369098867"
+      description="Absolute angle of flange as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"
+        displayUnit="deg"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 359 -->
+    <ScalarVariable
+      name="hA_Spin.gain1.k"
+      valueReference="100663423"
+      description="Gain value multiplied with input signal"
+      variability="tunable">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 360 -->
+    <ScalarVariable
+      name="hA_Spin.gain1.u"
+      valueReference="369098880"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 361 -->
+    <ScalarVariable
+      name="hA_Spin.gain1.y"
+      valueReference="369098881"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 362 -->
+    <ScalarVariable
+      name="hA_Spin.sin.u"
+      valueReference="369098867"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 363 -->
+    <ScalarVariable
+      name="hA_Spin.sin.y"
+      valueReference="369098880"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 364 -->
+    <ScalarVariable
+      name="hA_Spin.gain2.k"
+      valueReference="100663426"
+      description="Gain value multiplied with input signal"
+      variability="tunable">
+      <Real
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 365 -->
+    <ScalarVariable
+      name="hA_Spin.gain2.u"
+      valueReference="369098883"
+      description="Input signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 366 -->
+    <ScalarVariable
+      name="hA_Spin.gain2.y"
+      valueReference="369098884"
+      description="Output signal connector">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 367 -->
+    <ScalarVariable
+      name="hA_Spin.torque2.flange.phi"
+      valueReference="369098867"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 368 -->
+    <ScalarVariable
+      name="hA_Spin.torque2.flange.tau"
+      valueReference="369098886"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 369 -->
+    <ScalarVariable
+      name="hA_Spin.torque2.tau"
+      valueReference="369098884"
+      description="Accelerating torque acting at flange (= -flange.tau)">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 370 -->
+    <ScalarVariable
+      name="hA_Spin.sign1.u"
+      valueReference="335544329"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 371 -->
+    <ScalarVariable
+      name="hA_Spin.sign1.y"
+      valueReference="369098883"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 372 -->
+    <ScalarVariable
+      name="hA_Spin.sign1.generateEvent"
+      valueReference="100663432"
+      description="Choose whether events shall be generated"
+      variability="constant">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 373 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.phi_rel"
+      valueReference="33554444"
+      description="Relative rotation angle (= flange_b.phi - flange_a.phi)"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        nominal="0.0001"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 374 -->
+    <ScalarVariable
+      name="der(hA_Spin.damper3_1.phi_rel)"
+      valueReference="587202572"
+      description="der(Relative rotation angle (= flange_b.phi - flange_a.phi))">
+      <Real
+        unit="rad/s"
+        derivative="373"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 375 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.w_rel"
+      valueReference="33554445"
+      description="Relative angular velocity (= der(phi_rel))"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.AngularVelocity"
+        start="0"
+        derivative="373"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 376 -->
+    <ScalarVariable
+      name="der(hA_Spin.damper3_1.w_rel)"
+      valueReference="318767117"
+      description="der(Relative angular velocity (= der(phi_rel)))">
+      <Real
+        unit="rad/s2"
+        derivative="375"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 377 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.a_rel"
+      valueReference="318767117"
+      description="Relative angular acceleration (= der(w_rel))">
+      <Real
+        declaredType="Modelica.SIunits.AngularAcceleration"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 378 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.tau"
+      valueReference="369098864"
+      description="Torque between flanges (= flange_b.tau)">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 379 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.flange_a.phi"
+      valueReference="369098867"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 380 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.flange_a.tau"
+      valueReference="369098889"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 381 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.flange_b.phi"
+      valueReference="16777264"
+      description="Absolute rotation angle of flange">
+      <Real
+        declaredType="Modelica.SIunits.Angle"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 382 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.flange_b.tau"
+      valueReference="369098864"
+      description="Cut torque in the flange">
+      <Real
+        declaredType="Modelica.SIunits.Torque"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 383 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.phi_nominal"
+      valueReference="100663434"
+      description="Nominal value of phi_rel (used for scaling)"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Angle"
+        displayUnit="rad"
+        min="0.0"
+        start="0.0001"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 384 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.d"
+      valueReference="369098892">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 385 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.A"
+      valueReference="100663437"
+      variability="tunable">
+      <Real/>
+    </ScalarVariable>
+    <!-- Index for next variable = 386 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.B"
+      valueReference="16777265"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 387 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.C"
+      valueReference="16777266"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 388 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.lossPower"
+      valueReference="905969807"
+      description="Loss power leaving component via heatPort (&gt; 0, if heat is flowing out of component)">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 389 -->
+    <ScalarVariable
+      name="hA_Spin.damper3_1.speed"
+      valueReference="369098896"
+      description="basket speed in RPM">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 390 -->
+    <ScalarVariable
+      name="hA_Spin.to_rpm1.u"
+      valueReference="335544329"
+      description="Connector of Real input signal to be converted">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 391 -->
+    <ScalarVariable
+      name="hA_Spin.to_rpm1.y"
+      valueReference="369098896"
+      description="Connector of Real output signal containing input signal u in another unit">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rev/min"/>
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="298"
+        dependencies="121 123 125"
+        dependenciesKind="fixed fixed fixed"/>
+      <Unknown index="299"
+        dependencies="127 129 131 312"
+        dependenciesKind="dependent dependent dependent fixed"/>
+      <Unknown index="300"
+        dependencies="375"
+        dependenciesKind="fixed"/>
+      <Unknown index="301"
+        dependencies="121 123 125 127 129 131 294 295 296 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent fixed dependent"/>
+      <Unknown index="302"
+        dependencies="121 123 125 127 129 131 294 295 296 297 312 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent fixed fixed fixed dependent"/>
+      <Unknown index="303"
+        dependencies="121 123 125 127 129 131 294 295 296 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent fixed dependent"/>
+      <Unknown index="304"
+        dependencies="121"
+        dependenciesKind="fixed"/>
+      <Unknown index="305"
+        dependencies="123"
+        dependenciesKind="fixed"/>
+      <Unknown index="306"
+        dependencies="125"
+        dependenciesKind="fixed"/>
+      <Unknown index="307"
+        dependencies="375"
+        dependenciesKind="fixed"/>
+      <Unknown index="308"
+        dependencies="232 236 375"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="309"
+        dependencies="238"
+        dependenciesKind="fixed"/>
+      <Unknown index="310"
+        dependencies="294 295 296 375"
+        dependenciesKind="dependent dependent dependent fixed"/>
+      <Unknown index="311"
+        dependencies="294 295 296 375"
+        dependenciesKind="dependent dependent dependent fixed"/>
+    </Outputs>
+    <Derivatives>
+      <Unknown index="122"
+        dependencies="121 123 125 127 129 131 294 295 296 297 312 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent fixed fixed fixed fixed fixed fixed fixed"/>
+      <Unknown index="124"
+        dependencies="121 123 125 127 129 131 294 295 296 297 312 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent fixed fixed fixed fixed fixed fixed fixed"/>
+      <Unknown index="126"
+        dependencies="121 123 125 127 129 131 294 295 296 297 312 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent fixed fixed fixed fixed fixed fixed fixed"/>
+      <Unknown index="128"
+        dependencies="121 123 125 127 129 131 294 295 296 297 312 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent fixed fixed fixed fixed fixed fixed fixed"/>
+      <Unknown index="130"
+        dependencies="121 123 125 127 129 131 294 295 296 297 312 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent fixed fixed fixed fixed fixed fixed fixed"/>
+      <Unknown index="132"
+        dependencies="121 123 125 127 129 131 294 295 296 297 312 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent fixed fixed fixed fixed fixed fixed fixed"/>
+      <Unknown index="231"
+        dependencies="230 232 236 238 294 295 296 375"
+        dependenciesKind="fixed dependent dependent dependent fixed fixed fixed fixed"/>
+      <Unknown index="233"
+        dependencies="230 232 236 238 294 295 296 375"
+        dependenciesKind="dependent dependent dependent dependent fixed fixed fixed fixed"/>
+      <Unknown index="237"
+        dependencies="230 236"
+        dependenciesKind="fixed fixed"/>
+      <Unknown index="239"
+        dependencies="232 236 375"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="241"
+        dependencies="375"
+        dependenciesKind="fixed"/>
+      <Unknown index="243"
+        dependencies="232 236"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="374"
+        dependencies="375"
+        dependenciesKind="fixed"/>
+      <Unknown index="376"
+        dependencies="121 123 125 127 129 131 294 295 296 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent fixed dependent"/>
+    </Derivatives>
+    <InitialUnknowns>
+      <Unknown index="122"
+        dependencies="1 2 3 4 5 6 7 8 9 10 13 18 52 55 58 121 123 125 127 129 131 294 295 296 297 312 336 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="124"
+        dependencies="1 2 3 4 5 6 7 8 9 10 13 18 52 55 58 121 123 125 127 129 131 294 295 296 297 312 336 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="126"
+        dependencies="1 2 3 4 5 6 7 8 9 10 13 18 52 55 58 121 123 125 127 129 131 294 295 296 297 312 336 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="128"
+        dependencies="1 2 3 4 5 6 7 8 9 10 13 18 52 55 58 121 123 125 127 129 131 294 295 296 297 312 336 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="130"
+        dependencies="1 2 3 4 5 6 7 8 9 10 13 18 52 55 58 121 123 125 127 129 131 294 295 296 297 312 336 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="132"
+        dependencies="1 2 3 4 5 6 7 8 9 10 13 18 52 55 58 121 123 125 127 129 131 294 295 296 297 312 336 373 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="231"
+        dependencies="2 4 6 7 8 18 52 55 58 230 232 236 238 294 295 296 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="233"
+        dependencies="2 4 6 7 8 18 52 55 58 230 232 236 238 294 295 296 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="237"
+        dependencies="4 6 8 230 236"
+        dependenciesKind="dependent dependent dependent dependent dependent"/>
+      <Unknown index="239"
+        dependencies="4 6 8 18 232 236 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="241"
+        dependencies="18 375"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="243"
+        dependencies="4 6 8 232 236"
+        dependenciesKind="dependent dependent dependent dependent dependent"/>
+      <Unknown index="298"
+        dependencies="121 123 125 184 187 190"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="299"
+        dependencies="4 5 10 13 127 129 131 312"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="300"
+        dependencies="18 375"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="301"
+        dependencies="1 6 11 12 13 15 16 17 18 19 20 21 121 123 125 127 129 131 258 263 290 292 294 295 296 318 336 373 375 386 387"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="302"
+        dependencies="1 2 3 4 5 6 9 10 11 12 13 14 15 16 17 18 19 20 21 121 123 125 127 129 131 156 157 158 166 167 173 174 175 258 263 270 275 282 287 290 292 294 295 296 297 312 318 336 373 375 386 387"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="303"
+        dependencies="1 6 11 12 13 15 16 17 18 19 20 21 121 123 125 127 129 131 258 263 290 292 294 295 296 318 336 373 375 386 387"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="304"
+        dependencies="121 184"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="305"
+        dependencies="123 187"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="306"
+        dependencies="125 190"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="307"
+        dependencies="375"
+        dependenciesKind="dependent"/>
+      <Unknown index="308"
+        dependencies="1 4 6 8 18 220 232 236 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="309"
+        dependencies="238"
+        dependenciesKind="dependent"/>
+      <Unknown index="310"
+        dependencies="1 14 15 16 18 282 287 290 292 294 295 296 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="311"
+        dependencies="1 14 15 16 18 270 275 290 292 294 295 296 375"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="374"
+        dependencies="375"
+        dependenciesKind="dependent"/>
+      <Unknown index="376"
+        dependencies="1 6 11 12 13 15 16 17 18 19 20 21 121 123 125 127 129 131 258 263 290 292 294 295 296 318 336 373 375 386 387"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>

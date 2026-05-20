@@ -1,0 +1,2074 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="2.0"
+  modelName="HVPS.AC230V"
+  guid="{d3f4de4d-9ccd-423f-a22d-444412d64589}"
+  generationTool="Dymola Version 2017 FD01 (64-bit), 2016-12-02 (using Cvode with tolerance 1e-009)"
+  generationDateAndTime="2017-07-26T20:22:08Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="12">
+  <CoSimulation
+    modelIdentifier="HVPS_AC230V"
+    canHandleVariableCommunicationStepSize="true"
+    canBeInstantiatedOnlyOncePerProcess="true"
+    canNotUseMemoryManagementFunctions="true"/>
+  <UnitDefinitions>
+    <Unit
+      name="1"/>
+    <Unit
+      name="1/K">
+      <BaseUnit K="-1"/>
+    </Unit>
+    <Unit
+      name="A">
+      <BaseUnit A="1"/>
+    </Unit>
+    <Unit
+      name="A/s">
+      <BaseUnit s="-1"
+        A="1"/>
+    </Unit>
+    <Unit
+      name="F">
+      <BaseUnit kg="-1"
+        m="-2"
+        s="4"
+        A="2"/>
+    </Unit>
+    <Unit
+      name="H">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="K">
+      <BaseUnit K="1"/>
+      <DisplayUnit
+        name="degC"
+        offset="-273.15"/>
+    </Unit>
+    <Unit
+      name="Ohm">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="S">
+      <BaseUnit kg="-1"
+        m="-2"
+        s="3"
+        A="2"/>
+    </Unit>
+    <Unit
+      name="V">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        A="-1"/>
+    </Unit>
+    <Unit
+      name="V/s">
+      <BaseUnit kg="1"
+        m="2"
+        s="-4"
+        A="-1"/>
+    </Unit>
+    <Unit
+      name="W">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"/>
+    </Unit>
+    <Unit
+      name="s">
+      <BaseUnit s="1"/>
+    </Unit>
+    <Unit
+      name="s-1">
+      <BaseUnit s="-1"/>
+    </Unit>
+  </UnitDefinitions>
+  <TypeDefinitions>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealInput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealOutput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Capacitance">
+      <Real
+        quantity="Capacitance"
+        unit="F"
+        min="0.0"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Conductance">
+      <Real
+        quantity="Conductance"
+        unit="S"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Current">
+      <Real
+        quantity="ElectricCurrent"
+        unit="A"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.DampingCoefficient">
+      <Real
+        quantity="DampingCoefficient"
+        unit="s-1"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Inductance">
+      <Real
+        quantity="Inductance"
+        unit="H"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.LinearTemperatureCoefficient">
+      <Real
+        quantity="LinearTemperatureCoefficient"
+        unit="1/K"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Power">
+      <Real
+        quantity="Power"
+        unit="W"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Resistance">
+      <Real
+        quantity="Resistance"
+        unit="Ohm"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Temperature">
+      <Real
+        quantity="ThermodynamicTemperature"
+        unit="K"
+        displayUnit="degC"
+        min="0.0"
+        nominal="300.0"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Time">
+      <Real
+        quantity="Time"
+        unit="s"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.SIunits.Voltage">
+      <Real
+        quantity="ElectricPotential"
+        unit="V"/>
+    </SimpleType>
+  </TypeDefinitions>
+  <DefaultExperiment startTime="0.0"
+    stopTime="1.0"
+    tolerance="1E-009"/>
+  <ModelVariables>
+    <!-- Index for next variable = 1 -->
+    <ScalarVariable
+      name="R_line"
+      valueReference="16777216"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="Ohm"
+        start="0.2"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 2 -->
+    <ScalarVariable
+      name="L_line"
+      valueReference="16777217"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="H"
+        start="5E-005"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 3 -->
+    <ScalarVariable
+      name="C_buscap"
+      valueReference="16777218"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="F"
+        start="0.00039"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 4 -->
+    <ScalarVariable
+      name="R_diode"
+      valueReference="16777219"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="Ohm"
+        start="0.04"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 5 -->
+    <ScalarVariable
+      name="R_buscap"
+      valueReference="16777220"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="Ohm"
+        start="0.21"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 6 -->
+    <ScalarVariable
+      name="V_knee"
+      valueReference="16777221"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        unit="V"
+        start="0.6"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 7 -->
+    <ScalarVariable
+      name="G_off"
+      valueReference="16777222"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="S"
+        start="1E-009"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 8 -->
+    <ScalarVariable
+      name="L_pfc"
+      valueReference="16777223"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 9 -->
+    <ScalarVariable
+      name="R_pfc"
+      valueReference="16777224"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 10 -->
+    <ScalarVariable
+      name="ACMainFreq"
+      valueReference="16777225"
+      causality="parameter"
+      variability="fixed">
+      <Real start="50.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 11 -->
+    <ScalarVariable
+      name="I_RMS"
+      valueReference="352321536"
+      description="Load Current"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="1"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 12 -->
+    <ScalarVariable
+      name="AC_Main"
+      valueReference="352321537"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 13 -->
+    <ScalarVariable
+      name="HVDC"
+      valueReference="335544320"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 14 -->
+    <ScalarVariable
+      name="Id1"
+      valueReference="335544321"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 15 -->
+    <ScalarVariable
+      name="Id2"
+      valueReference="335544322"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 16 -->
+    <ScalarVariable
+      name="Id3"
+      valueReference="335544323"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 17 -->
+    <ScalarVariable
+      name="Id4"
+      valueReference="335544324"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 18 -->
+    <ScalarVariable
+      name="Ibuscap1"
+      valueReference="335544325"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 19 -->
+    <ScalarVariable
+      name="Ibuscap2"
+      valueReference="67108870"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 20 -->
+    <ScalarVariable
+      name="R4.R"
+      valueReference="16777226"
+      description="Resistance at temperature T_ref"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        start="10000000.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 21 -->
+    <ScalarVariable
+      name="R4.T_ref"
+      valueReference="16777227"
+      description="Reference temperature"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 22 -->
+    <ScalarVariable
+      name="R4.alpha"
+      valueReference="16777228"
+      description="Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.LinearTemperatureCoefficient"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 23 -->
+    <ScalarVariable
+      name="R4.v"
+      valueReference="335544320"
+      description="Voltage drop between the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 24 -->
+    <ScalarVariable
+      name="R4.i"
+      valueReference="369098752"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 25 -->
+    <ScalarVariable
+      name="R4.p.v"
+      valueReference="335544320"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 26 -->
+    <ScalarVariable
+      name="R4.p.i"
+      valueReference="369098752"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 27 -->
+    <ScalarVariable
+      name="R4.n.v"
+      valueReference="100663297"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 28 -->
+    <ScalarVariable
+      name="R4.n.i"
+      valueReference="369098754"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 29 -->
+    <ScalarVariable
+      name="R4.T"
+      valueReference="16777229"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 30 -->
+    <ScalarVariable
+      name="R4.LossPower"
+      valueReference="905969668"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 31 -->
+    <ScalarVariable
+      name="R4.T_heatPort"
+      valueReference="16777229"
+      description="Temperature of heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 32 -->
+    <ScalarVariable
+      name="R4.R_actual"
+      valueReference="100663301"
+      description="Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 33 -->
+    <ScalarVariable
+      name="SC1.p.v"
+      valueReference="905969670"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 34 -->
+    <ScalarVariable
+      name="SC1.p.i"
+      valueReference="369098759"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 35 -->
+    <ScalarVariable
+      name="SC1.n.v"
+      valueReference="100663304"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 36 -->
+    <ScalarVariable
+      name="SC1.n.i"
+      valueReference="369098769"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 37 -->
+    <ScalarVariable
+      name="SC1.v"
+      valueReference="905969670"
+      description="Voltage drop between the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 38 -->
+    <ScalarVariable
+      name="SC1.i"
+      valueReference="369098759"
+      description="Current flowing from pin p to pin n as input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 39 -->
+    <ScalarVariable
+      name="SV2.p.v"
+      valueReference="637534217"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 40 -->
+    <ScalarVariable
+      name="SV2.p.i"
+      valueReference="3858759694"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 41 -->
+    <ScalarVariable
+      name="SV2.n.v"
+      valueReference="369098762"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 42 -->
+    <ScalarVariable
+      name="SV2.n.i"
+      valueReference="33554432"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 43 -->
+    <ScalarVariable
+      name="SV2.v"
+      valueReference="352321537"
+      description="Voltage between pin p and n (= p.v - n.v) as input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 44 -->
+    <ScalarVariable
+      name="SV2.i"
+      valueReference="3858759694"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 45 -->
+    <ScalarVariable
+      name="L_Line.v"
+      valueReference="637534219"
+      description="Voltage drop between the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 46 -->
+    <ScalarVariable
+      name="L_Line.i"
+      valueReference="33554432"
+      description="Current flowing from pin p to pin n"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 47 -->
+    <ScalarVariable
+      name="der(L_Line.i)"
+      valueReference="587202560"
+      description="der(Current flowing from pin p to pin n)">
+      <Real
+        unit="A/s"
+        derivative="46"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 48 -->
+    <ScalarVariable
+      name="L_Line.p.v"
+      valueReference="637534220"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 49 -->
+    <ScalarVariable
+      name="L_Line.p.i"
+      valueReference="33554432"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 50 -->
+    <ScalarVariable
+      name="L_Line.n.v"
+      valueReference="369098765"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 51 -->
+    <ScalarVariable
+      name="L_Line.n.i"
+      valueReference="3858759694"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 52 -->
+    <ScalarVariable
+      name="L_Line.L"
+      valueReference="100663311"
+      description="Inductance"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Inductance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 53 -->
+    <ScalarVariable
+      name="R3.R"
+      valueReference="16777230"
+      description="Resistance at temperature T_ref"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        start="0.01"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 54 -->
+    <ScalarVariable
+      name="R3.T_ref"
+      valueReference="16777231"
+      description="Reference temperature"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 55 -->
+    <ScalarVariable
+      name="R3.alpha"
+      valueReference="16777232"
+      description="Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.LinearTemperatureCoefficient"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 56 -->
+    <ScalarVariable
+      name="R3.v"
+      valueReference="905969680"
+      description="Voltage drop between the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 57 -->
+    <ScalarVariable
+      name="R3.i"
+      valueReference="369098759"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 58 -->
+    <ScalarVariable
+      name="R3.p.v"
+      valueReference="335544320"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 59 -->
+    <ScalarVariable
+      name="R3.p.i"
+      valueReference="369098759"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 60 -->
+    <ScalarVariable
+      name="R3.n.v"
+      valueReference="905969670"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 61 -->
+    <ScalarVariable
+      name="R3.n.i"
+      valueReference="369098769"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 62 -->
+    <ScalarVariable
+      name="R3.T"
+      valueReference="16777233"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 63 -->
+    <ScalarVariable
+      name="R3.LossPower"
+      valueReference="905969683"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 64 -->
+    <ScalarVariable
+      name="R3.T_heatPort"
+      valueReference="16777233"
+      description="Temperature of heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 65 -->
+    <ScalarVariable
+      name="R3.R_actual"
+      valueReference="100663316"
+      description="Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 66 -->
+    <ScalarVariable
+      name="R_Line.R"
+      valueReference="100663317"
+      description="Resistance at temperature T_ref"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 67 -->
+    <ScalarVariable
+      name="R_Line.T_ref"
+      valueReference="16777234"
+      description="Reference temperature"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 68 -->
+    <ScalarVariable
+      name="R_Line.alpha"
+      valueReference="16777235"
+      description="Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.LinearTemperatureCoefficient"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 69 -->
+    <ScalarVariable
+      name="R_Line.v"
+      valueReference="637534230"
+      description="Voltage drop between the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 70 -->
+    <ScalarVariable
+      name="R_Line.i"
+      valueReference="33554432"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 71 -->
+    <ScalarVariable
+      name="R_Line.p.v"
+      valueReference="637534217"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 72 -->
+    <ScalarVariable
+      name="R_Line.p.i"
+      valueReference="33554432"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 73 -->
+    <ScalarVariable
+      name="R_Line.n.v"
+      valueReference="637534220"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 74 -->
+    <ScalarVariable
+      name="R_Line.n.i"
+      valueReference="3858759694"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 75 -->
+    <ScalarVariable
+      name="R_Line.T"
+      valueReference="16777236"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 76 -->
+    <ScalarVariable
+      name="R_Line.LossPower"
+      valueReference="905969688"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 77 -->
+    <ScalarVariable
+      name="R_Line.T_heatPort"
+      valueReference="16777236"
+      description="Temperature of heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 78 -->
+    <ScalarVariable
+      name="R_Line.R_actual"
+      valueReference="100663321"
+      description="Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 79 -->
+    <ScalarVariable
+      name="G1.p.v"
+      valueReference="100663322"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 80 -->
+    <ScalarVariable
+      name="G1.p.i"
+      valueReference="905969691"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 81 -->
+    <ScalarVariable
+      name="HVDCSensor.p.v"
+      valueReference="335544320"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 82 -->
+    <ScalarVariable
+      name="HVDCSensor.p.i"
+      valueReference="100663324"
+      description="Current flowing into the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 83 -->
+    <ScalarVariable
+      name="HVDCSensor.n.v"
+      valueReference="100663325"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 84 -->
+    <ScalarVariable
+      name="HVDCSensor.n.i"
+      valueReference="100663326"
+      description="Current flowing into the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 85 -->
+    <ScalarVariable
+      name="HVDCSensor.v"
+      valueReference="335544320"
+      description="Voltage between pin p and n (= p.v - n.v) as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 86 -->
+    <ScalarVariable
+      name="ID3.v"
+      valueReference="369098783"
+      description="Voltage drop between the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 87 -->
+    <ScalarVariable
+      name="ID3.i"
+      valueReference="335544323"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 88 -->
+    <ScalarVariable
+      name="ID3.p.v"
+      valueReference="100663328"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 89 -->
+    <ScalarVariable
+      name="ID3.p.i"
+      valueReference="335544323"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 90 -->
+    <ScalarVariable
+      name="ID3.n.v"
+      valueReference="369098762"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 91 -->
+    <ScalarVariable
+      name="ID3.n.i"
+      valueReference="369098785"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 92 -->
+    <ScalarVariable
+      name="ID3.Ron"
+      valueReference="100663330"
+      description="Forward state-on differential resistance (closed resistance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 93 -->
+    <ScalarVariable
+      name="ID3.Goff"
+      valueReference="100663331"
+      description="Backward state-off conductance (opened conductance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Conductance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 94 -->
+    <ScalarVariable
+      name="ID3.Vknee"
+      valueReference="16777237"
+      description="Forward threshold voltage"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        min="0.0"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 95 -->
+    <ScalarVariable
+      name="ID3.T"
+      valueReference="16777238"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 96 -->
+    <ScalarVariable
+      name="ID3.LossPower"
+      valueReference="905969701"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 97 -->
+    <ScalarVariable
+      name="ID3.T_heatPort"
+      valueReference="16777238"
+      description="Temperature of heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 98 -->
+    <ScalarVariable
+      name="ID3.off"
+      valueReference="369098790"
+      description="Switching state"
+      variability="discrete"
+      initial="approx">
+      <Boolean start="true"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 99 -->
+    <ScalarVariable
+      name="ID4.v"
+      valueReference="369098794"
+      description="Voltage drop between the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 100 -->
+    <ScalarVariable
+      name="ID4.i"
+      valueReference="335544324"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 101 -->
+    <ScalarVariable
+      name="ID4.p.v"
+      valueReference="369098762"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 102 -->
+    <ScalarVariable
+      name="ID4.p.i"
+      valueReference="335544324"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 103 -->
+    <ScalarVariable
+      name="ID4.n.v"
+      valueReference="335544320"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 104 -->
+    <ScalarVariable
+      name="ID4.n.i"
+      valueReference="369098795"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 105 -->
+    <ScalarVariable
+      name="ID4.Ron"
+      valueReference="100663340"
+      description="Forward state-on differential resistance (closed resistance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 106 -->
+    <ScalarVariable
+      name="ID4.Goff"
+      valueReference="100663341"
+      description="Backward state-off conductance (opened conductance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Conductance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 107 -->
+    <ScalarVariable
+      name="ID4.Vknee"
+      valueReference="16777239"
+      description="Forward threshold voltage"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        min="0.0"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 108 -->
+    <ScalarVariable
+      name="ID4.T"
+      valueReference="16777240"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 109 -->
+    <ScalarVariable
+      name="ID4.LossPower"
+      valueReference="905969711"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 110 -->
+    <ScalarVariable
+      name="ID4.T_heatPort"
+      valueReference="16777240"
+      description="Temperature of heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 111 -->
+    <ScalarVariable
+      name="ID4.off"
+      valueReference="369098800"
+      description="Switching state"
+      variability="discrete"
+      initial="approx">
+      <Boolean start="true"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 112 -->
+    <ScalarVariable
+      name="C_BusCap1.v"
+      valueReference="33554433"
+      description="Voltage drop between the two pins (= p.v - n.v)"
+      initial="exact">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="357.7960312803931"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 113 -->
+    <ScalarVariable
+      name="der(C_BusCap1.v)"
+      valueReference="587202561"
+      description="der(Voltage drop between the two pins (= p.v - n.v))">
+      <Real
+        unit="V/s"
+        derivative="112"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 114 -->
+    <ScalarVariable
+      name="C_BusCap1.i"
+      valueReference="335544325"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 115 -->
+    <ScalarVariable
+      name="C_BusCap1.p.v"
+      valueReference="335544320"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 116 -->
+    <ScalarVariable
+      name="C_BusCap1.p.i"
+      valueReference="335544325"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 117 -->
+    <ScalarVariable
+      name="C_BusCap1.n.v"
+      valueReference="369098804"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 118 -->
+    <ScalarVariable
+      name="C_BusCap1.n.i"
+      valueReference="369098805"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 119 -->
+    <ScalarVariable
+      name="C_BusCap1.C"
+      valueReference="100663350"
+      description="Capacitance"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Capacitance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 120 -->
+    <ScalarVariable
+      name="R_BusCap1.R"
+      valueReference="100663351"
+      description="Resistance at temperature T_ref"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 121 -->
+    <ScalarVariable
+      name="R_BusCap1.T_ref"
+      valueReference="16777241"
+      description="Reference temperature"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 122 -->
+    <ScalarVariable
+      name="R_BusCap1.alpha"
+      valueReference="16777242"
+      description="Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.LinearTemperatureCoefficient"
+        start="0.004041"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 123 -->
+    <ScalarVariable
+      name="R_BusCap1.v"
+      valueReference="369098804"
+      description="Voltage drop between the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 124 -->
+    <ScalarVariable
+      name="R_BusCap1.i"
+      valueReference="335544325"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 125 -->
+    <ScalarVariable
+      name="R_BusCap1.p.v"
+      valueReference="369098804"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 126 -->
+    <ScalarVariable
+      name="R_BusCap1.p.i"
+      valueReference="335544325"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 127 -->
+    <ScalarVariable
+      name="R_BusCap1.n.v"
+      valueReference="100663352"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 128 -->
+    <ScalarVariable
+      name="R_BusCap1.n.i"
+      valueReference="369098805"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 129 -->
+    <ScalarVariable
+      name="R_BusCap1.T"
+      valueReference="16777243"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 130 -->
+    <ScalarVariable
+      name="R_BusCap1.LossPower"
+      valueReference="905969722"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 131 -->
+    <ScalarVariable
+      name="R_BusCap1.T_heatPort"
+      valueReference="16777243"
+      description="Temperature of heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 132 -->
+    <ScalarVariable
+      name="R_BusCap1.R_actual"
+      valueReference="100663355"
+      description="Actual resistance = R*(1 + alpha*(T_heatPort - T_ref))"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 133 -->
+    <ScalarVariable
+      name="ID2.v"
+      valueReference="369098812"
+      description="Voltage drop between the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 134 -->
+    <ScalarVariable
+      name="ID2.i"
+      valueReference="335544322"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 135 -->
+    <ScalarVariable
+      name="ID2.p.v"
+      valueReference="369098765"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 136 -->
+    <ScalarVariable
+      name="ID2.p.i"
+      valueReference="335544322"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 137 -->
+    <ScalarVariable
+      name="ID2.n.v"
+      valueReference="335544320"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 138 -->
+    <ScalarVariable
+      name="ID2.n.i"
+      valueReference="369098813"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 139 -->
+    <ScalarVariable
+      name="ID2.Ron"
+      valueReference="100663358"
+      description="Forward state-on differential resistance (closed resistance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 140 -->
+    <ScalarVariable
+      name="ID2.Goff"
+      valueReference="100663359"
+      description="Backward state-off conductance (opened conductance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Conductance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 141 -->
+    <ScalarVariable
+      name="ID2.Vknee"
+      valueReference="16777244"
+      description="Forward threshold voltage"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        min="0.0"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 142 -->
+    <ScalarVariable
+      name="ID2.T"
+      valueReference="16777245"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 143 -->
+    <ScalarVariable
+      name="ID2.LossPower"
+      valueReference="905969729"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 144 -->
+    <ScalarVariable
+      name="ID2.T_heatPort"
+      valueReference="16777245"
+      description="Temperature of heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 145 -->
+    <ScalarVariable
+      name="ID2.off"
+      valueReference="369098818"
+      description="Switching state"
+      variability="discrete"
+      initial="approx">
+      <Boolean start="true"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 146 -->
+    <ScalarVariable
+      name="ID1.v"
+      valueReference="369098822"
+      description="Voltage drop between the two pins (= p.v - n.v)">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 147 -->
+    <ScalarVariable
+      name="ID1.i"
+      valueReference="335544321"
+      description="Current flowing from pin p to pin n">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 148 -->
+    <ScalarVariable
+      name="ID1.p.v"
+      valueReference="100663367"
+      description="Potential at the pin"
+      variability="constant">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 149 -->
+    <ScalarVariable
+      name="ID1.p.i"
+      valueReference="335544321"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 150 -->
+    <ScalarVariable
+      name="ID1.n.v"
+      valueReference="369098765"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 151 -->
+    <ScalarVariable
+      name="ID1.n.i"
+      valueReference="369098824"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 152 -->
+    <ScalarVariable
+      name="ID1.Ron"
+      valueReference="100663369"
+      description="Forward state-on differential resistance (closed resistance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Resistance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 153 -->
+    <ScalarVariable
+      name="ID1.Goff"
+      valueReference="100663370"
+      description="Backward state-off conductance (opened conductance)"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Conductance"
+        min="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 154 -->
+    <ScalarVariable
+      name="ID1.Vknee"
+      valueReference="16777246"
+      description="Forward threshold voltage"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"
+        min="0.0"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 155 -->
+    <ScalarVariable
+      name="ID1.T"
+      valueReference="16777247"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"
+        start="298.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 156 -->
+    <ScalarVariable
+      name="ID1.LossPower"
+      valueReference="905969740"
+      description="Loss power leaving component via heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Power"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 157 -->
+    <ScalarVariable
+      name="ID1.T_heatPort"
+      valueReference="16777247"
+      description="Temperature of heatPort">
+      <Real
+        declaredType="Modelica.SIunits.Temperature"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 158 -->
+    <ScalarVariable
+      name="ID1.off"
+      valueReference="369098829"
+      description="Switching state"
+      variability="discrete"
+      initial="approx">
+      <Boolean start="true"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 159 -->
+    <ScalarVariable
+      name="SensorId2.p.v"
+      valueReference="369098765"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 160 -->
+    <ScalarVariable
+      name="SensorId2.p.i"
+      valueReference="335544322"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 161 -->
+    <ScalarVariable
+      name="SensorId2.n.v"
+      valueReference="369098765"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 162 -->
+    <ScalarVariable
+      name="SensorId2.n.i"
+      valueReference="369098813"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 163 -->
+    <ScalarVariable
+      name="SensorId2.i"
+      valueReference="335544322"
+      description="Current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 164 -->
+    <ScalarVariable
+      name="SensorId4.p.v"
+      valueReference="369098762"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 165 -->
+    <ScalarVariable
+      name="SensorId4.p.i"
+      valueReference="335544324"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 166 -->
+    <ScalarVariable
+      name="SensorId4.n.v"
+      valueReference="369098762"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 167 -->
+    <ScalarVariable
+      name="SensorId4.n.i"
+      valueReference="369098795"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 168 -->
+    <ScalarVariable
+      name="SensorId4.i"
+      valueReference="335544324"
+      description="Current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 169 -->
+    <ScalarVariable
+      name="SensorId1.p.v"
+      valueReference="369098765"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 170 -->
+    <ScalarVariable
+      name="SensorId1.p.i"
+      valueReference="335544321"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 171 -->
+    <ScalarVariable
+      name="SensorId1.n.v"
+      valueReference="369098765"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 172 -->
+    <ScalarVariable
+      name="SensorId1.n.i"
+      valueReference="369098824"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 173 -->
+    <ScalarVariable
+      name="SensorId1.i"
+      valueReference="335544321"
+      description="Current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 174 -->
+    <ScalarVariable
+      name="SensorId3.p.v"
+      valueReference="369098762"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 175 -->
+    <ScalarVariable
+      name="SensorId3.p.i"
+      valueReference="335544323"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 176 -->
+    <ScalarVariable
+      name="SensorId3.n.v"
+      valueReference="369098762"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 177 -->
+    <ScalarVariable
+      name="SensorId3.n.i"
+      valueReference="369098785"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 178 -->
+    <ScalarVariable
+      name="SensorId3.i"
+      valueReference="335544323"
+      description="Current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 179 -->
+    <ScalarVariable
+      name="SensorIbuscap1.p.v"
+      valueReference="335544320"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 180 -->
+    <ScalarVariable
+      name="SensorIbuscap1.p.i"
+      valueReference="335544325"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 181 -->
+    <ScalarVariable
+      name="SensorIbuscap1.n.v"
+      valueReference="335544320"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 182 -->
+    <ScalarVariable
+      name="SensorIbuscap1.n.i"
+      valueReference="369098805"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 183 -->
+    <ScalarVariable
+      name="SensorIbuscap1.i"
+      valueReference="335544325"
+      description="Current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 184 -->
+    <ScalarVariable
+      name="const.k"
+      valueReference="16777248"
+      description="Constant output value"
+      causality="parameter"
+      variability="fixed">
+      <Real start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 185 -->
+    <ScalarVariable
+      name="const.y"
+      valueReference="16777248"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 186 -->
+    <ScalarVariable
+      name="Ipfc"
+      valueReference="335544327"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 187 -->
+    <ScalarVariable
+      name="LineCurrentSensor.p.v"
+      valueReference="637534217"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 188 -->
+    <ScalarVariable
+      name="LineCurrentSensor.p.i"
+      valueReference="33554432"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 189 -->
+    <ScalarVariable
+      name="LineCurrentSensor.n.v"
+      valueReference="637534217"
+      description="Potential at the pin">
+      <Real
+        declaredType="Modelica.SIunits.Voltage"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 190 -->
+    <ScalarVariable
+      name="LineCurrentSensor.n.i"
+      valueReference="3858759694"
+      description="Current flowing into the pin">
+      <Real
+        declaredType="Modelica.SIunits.Current"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 191 -->
+    <ScalarVariable
+      name="LineCurrentSensor.i"
+      valueReference="33554432"
+      description="Current in the branch from p to n as output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 192 -->
+    <ScalarVariable
+      name="slewRateLimiter.u"
+      valueReference="352321536"
+      description="Connector of Real input signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 193 -->
+    <ScalarVariable
+      name="slewRateLimiter.y"
+      valueReference="33554434"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 194 -->
+    <ScalarVariable
+      name="der(slewRateLimiter.y)"
+      valueReference="587202562"
+      description="der(Connector of Real output signal)">
+      <Real
+        unit="s-1"
+        derivative="193"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 195 -->
+    <ScalarVariable
+      name="slewRateLimiter.Rising"
+      valueReference="16777249"
+      description="Maximum rising slew rate [+small..+inf)"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.DampingCoefficient"
+        min="1E-060"
+        start="1000"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 196 -->
+    <ScalarVariable
+      name="slewRateLimiter.Falling"
+      valueReference="100663377"
+      description="Maximum falling slew rate (-inf..-small]"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.DampingCoefficient"
+        max="-1E-060"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 197 -->
+    <ScalarVariable
+      name="slewRateLimiter.Td"
+      valueReference="16777250"
+      description="Derivative time constant"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.SIunits.Time"
+        min="1E-060"
+        start="6.25E-005"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 198 -->
+    <ScalarVariable
+      name="slewRateLimiter.strict"
+      valueReference="100663378"
+      description="= true, if strict limits with noEvent(..)"
+      variability="constant">
+      <Boolean start="false"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 199 -->
+    <ScalarVariable
+      name="add.u1"
+      valueReference="33554434"
+      description="Connector of Real input signal 1">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 200 -->
+    <ScalarVariable
+      name="add.u2"
+      valueReference="16777253"
+      description="Connector of Real input signal 2">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 201 -->
+    <ScalarVariable
+      name="add.y"
+      valueReference="369098759"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 202 -->
+    <ScalarVariable
+      name="add.k1"
+      valueReference="16777251"
+      description="Gain of upper input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 203 -->
+    <ScalarVariable
+      name="add.k2"
+      valueReference="16777252"
+      description="Gain of lower input"
+      causality="parameter"
+      variability="tunable">
+      <Real start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 204 -->
+    <ScalarVariable
+      name="const1.k"
+      valueReference="16777253"
+      description="Constant output value"
+      causality="parameter"
+      variability="tunable">
+      <Real start="0.003"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 205 -->
+    <ScalarVariable
+      name="const1.y"
+      valueReference="16777253"
+      description="Connector of Real output signal">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"/>
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="13"
+        dependencies="46 112 193"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="14"
+        dependencies="46 112 193"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="15"
+        dependencies="46 112 193"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="16"
+        dependencies="46 112 193"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="17"
+        dependencies="46 112 193"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="18"
+        dependencies="46 112 193"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="19"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="186"
+        dependencies="46"
+        dependenciesKind="fixed"/>
+    </Outputs>
+    <Derivatives>
+      <Unknown index="47"
+        dependencies="12 46 112 193"
+        dependenciesKind="fixed dependent dependent fixed"/>
+      <Unknown index="113"
+        dependencies="46 112 193"
+        dependenciesKind="dependent dependent fixed"/>
+      <Unknown index="194"
+        dependencies="11 193"
+        dependenciesKind="fixed fixed"/>
+    </Derivatives>
+    <InitialUnknowns>
+      <Unknown index="13"
+        dependencies="4 5 7 11 20 21 22 29 46 94 107 112 121 122 129 141 154 202 203 204"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="14"
+        dependencies="4 5 7 11 20 21 22 29 46 94 107 112 121 122 129 141 154 202 203 204"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="15"
+        dependencies="4 5 7 11 20 21 22 29 46 94 107 112 121 122 129 141 154 202 203 204"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="16"
+        dependencies="4 5 7 11 20 21 22 29 46 94 107 112 121 122 129 141 154 202 203 204"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="17"
+        dependencies="4 5 7 11 20 21 22 29 46 94 107 112 121 122 129 141 154 202 203 204"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="18"
+        dependencies="4 5 7 11 20 21 22 29 46 94 107 112 121 122 129 141 154 202 203 204"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="19"
+        dependencies="184"
+        dependenciesKind="dependent"/>
+      <Unknown index="47"
+        dependencies="1 2 4 5 7 11 12 20 21 22 29 46 67 68 75 94 107 112 121 122 129 141 154 202 203 204"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="113"
+        dependencies="3 4 5 7 11 20 21 22 29 46 94 107 112 121 122 129 141 154 202 203 204"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="186"
+        dependencies="46"
+        dependenciesKind="dependent"/>
+      <Unknown index="193"
+        dependencies="11"
+        dependenciesKind="dependent"/>
+      <Unknown index="194"
+        dependencies="11 195 197"
+        dependenciesKind="dependent dependent dependent"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>

@@ -1,0 +1,118 @@
+<html>
+
+
+
+
+<head>
+  <title>Condition Check_Angle</title>
+</head>
+
+
+
+<body>
+
+
+<font size="6">
+
+<h2  style="color:Blue;">Condition Check_Angle</h2>
+
+<font size="3">
+
+
+
+
+<h2 style="color:green;">Description</h2>
+
+ This Matlab function block is used to keep check on failure of the test.
+<br><br><br><br>
+
+<img src ="./images/Condition_Check _Angle/Condition_Block.PNG" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+ <br><br><br><br>  
+
+<h2 style="color:green;">Input</h2>
+<b>1.</b> <b>Time</b> is  real simulation time,which is used to calculate failure conditions.
+<br><br>
+<b>2.</b> <b>Speed_Plant</b> is the output speed from the plant.
+<br><br>
+<b>3.</b> <b>Speed_Ref</b> is the given reference speed by the user.
+<br><br>
+<b>4.</b> <b>Dyno_Applied</b> is the status to know whether Dyno load is applied or not.
+<br><br>
+ <b>4.</b> <b>Target_Speed</b> is the target speed defined by the user.
+<br><br>
+
+<br>
+
+<h2 style="color:green;">Output</h2>
+<b>1.</b> The output <b>Condition_Check_1</b> will keep check on startup conditions.The signal will go high if start up is Bad.
+<br><br>
+<b>2.</b> The output <b>Condition_Check_2</b> will keep check on startup conditions.The signal will go high if start up is Worse.
+<br><br>
+<b>3.</b> The output <b> Fail_ Condition_1</b> will send the signal to stop the simulation if failure condition is true, which is due to out of bound response.
+<br><br>
+<b>4.</b> The output <b> Fail_ Condition_2</b> will send the signal to stop the simulation if failure condition is true, which is due to oscillatory response.
+<br><br>
+
+<h2 style="color:green;">Parameters</h2>
+
+<img src ="./images/Condition_Check _Angle/Condition_Parameter.png" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+<br><br><br><br><br><br>
+
+The block contains 5 configurable Parameters which are configured through the parameter initialization file:
+
+<dl>
+  <dt><b>Speed Tolerance Value</b></dt><dd> It is value in % which defines the speed tolerance band beyond which speed is considered to be failure(for Failure_1 condition).</dd>
+  <dt><b>Parameter Time Check_1</b></dt><dd> It is the time in sec , which is used in condition block to check if the speed is unbounded for more than para time check_1(for Failure_1 condition). </dd>
+  <dt><b>Parameter Time Check_2</b></dt><dd> It is the time in sec , which is used in condition block to check if the speed is unbounded for more than para time check_2 (For Startup condition).</dd>
+  <dt><b>Parameter Time Check_3</b></dt><dd> It is the time in sec , which is used in condition block to check if the speed is unbounded for more than para time check_3(For Failure_2 condition)</dd>
+  <dt><b>Speed_Tolerance_1</b></dt><dd>It is value in % which defines the speed tolerance band beyond which speed is considered to be failure(For Failure_2 condition).</dd>
+</dl>
+
+
+
+<h2 style="color:green;"> Working </h2>
+
+
+
+<img src="./images/Condition_Check _Angle/Diagram.png" align="left">
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<p>In order to keep check on failure condition,<b>Time</b> has to synchronise with real time simulation.<b>Time</b> is connected through clock as an input to the block<p>
+<p>Condition check will begin only when the <b>Dyno_applied</b> signal is high. <p>
+<p>If the difference in <b>Speed_Plant</b> and <b>Speed_Ref</b> is within the vicinity of tolerance band, output to stop simulation is logic 0.
+<p>If the difference is not within the tolerance and if speed continues to go out of limit for time greater than <b>Parameter Time Check_1</b>, output to stop simulation is logic high. <p>
+Startup conditions has been analysed and defined as bad and worse start up. If the speed is out of bound or shows small peaks or jerks for time equal to <b>Para Time check_2</b>, than counter will increment 1.<p>
+And this condition is defined as bad startup.
+If the speed is out of bound or shows small peaks or jerks for time more than <b>para time check_2 </b>, than counter will  further increment.<p> This condition is defined as Worse startup.<p>
+Both above conditions are checked, if speed from plant is greater than or equal to Target speed.
+Fail Condition_2 has been check when plant speed greater than or equal to target speed and speed is more than <b>Speed Tolrance_1 value</b> <p> and shows oscillatory response.This condition will define as  Fail_2.
+    
+
+
+<h2 style="color:green;">Example</h2>
+
+<img src="./images/Condition_Check _Angle/Working.png" align="left">
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<p>This is an example carried for testing performance of sBPM motor,
+by changing initial angle of the motor.<p>
+<p>This test is supported by two .m files, one for parameter initialization<mark style="color:blue;"><b>'Parameter_Initialization_Initial_Angle.m'</b></mark>
+and other one to run the script<mark style="color:blue;"><b>'Automatic_script_Angle.m'</b></mark>.<p>
+<p>Test named <mark style="color:blue;"><b>'Harness_Angle.slx'</b></mark> and can be found in the <i>'Sim_Arch\Harness' </i>folder. <p>
+
+
+
+
+
+</body>
+
+
+</html>

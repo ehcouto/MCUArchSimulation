@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mechanical_Parameters_HA>
+    <belt_ratio>10</belt_ratio>
+    <damp>0.28</damp>
+	<r_unb>0.254</r_unb>
+	<CF>0</CF>
+    <m_unb>0</m_unb>  
+    <M_D>1</M_D>
+    <M>0.2</M>
+    <R_Drum>0.254</R_Drum>
+    <R_J>0.05</R_J>	
+	<JDrum>0.0636792</JDrum>
+    <MechanicalVariant>HA_Spin</MechanicalVariant>
+</Mechanical_Parameters_HA>

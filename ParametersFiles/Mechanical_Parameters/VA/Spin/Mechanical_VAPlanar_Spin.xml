@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mechanical_Parameters_VA_Spin>
+	<belt_ratio>1</belt_ratio>
+	<m_t>13.7</m_t>
+	<m_d>15.79</m_d>
+    <m_u>0</m_u>
+    <m_b1>1</m_b1>
+    <m_b2>1</m_b2>
+    <e>0.25349</e>
+    <d>0.266</d>
+    <I_zt>0.65004</I_zt>    
+    <T_f>1</T_f>
+    <D_r>0.16</D_r>
+    <MechanicalVariant>VAPlanar_Spin</MechanicalVariant>
+</Mechanical_Parameters_VA_Spin>    
+

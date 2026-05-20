@@ -1,0 +1,95 @@
+<html>
+
+
+
+
+<head>
+  <title>Speed Status</title>
+</head>
+
+
+
+<body>
+
+
+<font size="6">
+
+<h2  style="color:Blue;">Speed Status</h2>
+
+<font size="3">
+
+
+
+
+<h2 style="color:green;">Description</h2>
+
+ This Matlab function block is used to get the status of reference and plant speed.
+<br><br><br><br>
+
+<img src ="./images/Speed_Status/Speed_Block.PNG" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+ <br><br><br><br><br><br>  
+
+<h2 style="color:green;">Input</h2>
+<b>1.</b> <b>Time</b> is  real simulation time,which is used here to generate delay.
+<br><br>
+<b>2.</b> <b>Speed_Plant</b> is the signal from the plant.
+<br><br>
+<b>2.</b> <b>Speed_Ref</b> is the reference signal which is given by the user.
+
+<br>
+
+<h2 style="color:green;">Output</h2>
+The output <b>Speed_attained</b> is the status generated from block when plant speed is  in vicinity of referance speed.
+
+
+
+<h2 style="color:green;">Parameters</h2>
+
+<img src ="./images/Speed_Status/Parameter.png" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+<br><br>
+<br>
+This block contains two configurable Parameters which are configured through the parameter initialization file:
+
+<dl>
+ <dt><b>Status Tolerance</b></dt><dd> It gives the vicinity value for plant speed,such that if plant speed is within the tolerance value status can be activated.
+ </dd>
+ <dt><b> Status Time Check</b></dt><dd> Once plant speed reaches reference speed, speed attained signal will be activated after <b> Status Time Check</b> sec.          </dd>
+</dl>
+
+
+
+<h2 style="color:green;"> Working </h2>
+<img src ="./images/Speed_Status/Graph.png" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+ 
+<br><br><br><br><br><br><br><br><br><br><br><br>
+ <br><br>   
+<p> Main aim of this block to  geneters the status of speed attained by reference and plant speed.<p>  
+<p>It will take absolute difference of <b>Speed_Plant</b> and <b>Speed_Ref</b> as input signal, and will always check if the plant signal is in vicinity of reference signal.<p>
+<p>This vicinity value is calculated by multiplying <b>Status Tolerance</b> with <b>Speed_Ref</b>.<p>
+<p>Speed_attained gives logic 1 if both the speeds are in the vicinity otherwise its always 0   <p>
+ <p> This status may be send to other functions to begin their executions.<p>
+
+ 
+    
+<h2 style="color:green;">File</h2>
+<p>This test is supported by two .m files, one for parameter initialization<mark style="color:blue;"><b>'Parameter_Initialization.m'</b></mark>
+and other one to run the script <mark style="color:blue;"><b>'Automatic_script_Temp.m'</b></mark>.<p>
+<p>Test named <mark style="color:blue;"><b>'Harness_Vary_Temp.slx'</b></mark> and can be found in the <i>'Sim_Arch\Harness' </i>folder. <p>
+    
+
+   
+
+</body>
+
+
+</html>

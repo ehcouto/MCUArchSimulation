@@ -1,0 +1,97 @@
+<html>
+
+
+
+
+<head>
+  <title>Parameter Value</title>
+</head>
+
+
+
+<body>
+
+
+<font size="6">
+
+<h2  style="color:Blue;">Parameter Value</h2>
+
+<font size="3">
+
+
+
+
+<h2 style="color:green;">Description</h2>
+
+ This Matlab function block is used to input the parameter variation signal.
+<br><br><br><br>
+
+<img src ="./images/Parameter_Value/Block.PNG" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+ <br>  
+
+<h2 style="color:green;">Input</h2>
+<b>1.</b> <b>Time</b> is  real simulation time,which is used here to give time delay.
+<br><br>
+<b>2.</b> <b>Dyno applied</b> is status coming from Dyno load block, illustrating that Dyno load has been applied and now its ready to vary the parameter value.
+
+
+<br>
+
+<h2 style="color:green;">Output</h2>
+ <b>Para_Value</b>  output signal is parameter variation signal which can be resistance or flux variation signal.
+
+
+
+<h2 style="color:green;">Parameters</h2>
+
+<img src ="./images/Parameter_Value/Parameter.png" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+<br><br>
+<br>
+This block contains three configurable Parameters which are configured through the parameter initialization file:
+
+<dl>
+ <dt><b>Initial Value</b></dt><dd> It is the initial value of the parameter which is going to vary.(i.e. Flux or Resistance). </dd>
+ <dt><b>Time Check</b></dt><dd> This is the value in sec,which allows delay time after which the generation of parameter signal begins. </dd>
+ <dt><b>Percentage Variation</b></dt><dd> It is value in % by which parameter values has to be varied.
+</dl>
+
+
+
+<h2 style="color:green;"> Working </h2>
+<img src ="./images/Parameter_Value/Graph.png" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<p>This block which geneters the parameter variation signal depending on the percentage value inputed by user <b>Percentage Variation</b>.<p>  
+<p>The variation of the signal is with respect to <b>Initial Value</b> of the parameterand it is step signal.<p>
+<p>Generation of <b>Para Value</b> signal will begin after <b>Time check</b>(sec),once condition of Dyno applied is logic 1.<p>
+          
+ 
+    
+    
+    
+    
+    
+    
+
+<h2 style="color:green;">File</h2>
+<p>This test is supported by two .m files, one for parameter initialization<mark style="color:blue;"><b>'Parameter_Initialization.m'</b></mark>
+and other one to run the script <mark style="color:blue;"><b>'Automatic_script_Temp.m'</b></mark>.<p>
+<p>Test named <mark style="color:blue;"><b>'Harness_Vary_Temp.slx'</b></mark> and can be found in the <i>'Sim_Arch\Harness' </i>folder. <p>
+    
+
+   
+
+</body>
+
+
+</html>

@@ -1,0 +1,92 @@
+<html>
+
+
+
+
+<head>
+  <title>Temperature Input</title>
+</head>
+
+
+
+<body>
+
+
+<font size="6">
+
+<h2  style="color:Blue;">Temperature Input</h2>
+
+<font size="3">
+
+
+
+
+<h2 style="color:green;">Description</h2>
+
+ This Matlab function block is used to input temperature to stator and Rotor.
+<br><br><br><br>
+
+<img src ="./images/Temp_Input/Temp_Block.PNG" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+ <br>  
+
+<h2 style="color:green;">Input</h2>
+ The <b>Para_Input</b> is input signal coming from the prameter variation block.
+
+
+<br>
+
+<h2 style="color:green;">Output</h2>
+<b>1.</b> <b>Stator_Temp</b> is output signal which is given to vary stator temperature.
+<br><br>
+<b>2.</b> <b>Rotor_Temp</b> is output signal which is given to vary rotor temperature.
+
+
+<h2 style="color:green;">Parameters</h2>
+
+<img src ="./images/Temp_Input/Parameter.png" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+<br><br>
+<br>
+This block contains four configurable parameters which are configured through the parameter initialization file:
+
+<dl>
+ <dt><b>Parameter Initial Value</b></dt><dd> It is the initial value of the parameter which is going to vary.(i.e Flux or Resistance). </dd>
+ <dt><b>Temperature Reference</b></dt><dd> This temperature will select reference values of either rotor or stator temperature. </dd>
+ <dt><b>Alpha</b></dt><dd> It is the constant value which will selected either temperature coefficient of stator winding or d-magnetisation constant.
+ <dt><b>Selection of Test</b></dt><dd> It will give logic 1 for selection of test carried by resistance variation, and logic 0 when it is flux variation.
+</dl>
+
+
+
+<h2 style="color:green;"> Working with example </h2>
+
+
+
+<img src="./images/Temp_Input/Working.png" align="left">
+<br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<p> Temperature of Stator and Rotor will vary depending on the corresponding parameter change in Resistance and Flux. <p> 
+Hence this <b>Temp_Input </b> block is always accompanied with <b>Parameter Value</b> block as shown in above figure.<p>
+<p> <b>Para_Input</b> which is input to the block, has the parameter input signal. This signal will interns calculate 
+corresponding temperature.<p> <p>Depending on the selection of test that is either carried by varying resistance or flux, output
+of Stator temp and Rotor temperature will change.<p>
+ <p>This test is carried for testing performance of sBPM motor,
+by varying parameter and thus varies corrosponding temperature of stator and rotor.<p>
+<p>If user wants to conduct test by varying resistance. In this case,stator output will have varying signal and Rotor output will have constant reference temperature as defined.<p> 
+    
+<h2 style="color:green;">File</h2>
+<p>This test is supported by two .m files, one for parameter initialization <mark style="color:blue;"><b>'Parameter_Initialization.m'</b></mark>
+and other one to run the script <mark style="color:blue;"><b>'Automatic_script_Temp.m'</b></mark>.<p>
+<p>Test named <mark style="color:blue;"><b>'Harness_Vary_Temp.slx'</b></mark> and can be found in the <i>'Sim_Arch\Harness' </i>folder. <p>
+    
+
+   
+
+</body>
+
+
+</html>

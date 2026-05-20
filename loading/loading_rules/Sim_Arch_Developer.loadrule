@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--Built from the sandbox "C:\Data\Projects2" and the workspace "MBCD_Simulation_Architecture Workspace"--><!--Generated: 2023-04-20 15.48.06--><scm:sourceControlLoadRule eclipseProjectOptions="import" version="1" xmlns:scm="http://com.ibm.team.scm">
+    <itemLoadRule>
+        <component itemId="_fSN4UCaCEeeOz5rKiOqiDQ"/>
+        <!-- <component name="SIM_ARCH_COMMON_CORE_BASIC" /> -->
+        <item itemId="_GVSAAHuiEe2pwq3_cBhL0Q" itemType="folder"/>
+        <!-- <item repositoryPath="/SimArch/Mode" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/source"/>
+    </itemLoadRule>
+    <parentLoadRule>
+        <component itemId="_fSN4UCaCEeeOz5rKiOqiDQ"/>
+        <!-- <component name="SIM_ARCH_COMMON_CORE_BASIC" /> -->
+        <parentFolder itemId="_PuPDoEujEe2D-tgWyY96kQ" itemType="folder"/>
+        <!-- <parentFolder repositoryPath="/Common" /> -->
+        <exclude>
+            <filter name="SIL_Ccaller"/>
+            <filter name="SettingFileAtomic"/>
+        </exclude>
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/source"/>
+    </parentLoadRule>
+    <parentLoadRule>
+        <component itemId="_fSN4UCaCEeeOz5rKiOqiDQ"/>
+        <!-- <component name="SIM_ARCH_COMMON_CORE_BASIC" /> -->
+        <parentFolder itemId="_PuSG8EujEe2D-tgWyY96kQ" itemType="folder"/>
+        <!-- <parentFolder repositoryPath="/Driver" /> -->
+        <exclude>
+            <filter name="Uart"/>
+            <filter name="Atod"/>
+            <filter name="SRMCInputCapture"/>
+            <filter name="Flash"/>
+        </exclude>
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/source"/>
+    </parentLoadRule>
+    <itemLoadRule alternateName="ParametersFiles">
+        <component itemId="_sfblcEJDEeiuhJNfxK2kkw"/>
+        <!-- <component name="PLANT_MODELS_PARAMETERS" /> -->
+        <item itemId="_HI6foE-kEei9JcW7YJX2cQ" itemType="folder"/>
+        <!-- <item repositoryPath="/Parameters Files" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch"/>
+    </itemLoadRule>
+    <parentLoadRule>
+        <component itemId="_FIjTEFwlEe2Vu-p3LepRWA"/>
+        <!-- <component name="PLANT_MODEL_CONFIG_LIB" /> -->
+        <parentFolder itemId="_FIjTFFwlEe2Vu-p3LepRWA" itemType="folder"/>
+        <!-- <parentFolder repositoryPath="/" /> -->
+        <exclude>
+            <filter name=".project"/>
+        </exclude>
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/plant_model"/>
+    </parentLoadRule>
+    <itemLoadRule alternateName="MCU_Sim_Arch">
+        <component itemId="_qUUMYGmNEei_07QsEZx7jg"/>
+        <!-- <component name="_SIM_ARCH_PROJECT_TEMPLATE" /> -->
+        <item itemId="_PRaxUGmOEei_07QsEZx7jg" itemType="folder"/>
+        <!-- <item repositoryPath="/ProjectTemplate" /> -->
+    </itemLoadRule>
+    <itemLoadRule>
+        <component itemId="_vs42UWJfEee9EeObU0ubIw"/>
+        <!-- <component name="SIMULATION_SPECIFIC" /> -->
+        <item itemId="_gi3GsGJgEeeXhNh9XLp4Bw" itemType="file"/>
+        <!-- <item repositoryPath="/SimulationSpecific_Simullink_SILPIL/Sim_prm.h" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/source/Sim"/>
+    </itemLoadRule>
+    <itemLoadRule>
+        <component itemId="_vs42UWJfEee9EeObU0ubIw"/>
+        <!-- <component name="SIMULATION_SPECIFIC" /> -->
+        <item itemId="_JPriMGpbEei_07QsEZx7jg" itemType="folder"/>
+        <!-- <item repositoryPath="/loading_rules" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/loading"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="SRMain_prv">
+        <component itemId="_vs42UWJfEee9EeObU0ubIw"/>
+        <!-- <component name="SIMULATION_SPECIFIC" /> -->
+        <item itemId="_S71skHsNEe2pwq3_cBhL0Q" itemType="folder"/>
+        <!-- <item repositoryPath="/SimArch_SrMain_prv" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/source"/>
+    </itemLoadRule>
+    <parentLoadRule>
+        <component itemId="_c6zJUGpYEei_07QsEZx7jg"/>
+        <!-- <component name="SIM_ARCH_MAIN_MODEL" /> -->
+        <parentFolder itemId="_c6zJVGpYEei_07QsEZx7jg" itemType="folder"/>
+        <!-- <parentFolder repositoryPath="/" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch"/>
+    </parentLoadRule>
+    <itemLoadRule alternateName="Docs_ADC_Model">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_uEmYIfkwEeym0f-20lsJKQ" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/ADC_Model/Docs" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/docs"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="Docs_Inverter">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_qhAtAPLXEeywc5w58p_KPw" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/Inverter/Docs" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/docs"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="Docs_BPM">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_qgfvovLXEeywc5w58p_KPw" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/BPM/Docs" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/docs"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="BPM">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_qgWlsfLXEeywc5w58p_KPw" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/BPM/Binaries" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/plant_model"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="ADC_Model">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_xuzZAfkwEeym0f-20lsJKQ" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/ADC_Model/Model/Simulink" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/plant_model"/>
+    </itemLoadRule>
+    <itemLoadRule>
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_LjpH0fLVEey47tl6FYAGyQ" itemType="folder"/>
+        <!-- <item repositoryPath="/Simulink_Lib" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/plant_model"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="Tachometer">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_d5bkAEijEe2BtL4bhs0ZZg" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/Tachometer/Model/Simulink" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/plant_model"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="CIM">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_qgpgofLXEeywc5w58p_KPw" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/CIM/Binaries" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/plant_model"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="Docs_CIM">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_qgyqkvLXEeywc5w58p_KPw" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/CIM/Docs" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/docs"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="Inverter">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_qhE-cPLXEeywc5w58p_KPw" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/Inverter/Model/Simulink" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/plant_model"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="Docs_Tachometer">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_d5RL8EijEe2BtL4bhs0ZZg" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/Tachometer/Docs" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/docs"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="Docs_Rectifier">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_qhMTMPLXEeywc5w58p_KPw" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/Rectifier/Docs" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/docs"/>
+    </itemLoadRule>
+    <itemLoadRule alternateName="Rectifier">
+        <component itemId="_d9WEMT75EeevmJA6Xu5dfg"/>
+        <!-- <component name="PLANT_MODEL_ELECTRIC_DRIVE_LIB" /> -->
+        <item itemId="_qhGzoPLXEeywc5w58p_KPw" itemType="folder"/>
+        <!-- <item repositoryPath="/Plant_Models/Rectifier/Binaries" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/plant_model"/>
+    </itemLoadRule>
+    <parentLoadRule>
+        <component itemId="_ju2nYWmlEei_07QsEZx7jg"/>
+        <!-- <component name="SIM_ARCH_DOCS" /> -->
+        <parentFolder itemId="_ju3OcmmlEei_07QsEZx7jg" itemType="folder"/>
+        <!-- <parentFolder repositoryPath="/" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/docs"/>
+    </parentLoadRule>
+    <itemLoadRule alternateName="SRMain">
+        <component itemId="_0W0VgHi8EeWmyYImHGY9Dw"/>
+        <!-- <component name="VORTEX_SRAPPLICATION" /> -->
+        <item itemId="_BWm44JLsEeWHUdbCPRjpAw" itemType="folder"/>
+        <!-- <item repositoryPath="/Application/SRMain/_SRMain_Core" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/source"/>
+    </itemLoadRule>
+    <itemLoadRule>
+        <component itemId="_LJV0wWmmEei_07QsEZx7jg"/>
+        <!-- <component name="SIM_ARCH_TOOLS" /> -->
+        <item itemId="_WD3MIGmnEei_07QsEZx7jg" itemType="folder"/>
+        <!-- <item repositoryPath="/tools" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch"/>
+    </itemLoadRule>
+    <itemLoadRule>
+        <component itemId="_gFoYQBoLEeeJ8JNTcJmB_Q"/>
+        <!-- <component name="PYTHON_UTILITIES_LIB" /> -->
+        <item itemId="_fmhk8RoMEeeJ8JNTcJmB_Q" itemType="folder"/>
+        <!-- <item repositoryPath="/setting_parser" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/tools/gese_utils"/>
+    </itemLoadRule>
+    <itemLoadRule>
+        <component itemId="_gFoYQBoLEeeJ8JNTcJmB_Q"/>
+        <!-- <component name="PYTHON_UTILITIES_LIB" /> -->
+        <item itemId="_KjYAAOzDEeicK-4mGtaDgA" itemType="folder"/>
+        <!-- <item repositoryPath="/gese_utils" /> -->
+        <sandboxRelativePath pathPrefix="/MCU_Sim_Arch/tools"/>
+    </itemLoadRule>
+</scm:sourceControlLoadRule>

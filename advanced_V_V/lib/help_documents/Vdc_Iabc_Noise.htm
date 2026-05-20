@@ -1,0 +1,95 @@
+<html>
+
+
+
+
+<head>
+  <title>Vdc & Iabc  Noise Input</title>
+</head>
+
+
+
+<body>
+
+
+<font size="6">
+
+<h2  style="color:Blue;">Vdc & Iabc  Noise Input</h2>
+
+<font size="3">
+
+
+
+
+<h2 style="color:green;">Description</h2>
+
+ This Matlab function block is used to input noise on Vdc voltage and Iabc currents .
+<br><br><br><br>
+
+<img src ="./images/Noise_Input/Noise_Block.png" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+ <br><br><br><br>
+
+<h2 style="color:green;">Input</h2>
+<b>1.</b> <b>Time</b> is  real simulation time,which is used here to generate noise signal.
+<br><br>
+<b>1.</b> <b>Dyno input</b> is status coming from Dyno load block, illustrating that Dyno load has been applied and now its ready to impose noise. 
+ 
+
+<br>
+
+<h2 style="color:green;">Output</h2>
+<b>1.</b> <b>V_Noise</b> is output signal which is added to Vdc noise.
+<br><br>
+<b>2.</b> <b>Ic_Noise</b> is output signal which is added to Iabc noise.
+
+
+<h2 style="color:green;">Parameters</h2>
+
+<img src ="./images/Noise_Input/Noise_Parameter.png" align="left" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+<br><br>
+<br>
+This block contains four configurable parameters which are configured through the parameter initialization file:
+
+<dl>
+ <dt><b>Initial Value</b></dt><dd> It is the initial value of the noise power which is going to vary.(i.e Vdc or Iabc). </dd>
+ <dt><b>Time_Check</b></dt><dd> Generation of noise input signal will begin after Para time check(sec) that is,once Dyno load input is stable after Para time check noise input signal begins. </dd>
+ <dt><b>Percentage Variation</b></dt><dd> It is the percentage by which noise level will increment at every step.</dd>
+<dt><b>Selection of Test</b></dt><dd> It will give logic 1 for selection of test carried by imposing voltage noise, and logic 0 when it is noise on currents.</dd>
+</dl>
+
+
+
+<h2 style="color:green;"> Working with example </h2>
+
+
+
+<img src="./images/Noise_Input/Working_Noise.png" align="left">
+<br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ <p>Noise signal gets activated once dyno load has been applied, that is once its status is high.<p>
+<p> Noise on Voltage(Vdc) and Current(Iabc) will vary depending on the corresponding change in noise power level. <p> 
+<p>Volt and Iabc port will generate stepwise increasing noise level output, which are fed to matlab function to generate White noise<p>    
+<p>In case if test is performed by adding voltage noise, <b>V_Noise</b> will have output containing noise to be added with Vdc input of ADC block.<p>
+<p>In case if test is performed by adding current noise, <b>Ic_Noise</b> will have 3 output noise to be added with Iabc input of ADC block.<p>
+<p>Depending on the selection of test that is either carried by adding noise on voltage or currents, Volt and Iabc port will generate signal.<p>
+<p>If the test is carried for voltage noise,than noise on Currents is always zero and vice versa<p>
+ <p>This test is carried for testing performance of sBPM motor,
+by adding noise on Voltage and currents.<p>
+
+<h2 style="color:green;">File</h2>
+<p>This test is supported by two .m files, one for parameter initialization <mark style="color:blue;"><b>'Parameter_Initialization_ADC.m'</b></mark>
+and other one to run the script <mark style="color:blue;"><b>'Automatic_script_ADC.m'</b></mark>.<p>
+<p>Test named <mark style="color:blue;"><b>'Harness_ADC_Noise.slx'</b></mark> and can be found in the <i>'Sim_Arch\Harness' </i>folder. <p>
+    
+
+   
+
+</body>
+
+
+</html>
